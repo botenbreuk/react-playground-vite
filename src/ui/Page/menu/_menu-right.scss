@@ -1,0 +1,42 @@
+/* The sidebar menu */
+.menu-right {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 15%;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+
+  & a {
+    text-decoration: none;
+    color: #818181;
+    display: block;
+
+    &:hover {
+      color: #f1f1f1;
+    }
+  }
+
+  & .close-button {
+    font-size: 2rem;
+  }
+}
+
+.menu-right-open-button {
+  font-size: 1.2rem !important;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@include media-breakpoint-down(lg) {
+  .menu-right {
+    width: 90%;
+    padding-top: 1rem;
+  }
+
+  .menu-right a {
+    font-size: 18px;
+  }
+}

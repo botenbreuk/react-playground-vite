@@ -1,0 +1,56 @@
+@import './menu/menu-left';
+@import './menu/menu-right';
+
+.title {
+  background: #637d82;
+  color: #fff;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.navbars {
+  border-bottom: $gray-300 1px solid;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+i.scroll-to-top {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0.8rem;
+  right: 1.2rem;
+  background-color: white;
+  color: $primary !important;
+  line-height: 0;
+  padding: 0.2rem;
+  border-radius: 2rem;
+  font-size: 2rem;
+  border: 2px $primary solid;
+}
+
+.filter-bar {
+  display: flex;
+  background-color: #111;
+  color: $white;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  cursor: default;
+
+  & * {
+    flex-flow: wrap;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .left {
+    width: 80%;
+  }
+}
+
+.main-content {
+  margin: 1rem;
+}

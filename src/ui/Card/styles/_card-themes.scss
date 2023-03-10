@@ -1,0 +1,75 @@
+%card-themes {
+  background-color: transparent;
+  border: 0;
+
+  & > .card-header {
+    color: $white;
+    border-radius: 0;
+    border: 0;
+
+    & .card-button {
+      & i {
+        color: $white !important;
+      }
+    }
+  }
+
+  &.theme {
+    &-lg {
+      background-color: $gray-300;
+
+      & > .card-header {
+        background-color: $gray-600;
+      }
+    }
+
+    &-dg {
+      background-color: $gray-300;
+
+      & > .card-header {
+        background-color: $gray-800;
+      }
+    }
+
+    &-dw {
+      background-color: $white;
+
+      & > .card-header {
+        background-color: $gray-800;
+      }
+    }
+
+    &-lw {
+      background-color: $white;
+      & > .card-header {
+        background-color: $gray-600;
+      }
+    }
+
+    &-wd {
+      background-color: $gray-600;
+      & > .card-header {
+        color: $black;
+        background-color: $white;
+
+        & .card-button {
+          & i {
+            color: $black !important;
+          }
+        }
+      }
+
+      & > .card-body {
+        color: $white;
+
+        & a {
+          color: $white;
+        }
+      }
+
+      & > .card-footer {
+        color: $white;
+      }
+    }
+  }
+}

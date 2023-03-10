@@ -1,0 +1,63 @@
+.dl-horizontal {
+  dt,
+  dd {
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  dt {
+    text-align: right;
+    padding-right: 0.8rem;
+  }
+
+  &.dl-horizontal-left {
+    width: 100%;
+    dt {
+      text-align: left;
+      width: 40%;
+      float: left;
+      clear: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin: 0;
+    }
+    dd {
+      margin-left: calc(40% + 5px);
+    }
+  }
+
+  &.dl-compact {
+    max-height: 1.8rem;
+  }
+}
+
+.card-columns > .card {
+  & .dl-horizontal dd {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.card {
+  > .card-body {
+    .dl-horizontal {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      dt {
+        /* This will make it work in Firefox >= 35.0a1 */
+        min-width: 0;
+        flex-basis: 40%;
+        word-wrap: break-word;
+      }
+      dd {
+        margin-left: 0;
+        flex-basis: 60%;
+        min-width: 0;
+        word-wrap: break-word;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import './variables';
+@import 'bootstrap/scss/bootstrap';
+
+@import '../app/App/app';
+@import '../app/Cards/styles/cards';
+
+@import '../ui/Page/page';
+@import '../ui/List/description-list';
+@import '../ui/Logo/logo';
+@import '../ui/Icon/icon';
+
+.bg-orange {
+  background-color: $orange !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.bg-dark-gray {
+  background-color: #111;
+}

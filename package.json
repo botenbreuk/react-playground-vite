@@ -1,0 +1,70 @@
+{
+  "name": "react-playground-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "@42.nl/jarb-final-form": "3.0.0",
+    "bootstrap": "5.2.3",
+    "bootstrap-icons": "1.10.3",
+    "classnames": "2.3.2",
+    "final-form": "4.20.9",
+    "final-form-arrays": "3.1.0",
+    "immutability-helper": "^3.1.1",
+    "lodash": "4.17.21",
+    "moment": "2.29.4",
+    "react": "18.2.0",
+    "react-dnd": "16.0.1",
+    "react-dnd-html5-backend": "16.0.1",
+    "react-dom": "18.2.0",
+    "react-final-form": "6.5.9",
+    "react-final-form-arrays": "3.1.4",
+    "react-icons": "4.8.0",
+    "react-router-dom": "5.3.4",
+    "reactstrap": "9.1.6"
+  },
+  "devDependencies": {
+    "@types/lodash": "4.14.191",
+    "@types/node": "18.15.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@types/react-router-dom": "5.3.3",
+    "@typescript-eslint/eslint-plugin": "5.54.1",
+    "@typescript-eslint/parser": "5.54.1",
+    "@vitejs/plugin-react-swc": "3.2.0",
+    "better-npm-audit": "3.7.3",
+    "eslint": "8.36.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-plugin-flowtype": "8.0.3",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-react": "7.32.2",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.0",
+    "prettier": "2.8.4",
+    "prettier-plugin-organize-imports": "3.2.2",
+    "sass": "1.59.0",
+    "stylelint": "15.2.0",
+    "stylelint-config-prettier-scss": "0.0.1",
+    "stylelint-config-standard-scss": "7.0.1",
+    "typescript": "4.9.5",
+    "vite": "4.1.4",
+    "vite-plugin-tsc-watch": "2.0.1"
+  },
+  "scripts": {
+    "better-audit": "node node_modules/better-npm-audit audit",
+    "build": "npm run create-env &&  tsc && vite build",
+    "create": "npm run create-env",
+    "create-env": "echo \"SKIP_PREFLIGHT_CHECK=true\nVITE_VERSION=${npm_package_version}\nBUILD_TIME=\"$(date +%Y-%m-%dT%H:%M:%S%z)\"\n\" > .env",
+    "preview": "vite preview",
+    "start": "npm run create && vite",
+    "stylelint": "stylelint '**/*.{css,scss}'",
+    "stylelint-check": "stylelint-config-prettier-scss-check",
+    "ts": "tsc --version && tsc"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.{js,jsx,json,scss,tsx,ts}": [
+      "prettier --single-quote --write"
+    ]
+  }
+}

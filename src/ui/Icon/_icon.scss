@@ -1,0 +1,12 @@
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import './icons';
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.input-group {
+  & i {
+    font-size: inherit !important;
+  }
+}

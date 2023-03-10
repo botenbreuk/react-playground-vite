@@ -1,0 +1,29 @@
+%card-icon {
+  background-color: $primary;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0 0.8rem;
+  align-items: center;
+  height: 100%;
+
+  & > i {
+    font-size: 1rem !important;
+    color: $white;
+  }
+
+  & svg {
+    display: block;
+  }
+
+  &.red {
+    background-color: $red;
+  }
+
+  &.orange {
+    background-color: $orange;
+  }
+
+  &.yellow {
+    background-color: $yellow;
+  }
+}
