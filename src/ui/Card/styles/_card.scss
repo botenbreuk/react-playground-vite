@@ -25,7 +25,6 @@
 
 .card {
   @extend %card-themes;
-
   position: static;
   border-radius: 0;
   font-size: $font-size-base;
@@ -69,6 +68,15 @@
         width: 100%;
         height: 20%;
         font-size: 0.7rem;
+      }
+    }
+
+    & > .card-progress {
+      margin: 0;
+      padding: 0;
+
+      & > * {
+        border-radius: 0;
       }
     }
 
@@ -124,15 +132,6 @@
 
     & .text {
       @extend %header-footer-text;
-    }
-  }
-
-  & > .card-progress {
-    margin: 0;
-    padding: 0;
-
-    & > * {
-      border-radius: 0;
     }
   }
 }

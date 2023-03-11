@@ -7,7 +7,7 @@ module.exports = {
       jsx: true
     }
   },
-  extends: ['react-app', 'plugin:@typescript-eslint/recommended'],
+  extends: ['plugin:@typescript-eslint/recommended'],
   plugins: ['@typescript-eslint', 'react', 'react-hooks'],
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs

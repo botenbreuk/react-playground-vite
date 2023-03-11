@@ -12,6 +12,7 @@
 
   &.dl-horizontal-left {
     width: 100%;
+
     dt {
       text-align: left;
       width: 40%;
@@ -22,6 +23,7 @@
       white-space: nowrap;
       margin: 0;
     }
+
     dd {
       margin-left: calc(40% + 5px);
     }
@@ -32,26 +34,19 @@
   }
 }
 
-.card-columns > .card {
-  & .dl-horizontal dd {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
 .card {
   > .card-body {
     .dl-horizontal {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
+
       dt {
         /* This will make it work in Firefox >= 35.0a1 */
         min-width: 0;
         flex-basis: 40%;
         word-wrap: break-word;
       }
+
       dd {
         margin-left: 0;
         flex-basis: 60%;
@@ -59,5 +54,13 @@
         word-wrap: break-word;
       }
     }
+  }
+}
+
+.card-columns > .card {
+  & .dl-horizontal dd {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

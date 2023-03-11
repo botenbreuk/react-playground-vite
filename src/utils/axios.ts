@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { isEmpty } from 'lodash';
 
 async function downloadFile(url: string, params?: Record<string, any>) {
