@@ -43,7 +43,7 @@
     "lint-staged": "13.2.0",
     "prettier": "2.8.4",
     "prettier-plugin-organize-imports": "3.2.2",
-    "sass": "1.59.0",
+    "sass": "1.59.2",
     "stylelint": "15.2.0",
     "stylelint-config-prettier-scss": "0.0.1",
     "stylelint-config-standard-scss": "7.0.1",
