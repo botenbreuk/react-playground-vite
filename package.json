@@ -1,7 +1,7 @@
 {
   "name": "react-playground-vite",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "dependencies": {
     "@42.nl/jarb-final-form": "3.0.0",
@@ -25,12 +25,12 @@
   },
   "devDependencies": {
     "@types/lodash": "4.14.191",
-    "@types/node": "18.15.0",
+    "@types/node": "18.15.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/react-router-dom": "5.3.3",
-    "@typescript-eslint/eslint-plugin": "5.54.1",
-    "@typescript-eslint/parser": "5.54.1",
+    "@typescript-eslint/eslint-plugin": "5.55.0",
+    "@typescript-eslint/parser": "5.55.0",
     "@vitejs/plugin-react-swc": "3.2.0",
     "better-npm-audit": "3.7.3",
     "eslint": "8.36.0",
@@ -54,11 +54,11 @@
   },
   "scripts": {
     "better-audit": "node node_modules/better-npm-audit audit",
-    "build": "npm run create-env &&  tsc && vite build",
+    "build": "npm run create-env && tsc && vite build",
     "create": "npm run create-env",
     "create-env": "echo \"SKIP_PREFLIGHT_CHECK=true\nVITE_VERSION=${npm_package_version}\nBUILD_TIME=\"$(date +%Y-%m-%dT%H:%M:%S%z)\"\n\" > .env",
     "lint": "eslint src --ext js,jsx,ts,tsx --max-warnings=0",
-    "preview": "vite preview",
+    "preview": "vite build --mode preview && vite preview",
     "start": "npm run create && vite",
     "stylelint": "stylelint src/**/*.{css,scss}",
     "stylelint-check": "stylelint-config-prettier-scss-check",

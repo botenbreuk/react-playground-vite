@@ -1,4 +1,5 @@
 import { Alert, Button } from 'reactstrap';
+import test from '../../assets/logo.svg';
 import { ConfirmModal, Page } from '../../ui';
 import Logo from '../../ui/Logo/Logo';
 
@@ -11,6 +12,19 @@ export default function App() {
           This is a simple hero unit, a simple Jumbotron-style component for
           calling extra attention to featured content or information.
         </p>
+        <p>
+          <dl>
+            <dt>Mode</dt>
+            <dd>{import.meta.env.MODE}</dd>
+            <dt>Environment var:</dt>
+            <dd>
+              {import.meta.env.VITE_USERNAME} {import.meta.env.VITE_PASSWORD}
+            </dd>
+            <dt>Package version: </dt>
+            <dd>{VITE_VERSION}</dd>
+          </dl>
+        </p>
+        <img src={test} width="80" />
         <hr className="my-2" />
         <p>
           It uses utility classes for typography and spacing to space content
