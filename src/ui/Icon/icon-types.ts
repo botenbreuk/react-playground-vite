@@ -221,6 +221,7 @@ export type IconType =
   | 'bi-bug-fill'
   | 'bi-bug'
   | 'bi-building'
+  | 'bi-buildings-fill'
   | 'bi-bullseye'
   | 'bi-calculator-fill'
   | 'bi-calculator'

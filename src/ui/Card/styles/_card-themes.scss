@@ -41,6 +41,7 @@
 
     &-lw {
       background-color: $white;
+
       & > .card-header {
         background-color: $gray-600;
       }
@@ -48,6 +49,7 @@
 
     &-wd {
       background-color: $gray-600;
+
       & > .card-header {
         color: $black;
         background-color: $white;

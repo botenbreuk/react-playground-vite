@@ -54,7 +54,7 @@ export default function CardsPage() {
 
   return (
     <Page
-      filterBar={
+      filter={
         <>
           <div className="left"></div>
           <div className="right">

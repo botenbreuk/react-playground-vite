@@ -1,86 +1,168 @@
+import classNames from 'classnames';
+import { ReactNode, useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
-import { Button, Col, Container, Nav, NavItem, NavLink, Row } from 'reactstrap';
-import { Icon } from '../../index';
+import {
+  Badge,
+  Button,
+  Nav,
+  NavItem,
+  NavLink,
+  Popover,
+  PopoverHeader
+} from 'reactstrap';
+import { FINAL_FORM_PAGE_URL } from '../../../app/FinalForm/FinalFormPage';
+import { IconType } from '../../Icon/icon-types';
 import Logo from '../../Logo/Logo';
+import { Icon } from '../../index';
+
+type MenuLink = {
+  icon: IconType;
+  url: string;
+  label: string;
+  badgeNumber?: number;
+  disabled?: boolean;
+};
 
 type Props = {
   isOpen: boolean;
   toggle: () => void;
 };
 
+/*
+  Defines all the links of the application.
+  When the roles are empty they are considered public.
+*/
+const links = (): MenuLink[] => [
+  {
+    icon: 'bi-house',
+    url: '/',
+    label: 'Home',
+    badgeNumber: 42
+  },
+  {
+    icon: 'bi-card-list',
+    url: '/cards',
+    label: 'Cards example'
+  },
+  {
+    icon: 'bi-card-image',
+    url: '/cards/big',
+    label: 'Card Big example'
+  },
+  {
+    icon: 'bi-shuffle',
+    url: '/shuffle',
+    label: 'Shuffle'
+  },
+  {
+    icon: 'bi-arrow-counterclockwise',
+    url: 'dnd',
+    label: 'Drag and Drop'
+  },
+  {
+    icon: 'bi-boxes',
+    url: '/dnd-sort',
+    label: 'Drag and Drop - sort'
+  },
+  {
+    icon: 'bi-clipboard-data',
+    url: FINAL_FORM_PAGE_URL,
+    label: 'Final form'
+  },
+  {
+    icon: 'bi-lock',
+    url: 'disabled',
+    label: 'Disabled Link',
+    disabled: true
+  }
+];
+
 export default function MenuLeft(props: Props) {
   const { isOpen, toggle } = props;
 
-  if (!isOpen) {
-    return null;
-  }
+  const navLinks = links().map((link, index) => {
+    return (
+      <NavItem>
+        <PopoverIcon id={`${index}`} title={link.label} isActive={!isOpen}>
+          <NavLink to={link.url} tag={RRNavLink} exact disabled={link.disabled}>
+            {isOpen && `${link.label} `}
+            {isOpen && link.badgeNumber && link.badgeNumber > 0 && (
+              <Badge className="bg-danger" pill>
+                {link.badgeNumber}
+              </Badge>
+            )}
+            {link.icon && <Icon type={link.icon} />}
+          </NavLink>
+        </PopoverIcon>
+      </NavItem>
+    );
+  });
+
+  const className = classNames('menu-left', { closed: !isOpen });
 
   return (
-    <Col md={2} className="menu-left">
+    <div className={className}>
       <Icon
-        type="bi-x"
-        className="close-button"
+        type={isOpen ? 'bi-caret-left-fill' : 'bi-caret-right-fill'}
+        className="toggle-menu-button"
         color="#244e9b"
         onClick={toggle}
       />
 
-      <Container fluid>
-        <Row className="bg-light">
-          <Col xs={12} className="p-3 d-flex justify-content-center">
-            <Logo height={100} />
-          </Col>
-        </Row>
-        <Row className="mt-5">
+      <div className="menu-container">
+        <div className="logo-wrapper">
+          <Logo height={100} />
+        </div>
+        <div className="links-container">
           <Nav vertical className="text-end" pills>
-            <NavItem>
-              <NavLink to="/" tag={RRNavLink} exact>
-                {'Home '}
-                <span className="badge bg-danger rounded-pill">42</span>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/cards" tag={RRNavLink} exact>
-                Cards example
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/cards/big" tag={RRNavLink} exact>
-                Card Big example
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/shuffle" tag={RRNavLink} exact>
-                Shuffle
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/dnd" tag={RRNavLink} exact>
-                Drag and Drop
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/dnd-sort" tag={RRNavLink} exact>
-                Drag and Drop - sort
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink disabled to="disabled" tag={RRNavLink} exact>
-                Disabled Link
-              </NavLink>
-            </NavItem>
+            {navLinks.map(i => i)}
           </Nav>
-        </Row>
-        <Row>
-          <div className="footer">
-            <Button color="link" className="text-white p-0">
-              About
-            </Button>
-            <Button color="link" className="text-white p-0">
-              Contact
-            </Button>
-          </div>
-        </Row>
-      </Container>
-    </Col>
+        </div>
+        <div className="footer">
+          <Button color="link" className="text-white p-0">
+            {isOpen ? 'About' : <Icon type="bi-question-circle-fill" />}
+          </Button>
+          <Button color="link" className="text-white p-0">
+            {isOpen ? 'Contact' : <Icon type="bi-headset" />}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PopoverIcon({
+  id,
+  title,
+  children,
+  isActive
+}: {
+  id: string;
+  title: string;
+  children: ReactNode;
+  isActive: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+
+  function toggle() {
+    if (isActive) {
+      setOpen(value => !value);
+    }
+  }
+
+  return (
+    <span>
+      <div id={`Popover-${id}`} onMouseOver={toggle} onMouseOutCapture={toggle}>
+        {children}
+      </div>
+      <Popover
+        placement="right"
+        isOpen={open}
+        target={`Popover-${id}`}
+        toggle={toggle}
+      >
+        <PopoverHeader>{title}</PopoverHeader>
+      </Popover>
+    </span>
   );
 }

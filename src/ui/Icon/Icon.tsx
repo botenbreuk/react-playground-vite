@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function Icon(props: Props) {
-  const { type, color = '#244e9b', onClick, className } = props;
+  const { type, color = 'inherit', onClick, className } = props;
 
   const classNames = classnames(`icon ${type}`, className, {
     clickable: onClick

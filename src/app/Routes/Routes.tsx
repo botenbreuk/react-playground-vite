@@ -4,6 +4,10 @@ import CardBigPage from '../Cards/CardBigPage';
 import CardsPage from '../Cards/CardsPage';
 import Dnd from '../Dnd/Dnd';
 import DndExample from '../DndExample/DndExample';
+import FinalFormApp from '../FinalForm/FinalFormApp';
+import { FINAL_FORM_PAGE_URL } from '../FinalForm/FinalFormPage';
+import SettingsApp from '../Settings/SettingsApp';
+import { SETTINGS_PAGE_URL } from '../Settings/SettingsPage';
 import ShuffleList from '../Shuffle/ShuffleList';
 
 export default function Routes() {
@@ -27,6 +31,12 @@ export default function Routes() {
         </Route>
         <Route exact path="/dnd-sort">
           <DndExample />
+        </Route>
+        <Route exact path={FINAL_FORM_PAGE_URL}>
+          <FinalFormApp />
+        </Route>
+        <Route exact path={SETTINGS_PAGE_URL}>
+          <SettingsApp />
         </Route>
       </Switch>
     </BrowserRouter>

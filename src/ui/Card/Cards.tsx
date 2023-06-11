@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ReactNode, useEffect, useState } from 'react';
-import { NumberRange } from '../../shared/types';
+import { NumberRange } from '../../types/types';
 
 type DisplayType = 'tiles' | 'list';
 

@@ -1,8 +1,38 @@
-@import 'bootstrap-icons/font/bootstrap-icons.css';
 @import './icons';
 
-.icon {
-  font-size: 1.5rem;
+[class^='icon-'],
+[class*=' icon-'] {
+  @extend %icon-font;
+}
+
+.bi::before,
+[class^='bi-']::before,
+[class*=' bi-']::before {
+  @extend %icon-font;
+  font-family: 'bootstrap-icons' !important;
+  font-weight: normal !important;
+}
+
+@each $name, $icon in $icons {
+  .#{$name}::before {
+    content: $icon;
+    display: flex;
+    align-items: center;
+  }
+
+  .#{$name}-after::after {
+    content: $icon;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.icon-green {
+  color: $success;
+}
+
+.icon-red {
+  color: $danger;
 }
 
 .input-group {

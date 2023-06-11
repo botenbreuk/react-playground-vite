@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import { Button, Col, Container, Nav, NavItem, NavLink, Row } from 'reactstrap';
+import { SETTINGS_PAGE_URL } from '../../../app/Settings/SettingsPage';
 import useOutsideClick from '../../../hooks/useOutsideClick/useOutsideClick';
 import { Icon } from '../../index';
 
@@ -33,13 +35,19 @@ export default function MenuRight() {
           <Row>
             <Nav vertical className="text-center" pills>
               <NavItem>
-                <NavLink href="#">Change Password</NavLink>
+                <NavLink to="/change-password" tag={RRNavLink} exact>
+                  Change Password
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Settings</NavLink>
+                <NavLink to={SETTINGS_PAGE_URL} tag={RRNavLink} exact>
+                  Settings
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Logout</NavLink>
+                <NavLink to="/logout" tag={RRNavLink} exact>
+                  Logout
+                </NavLink>
               </NavItem>
             </Nav>
           </Row>
