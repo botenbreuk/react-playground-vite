@@ -1,4 +1,5 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
+import { setMenuOpen, useUserSettings } from '../../context/SettingsContext';
 import useIsScrolled from '../../hooks/useIsScrolled/useIsScrolled';
 import { Icon } from '../index';
 import Header from './menu/Header';
@@ -14,16 +15,16 @@ interface Props {
 export default function Page(props: Props) {
   const { title, filter, children, scrollToTop = false } = props;
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [{ menuOpen }, dispatch] = useUserSettings();
   const isScrolled = useIsScrolled();
 
   function toggle() {
-    setIsOpen(!isOpen);
+    dispatch(setMenuOpen(!menuOpen));
   }
 
   return (
     <div className="container-page bg-dark">
-      <MenuLeft isOpen={isOpen} toggle={toggle} />
+      <MenuLeft isOpen={menuOpen} toggle={toggle} />
       <div className="page-content">
         <div className="navbars">
           <Header title={title} />

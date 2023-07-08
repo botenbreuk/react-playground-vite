@@ -23,7 +23,8 @@ export default defineConfig(() => ({
   build: {
     emptyOutDir: true,
     outDir: './build',
-    minify: 'esbuild',
+    minify: 'terser',
+    terserOptions: { output: { comments: false } },
     rollupOptions: {
       output: {
         assetFileNames: assetInfo => {
