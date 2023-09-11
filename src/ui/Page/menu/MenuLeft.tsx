@@ -56,7 +56,7 @@ const links = (): MenuLink[] => [
   },
   {
     icon: 'bi-arrow-counterclockwise',
-    url: 'dnd',
+    url: '/dnd',
     label: 'Drag and Drop'
   },
   {
@@ -71,7 +71,7 @@ const links = (): MenuLink[] => [
   },
   {
     icon: 'bi-lock',
-    url: 'disabled',
+    url: '/disabled',
     label: 'Disabled Link',
     disabled: true
   }
@@ -82,9 +82,9 @@ export default function MenuLeft(props: Props) {
 
   const navLinks = links().map((link, index) => {
     return (
-      <NavItem>
+      <NavItem key={link.url}>
         <PopoverIcon id={`${index}`} title={link.label} isActive={!isOpen}>
-          <NavLink to={link.url} tag={RRNavLink} exact disabled={link.disabled}>
+          <NavLink to={link.url} tag={RRNavLink} end disabled={link.disabled}>
             {isOpen && `${link.label} `}
             {isOpen && link.badgeNumber && link.badgeNumber > 0 && (
               <Badge className="bg-danger" pill>

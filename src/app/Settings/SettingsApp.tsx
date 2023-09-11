@@ -1,17 +1,12 @@
 import { lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { SETTINGS_PAGE_URL } from './SettingsPage';
+import { Route, Routes } from 'react-router-dom';
 
-const SettingsPage = lazy(
-  () => import(/* webpackChunkName: "final-form-page" */ './SettingsPage')
-);
+const SettingsPage = lazy(() => import('./SettingsPage'));
 
 export default function SettingsApp() {
   return (
-    <Switch>
-      <Route path={SETTINGS_PAGE_URL}>
-        <SettingsPage />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route index element={<SettingsPage />} />
+    </Routes>
   );
 }

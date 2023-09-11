@@ -21,9 +21,9 @@ export default function Container() {
   return (
     <div>
       <div style={{ overflow: 'hidden', clear: 'both' }}>
-        <Question name="Glass" onClick={addTotList} />
-        <Question name="Banana" onClick={addTotList} />
-        <Question name="Paper" onClick={addTotList} />
+        <Question key="Glass" name="Glass" onClick={addTotList} />
+        <Question key="Banana" name="Banana" onClick={addTotList} />
+        <Question key="Paper" name="Paper" onClick={addTotList} />
       </div>
       <div style={{ overflow: 'hidden', clear: 'both' }}>
         <QuestionList value={questions} onChange={setQuestions} />

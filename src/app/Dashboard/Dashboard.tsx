@@ -3,7 +3,7 @@ import test from '../../assets/logo.svg';
 import { ConfirmModal, Page } from '../../ui';
 import Logo from '../../ui/Logo/Logo';
 
-export default function App() {
+export function Dashboard() {
   return (
     <Page>
       <div className="container-fluid text-sm-center p-5 bg-light">

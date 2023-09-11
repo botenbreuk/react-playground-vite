@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ReactNode, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -44,7 +44,7 @@ export default function CardsPage() {
   const [bigCard, setBigCard] = useState<number>();
   const [cards, setCards] = useState<CardObj[]>([]);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCards(generateList(50));
@@ -97,9 +97,7 @@ export default function CardsPage() {
               headerClick={() =>
                 setBigCard(bigCard !== index ? index : undefined)
               }
-              editClick={
-                buttonClick ? () => history.push('/cards/big') : undefined
-              }
+              editClick={buttonClick ? () => navigate('/cards/big') : undefined}
               bigView={bigCard === index}
               customEdit={
                 customEdit && (

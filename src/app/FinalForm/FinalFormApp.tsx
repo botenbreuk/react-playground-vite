@@ -1,17 +1,12 @@
 import { lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { FINAL_FORM_PAGE_URL } from './FinalFormPage';
+import { Route, Routes } from 'react-router-dom';
 
-const FinalFormPage = lazy(
-  () => import(/* webpackChunkName: "final-form-page" */ './FinalFormPage')
-);
+const FinalFormPage = lazy(() => import('./FinalFormPage'));
 
 export default function FinalFormApp() {
   return (
-    <Switch>
-      <Route path={FINAL_FORM_PAGE_URL}>
-        <FinalFormPage />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route index element={<FinalFormPage />} />
+    </Routes>
   );
 }

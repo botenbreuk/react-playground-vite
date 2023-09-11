@@ -67,7 +67,7 @@ export default function QuestionList(props: Props) {
       {isActive ? 'Release to drop' : 'Drag a box here'}
       {value.map((val, index) => (
         <QuestionBox
-          key={val.id}
+          key={index}
           id={val.id}
           index={index}
           value={val}
