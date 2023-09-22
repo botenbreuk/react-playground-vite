@@ -4,11 +4,10 @@ import { Page } from '../../ui';
 import Spinner from '../../ui/Spinner/Spinner';
 import CardPanel from '../Cards/CardPanel';
 import CardIcon from '../Cards/parts/CardIcon';
-import { composeValidators } from './utils';
-import { isRequired, mustBeBiggerThan2, usernameAvailable } from './validatio';
+import { FormData, validate } from './zod';
 
 export default function FinalFormPage() {
-  function submit(form: Record<string, any>) {
+  function submit(form: FormData) {
     alert(JSON.stringify(form, null, 2));
   }
 
@@ -22,26 +21,18 @@ export default function FinalFormPage() {
           <span className="text">2022-01-01</span>
         ]}
       >
-        <Form onSubmit={submit}>
+        <Form onSubmit={submit} validate={validate}>
           {({ handleSubmit, submitting, values }) => (
             <form onSubmit={handleSubmit}>
-              <FinalInput
-                name="firstName"
-                label="First name"
-                validate={composeValidators([isRequired, usernameAvailable])}
-              />
-              <FinalInput
-                name="lastName"
-                label="Last name"
-                validate={isRequired}
-              />
+              <FinalInput name="firstName" label="First name" />
+              <FinalInput name="lastName" label="Last name" />
               <FinalRange
                 name="petTotal"
                 label="Total pets"
                 initialValue={0}
                 minValue={0}
                 maxValue={5}
-                validate={mustBeBiggerThan2}
+                parse={value => parseInt(value)}
               />
               <div className="mb-3">
                 <button
@@ -136,7 +127,6 @@ function RenderError<T>({ meta }: { meta: FieldMetaState<T> }) {
     meta.error &&
     meta.touched && (
       <>
-        <pre>{JSON.stringify(meta, null, 2)}</pre>
         <span className="text-danger fw-bold">
           {(() => {
             if (typeof meta.error === 'string') {
