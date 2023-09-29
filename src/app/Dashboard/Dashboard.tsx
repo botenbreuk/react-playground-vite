@@ -1,9 +1,31 @@
+import { useEffect, useState } from 'react';
 import { Alert, Button } from 'reactstrap';
 import test from '../../assets/logo.svg';
 import { ConfirmModal, Page } from '../../ui';
 import Logo from '../../ui/Logo/Logo';
 
 export function Dashboard() {
+  const [status, setStatus] = useState(false);
+  const [version, setVersion] = useState('');
+
+  useEffect(() => {
+    async function fetchStatus() {
+      const [response, actuator] = await Promise.all([
+        fetch('/api/status'),
+        fetch('/api/actuator/info')
+      ]);
+      const [{ status }, { version }] = await Promise.all([
+        response.json(),
+        actuator.json()
+      ]);
+
+      setStatus(!!status);
+      setVersion(version);
+    }
+
+    fetchStatus();
+  }, []);
+
   return (
     <Page>
       <div className="container-fluid text-sm-center p-5 bg-light">
@@ -24,6 +46,8 @@ export function Dashboard() {
             <dd>{VITE_VERSION}</dd>
           </dl>
         </p>
+        <p>API is {status ? ' running' : 'not running'}</p>
+        <p>API version: {version}</p>
         <img src={test} width="80" />
         <hr className="my-2" />
         <p>
