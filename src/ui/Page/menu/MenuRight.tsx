@@ -60,11 +60,7 @@ export default function MenuRight() {
 function RenderOpenButton({ toggle }: { toggle: () => void }) {
   return (
     <Button color="danger" onClick={toggle}>
-      <Icon
-        type="bi-people-fill"
-        className="menu-right-open-button"
-        color="#fff"
-      />
+      <Icon type="bi-people-fill" className="menu-right-open-button" color="#fff" />
     </Button>
   );
 }

@@ -35,9 +35,7 @@ export type BootstrapSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
  * }
  */
 const useBootstrapSize = () => {
-  const [mobileSize, setMobileSize] = useState(
-    settingMobileSize(window.innerWidth)
-  );
+  const [mobileSize, setMobileSize] = useState(settingMobileSize(window.innerWidth));
 
   useEffect(() => {
     window.addEventListener('resize', updateWindowDimensions);

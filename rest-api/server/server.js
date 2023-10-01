@@ -14,7 +14,7 @@ app.use(express.json());
 const port = 8080;
 
 app.listen(port, () => {
-  console.log('Server Listening on PORT:', port);
+  console.log(`Server url: http://localhost:${port}/api`);
 });
 
 app.get('/api/status', (request, response) => {

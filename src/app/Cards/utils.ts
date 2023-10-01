@@ -24,12 +24,9 @@ export function generateList(total: number) {
       iconColor: iconGbs[getRandomInt(iconGbs.length)],
       body: 'Body text',
       footer: getRandomInt(20) <= 5 ? 'Footer text' : undefined,
-      buttonClick:
-        getRandomInt(20) <= 5 ? () => console.log('Hallow') : undefined,
+      buttonClick: getRandomInt(20) <= 5 ? () => console.log('Hallow') : undefined,
       progress:
-        getRandomInt(20) <= 5
-          ? progesses[getRandomInt(progesses.length)]
-          : undefined,
+        getRandomInt(20) <= 5 ? progesses[getRandomInt(progesses.length)] : undefined,
       customEdit: getRandomInt(100) < 10,
       showTime: getRandomInt(100) < 50
     });

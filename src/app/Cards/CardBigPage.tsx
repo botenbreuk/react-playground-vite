@@ -46,11 +46,7 @@ export default function CardBigPage() {
           <label htmlFor="exampleFormControlTextarea1" className="form-label">
             Example textarea
           </label>
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows={3}
-          />
+          <textarea className="form-control" id="exampleFormControlTextarea1" rows={3} />
         </div>
         <div className="mb-3">
           <input
@@ -91,11 +87,7 @@ export default function CardBigPage() {
             Password
           </label>
           <div className="col-sm-10">
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword"
-            />
+            <input type="password" className="form-control" id="inputPassword" />
           </div>
         </div>
 
@@ -208,10 +200,7 @@ export default function CardBigPage() {
               defaultChecked
               disabled
             />
-            <label
-              className="form-check-label"
-              htmlFor="flexCheckCheckedDisabled"
-            >
+            <label className="form-check-label" htmlFor="flexCheckCheckedDisabled">
               Disabled checked checkbox
             </label>
           </div>
@@ -261,10 +250,7 @@ export default function CardBigPage() {
               defaultChecked
               disabled
             />
-            <label
-              className="form-check-label"
-              htmlFor="flexRadioCheckedDisabled"
-            >
+            <label className="form-check-label" htmlFor="flexRadioCheckedDisabled">
               Disabled checked radio
             </label>
           </div>
@@ -276,10 +262,7 @@ export default function CardBigPage() {
               type="checkbox"
               id="flexSwitchCheckDefault"
             />
-            <label
-              className="form-check-label"
-              htmlFor="flexSwitchCheckDefault"
-            >
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
               Default switch checkbox input
             </label>
           </div>
@@ -290,10 +273,7 @@ export default function CardBigPage() {
               id="flexSwitchCheckChecked"
               defaultChecked
             />
-            <label
-              className="form-check-label"
-              htmlFor="flexSwitchCheckChecked"
-            >
+            <label className="form-check-label" htmlFor="flexSwitchCheckChecked">
               Checked switch checkbox input
             </label>
           </div>
@@ -304,10 +284,7 @@ export default function CardBigPage() {
               id="flexSwitchCheckDisabled"
               disabled
             />
-            <label
-              className="form-check-label"
-              htmlFor="flexSwitchCheckDisabled"
-            >
+            <label className="form-check-label" htmlFor="flexSwitchCheckDisabled">
               Disabled switch checkbox input
             </label>
           </div>
@@ -319,10 +296,7 @@ export default function CardBigPage() {
               defaultChecked
               disabled
             />
-            <label
-              className="form-check-label"
-              htmlFor="flexSwitchCheckCheckedDisabled"
-            >
+            <label className="form-check-label" htmlFor="flexSwitchCheckCheckedDisabled">
               Disabled checked switch checkbox input
             </label>
           </div>
@@ -335,10 +309,7 @@ export default function CardBigPage() {
               id="btn-check-outlined"
               autoComplete="off"
             />
-            <label
-              className="btn btn-outline-primary"
-              htmlFor="btn-check-outlined"
-            >
+            <label className="btn btn-outline-primary" htmlFor="btn-check-outlined">
               Single toggle
             </label>
           </div>
@@ -350,10 +321,7 @@ export default function CardBigPage() {
               defaultChecked
               autoComplete="off"
             />
-            <label
-              className="btn btn-outline-warning"
-              htmlFor="btn-check-2-outlined"
-            >
+            <label className="btn btn-outline-warning" htmlFor="btn-check-2-outlined">
               Checked
             </label>
           </div>
@@ -367,10 +335,7 @@ export default function CardBigPage() {
                 autoComplete="off"
                 defaultChecked
               />
-              <label
-                className="btn btn-outline-success"
-                htmlFor="success-outlined"
-              >
+              <label className="btn btn-outline-success" htmlFor="success-outlined">
                 Checked success radio
               </label>
             </div>
@@ -382,10 +347,7 @@ export default function CardBigPage() {
                 id="danger-outlined"
                 autoComplete="off"
               />
-              <label
-                className="btn btn-outline-danger"
-                htmlFor="danger-outlined"
-              >
+              <label className="btn btn-outline-danger" htmlFor="danger-outlined">
                 Danger radio
               </label>
             </div>
@@ -503,16 +465,12 @@ export default function CardBigPage() {
 
           <div className="input-group">
             <span className="input-group-text">With textarea</span>
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-            ></textarea>
+            <textarea className="form-control" aria-label="With textarea"></textarea>
           </div>
         </div>
         <div className="mb-3">
           <button type="button" className="btn btn-primary">
-            Notifications{' '}
-            <span className="badge bg-danger rounded-pill">300+</span>
+            Notifications <span className="badge bg-danger rounded-pill">300+</span>
           </button>
         </div>
       </CardPanel>
@@ -544,22 +502,14 @@ export default function CardBigPage() {
               <Row>
                 <Col xs={6}>
                   <DescriptionList>
-                    <DescriptionListItem label="Username">
-                      User
-                    </DescriptionListItem>
-                    <DescriptionListItem label="Username">
-                      User
-                    </DescriptionListItem>
-                    <DescriptionListItem label="Username">
-                      User
-                    </DescriptionListItem>
+                    <DescriptionListItem label="Username">User</DescriptionListItem>
+                    <DescriptionListItem label="Username">User</DescriptionListItem>
+                    <DescriptionListItem label="Username">User</DescriptionListItem>
                   </DescriptionList>
                 </Col>
                 <Col xs={6}>
                   <DescriptionList horizontal horizontalLeft>
-                    <DescriptionListItem label="Username">
-                      User
-                    </DescriptionListItem>
+                    <DescriptionListItem label="Username">User</DescriptionListItem>
                   </DescriptionList>
                 </Col>
               </Row>
@@ -579,15 +529,9 @@ export default function CardBigPage() {
               </CardHeader>
               <CardBody>
                 <DescriptionList horizontal horizontalLeft>
-                  <DescriptionListItem label="Username">
-                    User
-                  </DescriptionListItem>
-                  <DescriptionListItem label="Username">
-                    User
-                  </DescriptionListItem>
-                  <DescriptionListItem label="Username">
-                    User
-                  </DescriptionListItem>
+                  <DescriptionListItem label="Username">User</DescriptionListItem>
+                  <DescriptionListItem label="Username">User</DescriptionListItem>
+                  <DescriptionListItem label="Username">User</DescriptionListItem>
                 </DescriptionList>
               </CardBody>
             </Card>

@@ -18,11 +18,7 @@ export function simpleMemoize<FieldValue>(
     if (value !== lastValue) {
       lastValue = value;
       lastResult = await Promise.resolve(fn(value, allValues, meta));
-      console.log(
-        'Last',
-        lastResult,
-        await Promise.resolve(fn(value, allValues, meta))
-      );
+      console.log('Last', lastResult, await Promise.resolve(fn(value, allValues, meta)));
     }
     return lastResult;
   };

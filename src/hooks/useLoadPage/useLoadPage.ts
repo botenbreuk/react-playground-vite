@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { emptyPage, Page } from './spring-models';
+import { Page, emptyPage } from './spring-models';
 
 interface LoadPageOptions<T, P> {
   pageRequest: (pageNumber: number, queryParams: P) => Promise<Page<T>>;
@@ -17,12 +17,7 @@ interface LoadPageReturn<T> {
 export default function useLoadPage<T, P>(
   options: LoadPageOptions<T, P>
 ): LoadPageReturn<T> {
-  const {
-    pageRequest,
-    queryParams,
-    pageNumber = 1,
-    mergePages = true
-  } = options;
+  const { pageRequest, queryParams, pageNumber = 1, mergePages = true } = options;
   const [loading, setLoading] = useState(true);
   const [pageItems, setPageItems] = useState(emptyPage<T>());
 

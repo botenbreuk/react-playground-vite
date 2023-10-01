@@ -1,12 +1,5 @@
 import { NavLink as RRNavLink } from 'react-router-dom';
-import {
-  Nav,
-  NavItem,
-  NavLink,
-  Navbar,
-  NavbarBrand,
-  NavbarText
-} from 'reactstrap';
+import { Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarText } from 'reactstrap';
 import Logo from '../../Logo/Logo';
 import MenuRight from './MenuRight';
 

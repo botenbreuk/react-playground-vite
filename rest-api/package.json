@@ -10,6 +10,6 @@
     "nodemon": "3.0.1"
   },
   "scripts": {
-    "start": "nodemon ./server/server.js"
+    "start": "npm i && nodemon ./server/server.js"
   }
 }

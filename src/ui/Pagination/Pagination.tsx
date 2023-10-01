@@ -1,8 +1,4 @@
-import {
-  Pagination as BPagination,
-  PaginationItem,
-  PaginationLink
-} from 'reactstrap';
+import { Pagination as BPagination, PaginationItem, PaginationLink } from 'reactstrap';
 import {
   LeftButtons,
   LeftEllipsis,
@@ -64,11 +60,7 @@ export default function Pagination(props: Props) {
       <MiddleButton current={current} {...props} />
       <RightButtons offset={buttonOffset} current={current} {...props} />
 
-      <RightEllipsis
-        offset={buttonOffset}
-        current={current}
-        totalPages={total}
-      />
+      <RightEllipsis offset={buttonOffset} current={current} totalPages={total} />
 
       {total !== 1 && (
         <PaginationItem active={isNextBtnActive}>

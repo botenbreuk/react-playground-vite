@@ -1,15 +1,7 @@
 import classNames from 'classnames';
 import { ReactNode, useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
-import {
-  Badge,
-  Button,
-  Nav,
-  NavItem,
-  NavLink,
-  Popover,
-  PopoverHeader
-} from 'reactstrap';
+import { Badge, Button, Nav, NavItem, NavLink, Popover, PopoverHeader } from 'reactstrap';
 import { FINAL_FORM_PAGE_URL } from '../../../app/FinalForm/FinalFormPage';
 import { IconType } from '../../Icon/icon-types';
 import Logo from '../../Logo/Logo';
@@ -155,12 +147,7 @@ function PopoverIcon({
       <div id={`Popover-${id}`} onMouseOver={toggle} onMouseOutCapture={toggle}>
         {children}
       </div>
-      <Popover
-        placement="right"
-        isOpen={open}
-        target={`Popover-${id}`}
-        toggle={toggle}
-      >
+      <Popover placement="right" isOpen={open} target={`Popover-${id}`} toggle={toggle}>
         <PopoverHeader>{title}</PopoverHeader>
       </Popover>
     </span>

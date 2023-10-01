@@ -1,14 +1,7 @@
 import classNames from 'classnames';
 import { Moment } from 'moment';
 import { ReactNode } from 'react';
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Progress
-} from 'reactstrap';
+import { Card, CardBody, CardFooter, CardHeader, CardTitle, Progress } from 'reactstrap';
 import { IconType } from '../Icon/icon-types';
 import ScrollTo from '../ScrollTo/ScrollTo';
 import CardButton from './parts/CardButton';
@@ -40,14 +33,8 @@ export type Props = {
   editClick?: () => void;
   bigView?: boolean;
   className?: string;
-  children?:
-    | ((bigView: boolean) => ReactNode | ReactNode[])
-    | ReactNode
-    | ReactNode[];
-  footer?:
-    | ((bigView: boolean) => ReactNode | ReactNode[])
-    | ReactNode
-    | ReactNode[];
+  children?: ((bigView: boolean) => ReactNode | ReactNode[]) | ReactNode | ReactNode[];
+  footer?: ((bigView: boolean) => ReactNode | ReactNode[]) | ReactNode | ReactNode[];
   secondFooter?: ReactNode | ReactNode[];
   progress?: { current: number; max: number; suffix?: string };
   date?: string | Moment;
@@ -85,10 +72,7 @@ export default function CardPanel(props: Props) {
       return 'success';
     }
 
-    if (
-      progress.current >= progress.max / 2 &&
-      progress.current < progress.max
-    ) {
+    if (progress.current >= progress.max / 2 && progress.current < progress.max) {
       return 'warning';
     }
 
@@ -102,21 +86,14 @@ export default function CardPanel(props: Props) {
     <Card className={classes}>
       <CardHeader>
         {icon && <CardIcon type={icon} bgColor={iconBg} />}
-        <CardTitle
-          className={headerClick ? 'clickable' : ''}
-          onClick={headerClick}
-        >
+        <CardTitle className={headerClick ? 'clickable' : ''} onClick={headerClick}>
           <span>{title}</span>
         </CardTitle>
         <CardTimeRemainer date={date} />
 
-        {rightComponent && (
-          <div className="right-component">{rightComponent}</div>
-        )}
+        {rightComponent && <div className="right-component">{rightComponent}</div>}
 
-        {editClick && (
-          <CardButton type="icon-pencil" color="white" onClick={editClick} />
-        )}
+        {editClick && <CardButton type="icon-pencil" color="white" onClick={editClick} />}
       </CardHeader>
       {children && (
         <CardBody className={cardBodyClasses}>
@@ -133,9 +110,7 @@ export default function CardPanel(props: Props) {
         </div>
       )}
       {footer && (
-        <CardFooter>
-          {typeof footer === 'function' ? footer(bigView) : footer}
-        </CardFooter>
+        <CardFooter>{typeof footer === 'function' ? footer(bigView) : footer}</CardFooter>
       )}
       {secondFooter && <div className="second-footer">{secondFooter}</div>}
     </Card>

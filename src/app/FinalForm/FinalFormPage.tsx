@@ -35,11 +35,7 @@ export default function FinalFormPage() {
                 parse={value => parseInt(value)}
               />
               <div className="mb-3">
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={submitting}
-                >
+                <button type="submit" className="btn btn-primary" disabled={submitting}>
                   Submit
                 </button>
               </div>
@@ -62,12 +58,7 @@ function FinalInput(props: FieldProps<FinalInputProps, string>) {
   return (
     <div className="mb-2">
       <label className="form-label">{props.label}</label>
-      <input
-        {...input}
-        className="form-control"
-        placeholder={props.label}
-        type="text"
-      />
+      <input {...input} className="form-control" placeholder={props.label} type="text" />
       <RenderError meta={meta} />
     </div>
   );
@@ -108,9 +99,7 @@ function FinalRange(props: FieldProps<FinalRangeProps, number>) {
     const steps = [];
     for (let i = minValue; i <= maxValue; i += step) {
       steps.push(
-        <div style={{ width: '1rem', textAlign: 'center', color: '#aaa' }}>
-          |
-        </div>
+        <div style={{ width: '1rem', textAlign: 'center', color: '#aaa' }}>|</div>
       );
     }
 

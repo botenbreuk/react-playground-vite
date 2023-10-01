@@ -36,9 +36,7 @@ type ValidatorConfig<FieldValue> = {
   asyncValidatorsDebounce?: number;
 };
 
-export function useComposeValidators<FieldValue>(
-  options: ValidatorConfig<FieldValue>
-) {
+export function useComposeValidators<FieldValue>(options: ValidatorConfig<FieldValue>) {
   const {
     validators = [],
     asyncValidators = [],
@@ -84,9 +82,7 @@ export function useComposeValidators<FieldValue>(
         asyncValidators.map(validator => validator(value, allValues, meta))
       );
 
-      const asyncErrors = asyncResults.filter(
-        v => v !== undefined || v !== null
-      );
+      const asyncErrors = asyncResults.filter(v => v !== undefined || v !== null);
 
       // If there are no errors, return undefined to indicate that everything is a-ok.
       return asyncErrors.length === 0 ? undefined : asyncErrors;
@@ -138,19 +134,13 @@ export function useJarbValidators<FieldValue>(jarb: JarbProps) {
       }
 
       if (fieldConstraints.min) {
-        const minValueValidator = Validators.makeMinValue(
-          label,
-          fieldConstraints.min
-        );
+        const minValueValidator = Validators.makeMinValue(label, fieldConstraints.min);
 
         validatorFunctions.push(minValueValidator);
       }
 
       if (fieldConstraints.max) {
-        const maxValueValidator = Validators.makeMaxValue(
-          label,
-          fieldConstraints.max
-        );
+        const maxValueValidator = Validators.makeMaxValue(label, fieldConstraints.max);
 
         validatorFunctions.push(maxValueValidator);
       }

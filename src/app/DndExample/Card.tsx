@@ -23,12 +23,7 @@ interface Item {
   originalIndex: number;
 }
 
-export const Card: FC<CardProps> = memo(function Card({
-  id,
-  text,
-  moveCard,
-  findCard
-}) {
+export const Card: FC<CardProps> = memo(function Card({ id, text, moveCard, findCard }) {
   const originalIndex = findCard(id).index;
   const [{ isDragging }, drag] = useDrag(
     () => ({

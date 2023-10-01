@@ -18,10 +18,7 @@ const initialState: State = {
   menuOpen: true
 };
 
-function userSettingsReducer(
-  state: State = initialState,
-  action: Action
-): State {
+function userSettingsReducer(state: State = initialState, action: Action): State {
   switch (action.type) {
     case INIT_SETTINGS: {
       return { ...state, ...action.payload };
@@ -44,9 +41,7 @@ function UserSettingsProvider({ children }: UserSettingsProviderProps) {
 
   return (
     <StateContext.Provider value={state}>
-      <DispatchContext.Provider value={dispatch}>
-        {children}
-      </DispatchContext.Provider>
+      <DispatchContext.Provider value={dispatch}>{children}</DispatchContext.Provider>
     </StateContext.Provider>
   );
 }
@@ -54,9 +49,7 @@ function UserSettingsProvider({ children }: UserSettingsProviderProps) {
 function useUserSettingsState() {
   const context = useContext(StateContext);
   if (context === undefined) {
-    throw new Error(
-      'useUserSettingsState must be used within a UserSettingsProvider'
-    );
+    throw new Error('useUserSettingsState must be used within a UserSettingsProvider');
   }
   return context;
 }
@@ -64,9 +57,7 @@ function useUserSettingsState() {
 function useUserSettingsDispatch() {
   const context = useContext(DispatchContext);
   if (context === undefined) {
-    throw new Error(
-      'useUserSettingsDispatch must be used within a UserSettingsProvider'
-    );
+    throw new Error('useUserSettingsDispatch must be used within a UserSettingsProvider');
   }
   return context;
 }

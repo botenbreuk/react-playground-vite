@@ -28,12 +28,7 @@ type Props = {
  *
  * Use it for example when data is fetching during navigation to a page.
  */
-export default function Spinner({
-  className,
-  color = 'white',
-  stroke = 4,
-  size
-}: Props) {
+export default function Spinner({ className, color = 'white', stroke = 4, size }: Props) {
   return (
     <svg
       className={classNames('spinner', className)}

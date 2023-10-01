@@ -1,13 +1,7 @@
 @import '../../assets/abstracts/mixins';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-@include font-face(
-  'icon-font',
-  '@/assets/fonts/fontello',
-  500,
-  normal,
-  eot svg ttf woff
-);
+@include font-face('icon-font', '@/assets/fonts/fontello', 500, normal, eot svg ttf woff);
 
 %icon-font {
   display: inline-block;

@@ -1,13 +1,6 @@
 import classNames from 'classnames';
 import { ReactNode } from 'react';
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Progress
-} from 'reactstrap';
+import { Card, CardBody, CardFooter, CardHeader, CardTitle, Progress } from 'reactstrap';
 import { IconType } from '../../ui/Icon/icon-types';
 import ScrollTo from '../../ui/ScrollTo/ScrollTo';
 import CardButton from './parts/CardButton';
@@ -31,10 +24,7 @@ type Props = {
   editClick?: () => void;
   bigView?: boolean;
   className?: string;
-  children:
-    | ((bigView: boolean) => ReactNode | ReactNode[])
-    | ReactNode
-    | ReactNode[];
+  children: ((bigView: boolean) => ReactNode | ReactNode[]) | ReactNode | ReactNode[];
   footer?: ReactNode | ReactNode[];
   progress?: { current: number; max: number; suffix?: string };
   time?: number;
@@ -67,10 +57,7 @@ export default function CardPanel(props: Props) {
       return 'success';
     }
 
-    if (
-      progress.current >= progress.max / 2 &&
-      progress.current < progress.max
-    ) {
+    if (progress.current >= progress.max / 2 && progress.current < progress.max) {
       return 'warning';
     }
 
@@ -83,10 +70,7 @@ export default function CardPanel(props: Props) {
     <Card className={classes}>
       <CardHeader>
         <CardIcon type={icon} bgColor={iconBg} />
-        <CardTitle
-          className={headerClick ? 'clickable' : ''}
-          onClick={headerClick}
-        >
+        <CardTitle className={headerClick ? 'clickable' : ''} onClick={headerClick}>
           <span>{title}</span>
         </CardTitle>
         {time && (
@@ -102,9 +86,7 @@ export default function CardPanel(props: Props) {
           <CardButton type="bi-pencil-fill" color="white" onClick={editClick} />
         )}
       </CardHeader>
-      <CardBody>
-        {typeof children === 'function' ? children(bigView) : children}
-      </CardBody>
+      <CardBody>{typeof children === 'function' ? children(bigView) : children}</CardBody>
       {progress && (
         <div className="card-progress">
           <Progress value={progress.current} color={getProgressColor()}>

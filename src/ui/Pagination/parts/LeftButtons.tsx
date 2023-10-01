@@ -7,11 +7,7 @@ interface ButtonsProps {
   totalPages: number;
 }
 
-export default function LeftButtons({
-  offset,
-  current,
-  onSelect
-}: ButtonsProps) {
+export default function LeftButtons({ offset, current, onSelect }: ButtonsProps) {
   const buttons = [];
 
   for (let i = offset; i > 0; i--) {

@@ -1,5 +1,5 @@
 import { CSSProperties, useRef } from 'react';
-import { DropTargetMonitor, useDrag, useDrop, XYCoord } from 'react-dnd';
+import { DropTargetMonitor, XYCoord, useDrag, useDrop } from 'react-dnd';
 import { Button, Col, Row } from 'reactstrap';
 import { BoxType } from './QuestionList';
 import { QuestionTypes } from './QuestionTypes';
@@ -33,8 +33,7 @@ export default function QuestionBox(props: Props) {
       const hoverBoundingRect = ref.current?.getBoundingClientRect();
 
       // Get vertical middle
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 
       // Determine mouse position
       const clientOffset = monitor.getClientOffset();
