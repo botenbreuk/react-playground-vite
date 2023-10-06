@@ -10,6 +10,7 @@ router.use('/actuator', actuatorRoute);
 
 app.use('/api', router);
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const port = 8080;
 
