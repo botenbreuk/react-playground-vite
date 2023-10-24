@@ -1,12 +1,14 @@
 import express from 'express';
 import { actuatorRoute } from '../routes/actuator.js';
 import { pokemonRoute } from '../routes/pokemon.js';
+import { userRoute } from '../routes/users.js';
 
 const app = express();
 var router = express.Router();
 
 router.use('/pokemon', pokemonRoute);
 router.use('/actuator', actuatorRoute);
+router.use('/users', userRoute);
 
 app.use('/api', router);
 app.use(express.json());

@@ -1,19 +1,15 @@
 import { get } from 'lodash';
 import { z } from 'zod';
 
-async function findUsers() {
-  return Promise.resolve(['john', 'paul', 'george', 'ringo']);
-}
-
 export const FormSchema = z.object({
   firstName: z
     .string({ required_error: 'Is verplicht' })
     // .includes('Test', { message: 'bevat geen Test' })
     .refine(
-      async (value: string) => {
-        const values = await findUsers();
+      async value => {
+        const exists = await fetch(`/api/users/username-exists?username=${value}`);
 
-        if (values.includes(value.toLowerCase())) {
+        if (!exists) {
           return false;
         }
 
