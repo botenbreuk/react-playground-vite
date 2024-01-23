@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Pagination as BPagination, PaginationItem, PaginationLink } from 'reactstrap';
 import {
   LeftButtons,
@@ -8,6 +9,7 @@ import {
 } from './parts';
 
 type Props = {
+  className?: string;
   totalPages: number;
   activePage: number;
   onSelect: (page: number) => void;
@@ -15,7 +17,7 @@ type Props = {
 };
 
 export default function Pagination(props: Props) {
-  const { totalPages, activePage, onSelect, maxButtons = 5 } = props;
+  const { className, totalPages, activePage, onSelect, maxButtons = 5 } = props;
 
   const total = totalPages === 0 ? 1 : totalPages;
   const active = activePage === 0 ? 1 : activePage;
@@ -42,8 +44,10 @@ export default function Pagination(props: Props) {
   const isBackBtnActive = current === 1;
   const isNextBtnActive = current === total;
 
+  const classes = classNames('m-1', className);
+
   return (
-    <BPagination className="m-1">
+    <BPagination className={classes}>
       <PaginationItem>
         <PaginationLink first onClick={firstClick} />
       </PaginationItem>

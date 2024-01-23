@@ -1,4 +1,5 @@
 import { FieldMetaState, Form, useField } from 'react-final-form';
+import { useParams } from 'react-router-dom';
 import { FieldProps } from '../../types/final-form-types';
 import { Page } from '../../ui';
 import Spinner from '../../ui/Spinner/Spinner';
@@ -7,6 +8,8 @@ import CardIcon from '../Cards/parts/CardIcon';
 import { FormData, validate } from './zod';
 
 export default function FinalFormPage() {
+  const params = useParams();
+
   function submit(form: FormData) {
     alert(JSON.stringify(form, null, 2));
   }
@@ -21,6 +24,9 @@ export default function FinalFormPage() {
           <span className="text">2022-01-01</span>
         ]}
       >
+        {params.id && (
+          <pre className="bg-light rounded p-3">{JSON.stringify(params, null, 2)}</pre>
+        )}
         <Form onSubmit={submit} validate={validate}>
           {({ handleSubmit, submitting, values }) => (
             <form onSubmit={handleSubmit}>
@@ -39,7 +45,9 @@ export default function FinalFormPage() {
                   Submit
                 </button>
               </div>
-              <pre className="bg-light">{JSON.stringify(values, null, 2)}</pre>
+              <pre className="bg-light rounded p-3">
+                {JSON.stringify(values, null, 2)}
+              </pre>
             </form>
           )}
         </Form>
