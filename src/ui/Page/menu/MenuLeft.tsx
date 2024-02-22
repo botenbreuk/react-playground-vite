@@ -3,6 +3,7 @@ import { ReactNode, useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import { Badge, Button, Nav, NavItem, NavLink, Popover, PopoverHeader } from 'reactstrap';
 import { FINAL_FORM_PAGE_URL } from '../../../app/FinalForm/FinalFormPage';
+import { FINAL_FORM_TOTP_FIELD_PAGE_URL } from '../../../app/FinalForm/TotpInput/TotpInputPage';
 import { IconType } from '../../Icon/icon-types';
 import Logo from '../../Logo/Logo';
 import { Icon } from '../../index';
@@ -60,6 +61,11 @@ const links = (): MenuLink[] => [
     icon: 'bi-clipboard-data',
     url: FINAL_FORM_PAGE_URL,
     label: 'Final form'
+  },
+  {
+    icon: 'bi-clipboard-data',
+    url: FINAL_FORM_TOTP_FIELD_PAGE_URL,
+    label: 'Final form TOTP'
   },
   {
     icon: 'bi-lock',
