@@ -1,7 +1,9 @@
 import { FieldMetaState, Form, useField } from 'react-final-form';
 import { useParams } from 'react-router-dom';
+import { Button } from 'reactstrap';
 import { FieldProps } from '../../types/final-form-types';
 import { Page } from '../../ui';
+import Prompt from '../../ui/Prompt/Prompt';
 import Spinner from '../../ui/Spinner/Spinner';
 import CardPanel from '../Cards/CardPanel';
 import CardIcon from '../Cards/parts/CardIcon';
@@ -20,35 +22,40 @@ export default function FinalFormPage() {
         title="Form elements"
         icon="bi-smartwatch"
         footer={[
-          <CardIcon type="bi-check" color="green" />,
-          <span className="text">2022-01-01</span>
+          <CardIcon key={1} type="bi-check" color="green" />,
+          <span key={2} className="text">
+            2022-01-01
+          </span>
         ]}
       >
         {params.id && (
           <pre className="bg-light rounded p-3">{JSON.stringify(params, null, 2)}</pre>
         )}
         <Form onSubmit={submit} validate={validate}>
-          {({ handleSubmit, submitting, values }) => (
-            <form onSubmit={handleSubmit}>
-              <FinalInput name="firstName" label="First name" />
-              <FinalInput name="lastName" label="Last name" />
-              <FinalRange
-                name="petTotal"
-                label="Total pets"
-                initialValue={0}
-                minValue={0}
-                maxValue={5}
-                parse={value => parseInt(value)}
-              />
-              <div className="mb-3">
-                <button type="submit" className="btn btn-primary" disabled={submitting}>
-                  Submit
-                </button>
-              </div>
-              <pre className="bg-light rounded p-3">
-                {JSON.stringify(values, null, 2)}
-              </pre>
-            </form>
+          {({ handleSubmit, submitting, dirty, values }) => (
+            <>
+              <Prompt when={dirty} message="Are you sure you want to leave this page?" />
+              <form onSubmit={handleSubmit}>
+                <FinalInput name="firstName" label="First name" />
+                <FinalInput name="lastName" label="Last name" />
+                <FinalRange
+                  name="petTotal"
+                  label="Total pets"
+                  initialValue={0}
+                  minValue={0}
+                  maxValue={20}
+                  parse={value => parseInt(value)}
+                />
+                <div className="mb-3">
+                  <Button type="submit" color="primary" disabled={submitting}>
+                    Submit
+                  </Button>
+                </div>
+                <pre className="bg-light rounded p-3">
+                  {JSON.stringify(values, null, 2)}
+                </pre>
+              </form>
+            </>
           )}
         </Form>
       </CardPanel>
@@ -123,17 +130,15 @@ function RenderError<T>({ meta }: { meta: FieldMetaState<T> }) {
   return (
     meta.error &&
     meta.touched && (
-      <>
-        <span className="text-danger fw-bold">
-          {(() => {
-            if (typeof meta.error === 'string') {
-              return meta.error;
-            }
-            const values = meta.error.filter((val: any) => !val);
-            return values.length !== 0 ? values[0] : undefined;
-          })()}
-        </span>
-      </>
+      <span className="text-danger fw-bold">
+        {(() => {
+          if (typeof meta.error === 'string') {
+            return meta.error;
+          }
+          const values = meta.error.filter((val: any) => !val);
+          return values.length !== 0 ? values[0] : undefined;
+        })()}
+      </span>
     )
   );
 }

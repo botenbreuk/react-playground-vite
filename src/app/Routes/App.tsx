@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  Outlet,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements
+} from 'react-router-dom';
 import { Page } from '../../ui';
 import CardBigPage from '../Cards/CardBigPage';
 import CardsPage from '../Cards/CardsPage';
@@ -12,23 +18,27 @@ import ShuffleList from '../Shuffle/ShuffleList';
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Dashboard />} />
-
-        <Route path="/cards/*">
-          <Route index element={<CardsPage />} />
-          <Route path="big" element={<CardBigPage />} />
-        </Route>
-        <Route path="/shuffle" element={<ShuffleList />} />
-        <Route path="/dnd" element={<Dnd />} />
-        <Route path="/dnd-sort" element={<DndExample />} />
-        <Route path={FINAL_FORM_APP_URL} element={<FinalFormApp />} />
-        <Route path={SETTINGS_PAGE_URL} element={<SettingsApp />} />
-
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider
+      router={createBrowserRouter(
+        createRoutesFromElements(
+          <>
+            <Route element={<Outlet />}>
+              <Route index element={<Dashboard />} />
+              <Route path="/cards/*">
+                <Route index element={<CardsPage />} />
+                <Route path="big" element={<CardBigPage />} />
+              </Route>
+              <Route path="/shuffle" element={<ShuffleList />} />
+              <Route path="/dnd" element={<Dnd />} />
+              <Route path="/dnd-sort" element={<DndExample />} />
+              <Route path={FINAL_FORM_APP_URL} element={<FinalFormApp />} />
+              <Route path={SETTINGS_PAGE_URL} element={<SettingsApp />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </>
+        )
+      )}
+    />
   );
 }
 

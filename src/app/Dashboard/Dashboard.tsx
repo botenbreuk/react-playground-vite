@@ -100,7 +100,18 @@ export function Dashboard() {
               Edit <code>src/App.tsx</code> and save to reload.
             </p>
             <Alert color="primary">This is a primary alert — check it out!</Alert>
-            <ConfirmModal buttonLabel="Test" />
+            <ConfirmModal
+              buttonLabel="Test"
+              primaryClicked={() => undefined}
+              closeClicked={() => undefined}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+              non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </ConfirmModal>
           </header>
         </div>
       </div>
