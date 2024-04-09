@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Alert, Button } from 'reactstrap';
 import test from '../../assets/logo.svg';
 import { ConfirmModal, Page } from '../../ui';
+import LineText from '../../ui/LineText/LineText';
 import Logo from '../../ui/Logo/Logo';
 
 export function Dashboard() {
@@ -30,6 +31,8 @@ export function Dashboard() {
     <Page>
       <div className="container-fluid text-sm-center p-5 bg-light">
         <h1 className="display-3">Hello, world!</h1>
+        <LineText text={<div style={{ fontSize: '2rem' }}>Example</div>} />
+
         <p className="lead">
           This is a simple hero unit, a simple Jumbotron-style component for calling extra
           attention to featured content or information.
@@ -48,7 +51,7 @@ export function Dashboard() {
         </p>
         <p>API is {status ? ' running' : 'not running'}</p>
         <p>API version: {version}</p>
-        <img src={test} width="80" />
+        <img src={test} width="80" alt="react-logo" />
         <hr className="my-2" />
         <p>
           It uses utility classes for typography and spacing to space content out within

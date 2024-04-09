@@ -16,7 +16,7 @@ export function App() {
       <Routes>
         <Route index element={<Dashboard />} />
 
-        <Route path="/cards">
+        <Route path="/cards/*">
           <Route index element={<CardsPage />} />
           <Route path="big" element={<CardBigPage />} />
         </Route>

@@ -12,34 +12,38 @@ export default function TotpInputPage() {
       return;
     }
 
-    inputs.addEventListener('input', function (e) {
-      const target = e.target;
-      const val = target.value;
+    inputs.addEventListener('input', e => {
+      if (e.target instanceof HTMLInputElement) {
+        const target = e.target;
+        const val = target?.value;
 
-      if (isNaN(val)) {
-        target.value = '';
-        return;
-      }
+        if (isNaN(parseInt(val))) {
+          target.value = '';
+          return;
+        }
 
-      if (val != '') {
-        const next = target.nextElementSibling;
-        if (next) {
-          next.focus();
+        if (val != '') {
+          const next = target.nextElementSibling as HTMLElement;
+          if (next) {
+            next.focus();
+          }
         }
       }
     });
 
-    inputs.addEventListener('keyup', function (e) {
-      const target = e.target;
-      const key = e.key.toLowerCase();
+    inputs.addEventListener('keyup', e => {
+      if (e.target instanceof HTMLInputElement) {
+        const target = e.target;
+        const key = e.key.toLowerCase();
 
-      if (key == 'backspace' || key == 'delete') {
-        target.value = '';
-        const prev = target.previousElementSibling;
-        if (prev) {
-          prev.focus();
+        if (key == 'backspace' || key == 'delete') {
+          target.value = '';
+          const prev = target.previousElementSibling as HTMLElement;
+          if (prev) {
+            prev.focus();
+          }
+          return;
         }
-        return;
       }
     });
   }, []);

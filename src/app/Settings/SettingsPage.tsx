@@ -9,8 +9,10 @@ export default function FinalFormPage() {
         title="Settings"
         icon="bi-smartwatch"
         footer={[
-          <CardIcon type="bi-check" color="green" />,
-          <span className="text">2022-01-01</span>
+          <CardIcon key={1} type="bi-check" color="green" />,
+          <span key={2} className="text">
+            2022-01-01
+          </span>
         ]}
       >
         Settings
