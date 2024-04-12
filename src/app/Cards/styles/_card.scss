@@ -24,10 +24,18 @@
 
 .card {
   @extend %card-themes;
-
   position: static;
   border-radius: 0;
   font-size: $font-size-base;
+
+  & > .card-progress {
+    margin: 0;
+    padding: 0;
+
+    & > * {
+      border-radius: 0;
+    }
+  }
 
   & > .card-header {
     @extend %header-footer;
@@ -59,9 +67,14 @@
       text-align: center;
 
       & > .time {
-        padding-top: 0.5rem;
+        padding: 0 0.5rem;
         width: 100%;
-        line-height: 0.6rem;
+
+        &.number {
+          padding: 0;
+          padding-top: 0.5rem;
+          line-height: 0.6rem;
+        }
       }
 
       & > .time-type {
@@ -115,15 +128,6 @@
 
     & .text {
       @extend %header-footer-text;
-    }
-  }
-
-  & > .card-progress {
-    margin: 0;
-    padding: 0;
-
-    & > * {
-      border-radius: 0;
     }
   }
 }

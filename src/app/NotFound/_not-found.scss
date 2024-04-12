@@ -1,0 +1,38 @@
+$color1: #a61f2b;
+$color2: #73636a;
+$color3: #403b40;
+$color4: #212126;
+$color5: #f20505;
+
+.not-found {
+  display: flex;
+  width: 100%;
+  flex-flow: column;
+  background-color: #fff;
+
+  .content {
+    padding: 2rem;
+  }
+
+  &::after {
+    display: flex;
+    align-self: center;
+    content: '';
+    border-bottom-right-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      $color1 0%,
+      $color1 20%,
+      $color2 20%,
+      $color2 40%,
+      $color3 40%,
+      $color3 60%,
+      $color4 60%,
+      $color4 80%,
+      $color5 80%,
+      $color5 100%
+    );
+    width: 100%;
+    height: 1rem;
+  }
+}

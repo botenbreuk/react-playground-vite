@@ -27,7 +27,7 @@ type Props = {
   children: ((bigView: boolean) => ReactNode | ReactNode[]) | ReactNode | ReactNode[];
   footer?: ReactNode | ReactNode[];
   progress?: { current: number; max: number; suffix?: string };
-  time?: number;
+  time?: ReactNode;
   theme?: 'lg' | 'dg' | 'lw' | 'dw' | 'wd';
 };
 
@@ -75,8 +75,14 @@ export default function CardPanel(props: Props) {
         </CardTitle>
         {time && (
           <div className="duration">
-            <div className="time">{time}</div>
-            <div className="time-type">days</div>
+            {typeof time === 'number' && time >= 0 ? (
+              <>
+                <div className="time number">{time}</div>
+                <div className="time-type">days</div>
+              </>
+            ) : (
+              <div className="time">{time}</div>
+            )}
           </div>
         )}
 
@@ -90,8 +96,8 @@ export default function CardPanel(props: Props) {
       {progress && (
         <div className="card-progress">
           <Progress value={progress.current} color={getProgressColor()}>
-            {`${progress.current}${progress.suffix || ''}`} /{' '}
-            {`${progress.max}${progress.suffix || ''}`}
+            {`${progress.current}${progress.suffix ?? ''}`} /{' '}
+            {`${progress.max}${progress.suffix ?? ''}`}
           </Progress>
         </div>
       )}

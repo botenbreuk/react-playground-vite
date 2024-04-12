@@ -1,7 +1,16 @@
 import classNames from 'classnames';
 import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Card, CardBody, CardHeader, CardTitle, Col, Row } from 'reactstrap';
+import {
+  Badge,
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  CardTitle,
+  Col,
+  Row
+} from 'reactstrap';
 import { Icon, Page } from '../../ui';
 import { IconType } from '../../ui/Icon/icon-types';
 import DescriptionList from '../../ui/List/DescriptionList';
@@ -79,10 +88,12 @@ export default function CardsPage() {
             <CardPanel
               key={index}
               title={title}
-              footer={[
-                footer ? <CardIcon type="bi-check" color="green" /> : undefined,
-                <span className="text">{footer}</span>
-              ]}
+              footer={
+                <>
+                  {footer ? <CardIcon type="bi-check" color="green" /> : undefined}
+                  <span className="text">{footer}</span>
+                </>
+              }
               icon={icon}
               iconBg={iconColor}
               progress={{ current: progress || 0, max: 100 }}
@@ -96,11 +107,32 @@ export default function CardsPage() {
                   </Button>
                 )
               }
-              time={showTime ? 420 : undefined}
+              time={
+                showTime && (
+                  <Badge color="danger" className="d-inline-flex gap-1 fs-7" pill>
+                    <Icon type="bi-clock" />
+                    -50 days
+                  </Badge>
+                )
+              }
             >
               {bigView =>
                 !bigView ? (
-                  body
+                  <div className="d-flex align-items-start flex-column">
+                    {body}
+                    <Badge color="danger" className="d-inline-flex gap-1 fs-6" pill>
+                      <Icon type="bi-clock" />
+                      -50 days
+                    </Badge>
+                    <Badge color="warning" className="d-inline-flex gap-1 fs-6" pill>
+                      <Icon type="bi-clock" />
+                      -2 days
+                    </Badge>
+                    <Badge color="success" className="d-inline-flex gap-1 fs-6" pill>
+                      <Icon type="bi-clock" />
+                      10 days
+                    </Badge>
+                  </div>
                 ) : (
                   <>
                     <Card className="theme-wd w-50 border border-3">
