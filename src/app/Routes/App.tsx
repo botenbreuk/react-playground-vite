@@ -5,6 +5,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements
 } from 'react-router-dom';
+import AdvancedTablePage from '../AdvancedTable/AdvancedTablePage';
 import CardBigPage from '../Cards/CardBigPage';
 import CardsPage from '../Cards/CardsPage';
 import { Dashboard } from '../Dashboard/Dashboard';
@@ -31,6 +32,7 @@ export function App() {
               <Route path="/shuffle" element={<ShuffleList />} />
               <Route path="/dnd" element={<Dnd />} />
               <Route path="/dnd-sort" element={<DndExample />} />
+              <Route path="/table" element={<AdvancedTablePage />} />
               <Route path={FINAL_FORM_APP_URL} element={<FinalFormApp />} />
               <Route path={SETTINGS_PAGE_URL} element={<SettingsApp />} />
             </Route>

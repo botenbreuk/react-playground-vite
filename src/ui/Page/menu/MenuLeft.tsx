@@ -68,6 +68,11 @@ const links = (): MenuLink[] => [
     label: 'Final form TOTP'
   },
   {
+    icon: 'bi-table',
+    url: '/table',
+    label: 'Advanced table'
+  },
+  {
     icon: 'bi-lock',
     url: '/disabled',
     label: 'Disabled Link',

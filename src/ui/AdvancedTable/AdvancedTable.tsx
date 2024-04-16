@@ -1,9 +1,9 @@
 import { useQueryParams } from '@42.nl/react-url';
-import { Page } from '@42.nl/spring-connect';
 import { QueryObserverSuccessResult, useQuery } from '@tanstack/react-query';
 import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Table } from 'reactstrap';
+import { Page } from '../../hooks/useLoadPage/spring-models';
 import Pagination from '../Pagination/Pagination';
 import Spinner from '../Spinner/Spinner';
 import './_table.scss';

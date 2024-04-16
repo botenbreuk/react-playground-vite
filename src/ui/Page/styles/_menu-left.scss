@@ -2,9 +2,8 @@
 .menu-left {
   height: 100vh; /* Full-height: remove this if you want "auto" height */
   background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  overflow-y: auto;
-  position: sticky !important;
+  overflow: hidden auto;
+  position: sticky;
   padding: 0;
   min-height: 100vh;
   top: 0;
@@ -20,12 +19,10 @@
   & .menu-container {
     display: grid;
     align-content: stretch;
-    grid-template-columns: 100%;
-    grid-template-rows: 10rem auto 4rem;
-    grid-template-areas:
-      'top'
-      'middle'
-      'bottom';
+    grid-template:
+      [row1-start] 'top' 10rem [row1-end]
+      [row2-start] 'middle' auto [row2-end]
+      [row3-start] 'bottom' 4rem [row3-end];
     height: 100%;
 
     & .logo-wrapper {
@@ -99,7 +96,7 @@
       padding-top: 1rem;
 
       & a {
-        flex-direction: column !important;
+        flex-direction: column;
         gap: 0;
         text-align: center;
         font-size: 0.8rem;

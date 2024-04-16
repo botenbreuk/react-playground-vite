@@ -9,7 +9,7 @@
 [class^='bi-']::before,
 [class*=' bi-']::before {
   @extend %icon-font;
-  font-family: 'bootstrap-icons' !important;
+  font-family: bootstrap-icons, sans-serif !important;
   font-weight: normal !important;
 }
 
