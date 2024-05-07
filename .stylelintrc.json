@@ -2,7 +2,7 @@
   "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
   "rules": {
     "declaration-empty-line-before": "never",
-    "color-function-notation": "legacy",
-    "hue-degree-notation": "number"
+    "color-function-notation": null,
+    "hue-degree-notation": null
   }
 }

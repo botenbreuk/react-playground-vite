@@ -1,0 +1,23 @@
+/* 
+ * Example
+ * @include minmax-child(3, 5, '>') {
+ *   background-color: hsl(0, 58%, 36%);
+ * }
+ *
+ * Example
+ * @include minmax-child(3, 5, '&') {
+ *   background-color: hsl(0, 58%, 36%);
+ * }
+ *
+ * Example
+ * @include minmax-child(3, 5, '& ') {
+ *   background-color: hsl(0, 58%, 36%);
+ * }
+*/
+@mixin minmax-child($min, $max, $selector: '& ') {
+  @if $min != null and $max != null and $selector {
+    #{$selector}:nth-child(n + #{$min}):nth-child(-n + #{$max}) {
+      @content;
+    }
+  }
+}
