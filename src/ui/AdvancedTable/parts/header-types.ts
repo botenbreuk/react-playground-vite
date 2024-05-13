@@ -10,10 +10,12 @@ export type SortFilterProps = (Sortable | SortableDefault) &
 
 type Sortable = {
   param: string;
+  paramOverride?: string;
   sortable: true;
 };
 
 type SortableDefault = {
+  paramOverride?: undefined;
   sortable?: boolean;
 };
 

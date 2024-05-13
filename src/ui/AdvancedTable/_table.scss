@@ -3,30 +3,61 @@
   table-layout: fixed;
   border: 1px solid grey;
 
+  &.table-borderless {
+    border: 0;
+  }
+
   th.th-column {
-    padding: 0 !important;
-    vertical-align: text-top;
+    padding: 0;
+
+    > :first-child {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+    }
+
+    & .sort {
+      &,
+      > * {
+        cursor: pointer;
+      }
+
+      i {
+        display: none;
+      }
+
+      &-asc {
+        border-top-color: black !important;
+
+        i {
+          display: block;
+        }
+      }
+
+      &-desc {
+        border-bottom-color: black !important;
+
+        i {
+          transform: scale(1, -1);
+          display: block;
+        }
+      }
+
+      &:hover {
+        i {
+          display: block;
+          filter: brightness(140%);
+        }
+      }
+    }
 
     label {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 100%;
       padding: 0.3rem;
-      border-top: 3px solid transparent;
-      border-bottom: 3px solid transparent;
-
-      &.sort {
-        cursor: pointer;
-
-        &-asc {
-          border-top-color: black;
-        }
-
-        &-desc {
-          border-bottom-color: black;
-        }
-      }
     }
   }
 

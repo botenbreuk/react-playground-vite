@@ -3,8 +3,8 @@ import { isEmpty } from 'lodash';
 import moment, { Moment } from 'moment';
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import DateTime from 'react-datetime';
-import { Button, Input } from 'reactstrap';
-// import { EnumSelect } from '../../../final-form/Select/EnumSelect';
+import { Input } from 'reactstrap';
+import Icon from '../../Icon/Icon';
 import { useTableParams } from '../hooks/useTableParams';
 import { DatePickerTypes, HeaderTypeProps, SortFilterProps } from './header-types';
 
@@ -23,6 +23,7 @@ export function TableHeader(props: Props) {
     className,
     label,
     param,
+    paramOverride,
     filterable = false,
     sortable = false,
     type = 'input',
@@ -30,7 +31,8 @@ export function TableHeader(props: Props) {
   } = props;
   const { queryParams, changeParam, sortClassNames, onSort } = useTableParams({
     param,
-    sortable
+    sortable,
+    paramOverride
   });
   const [value, setValue] = useState<string>(param ? queryParams[param] : '');
 
@@ -47,13 +49,18 @@ export function TableHeader(props: Props) {
 
   return (
     <th className={headerClassNames} style={{ width }}>
-      <label className={sortClassNames} onClick={sortable ? onSort : undefined}>
-        {label}
-      </label>
+      <div className={sortClassNames} onClick={sortable ? onSort : undefined}>
+        <label>{label}</label>
+        {sortable && <Icon type="bi-sort-up" color="muted" />}
+      </div>
       {filterable && (
         <div className="p-1 d-flex align-items-end">
           {type === 'input' && (
-            <Input value={value} onChange={e => onChange(e.target.value)} />
+            <Input
+              value={value}
+              onChange={e => onChange(e.target.value)}
+              placeholder={typeof label === 'string' ? label : ''}
+            />
           )}
           {/* {props.type === 'enum-select' && (
             <EnumSelect
@@ -78,7 +85,11 @@ export function TableHeader(props: Props) {
           {props.type === 'datepicker' && (
             <DateTimePicker {...props} value={value} onChange={onChange} />
           )}
-          {value && <Button icon="close" color="danger" onClick={() => onChange('')} />}
+          {value && (
+            <div>
+              <Icon type="bi-x" color="danger" onClick={() => onChange('')} />
+            </div>
+          )}
         </div>
       )}
     </th>

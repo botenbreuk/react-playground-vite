@@ -7,14 +7,21 @@ import { SortType } from '../parts/TableHeader';
 type UseTableParamsOptions = {
   param?: string;
   sortable: boolean;
+  paramOverride?: string;
 };
 
-export function useTableParams({ param, sortable }: UseTableParamsOptions) {
+export function useTableParams({
+  param,
+  sortable,
+  paramOverride
+}: UseTableParamsOptions) {
   const { queryParams, onParamChange, sort } = useContext(AdvancedTableContext);
+
+  const paramater = paramOverride || param;
 
   function onSort() {
     let newSort: SortType | undefined;
-    if (sort?.param === param) {
+    if (sort?.param === paramater) {
       switch (sort?.direction) {
         case 'ASC':
           newSort = 'DESC';
@@ -32,14 +39,14 @@ export function useTableParams({ param, sortable }: UseTableParamsOptions) {
 
     onParamChange({
       ...queryParams,
-      sort: newSort ? `${param},${newSort}` : undefined
+      sort: newSort ? `${paramater},${newSort}` : undefined
     });
   }
 
   const sortClassNames = classNames({
     sort: sortable,
-    'sort-asc': sort?.param === param && sort?.direction === 'ASC',
-    'sort-desc': sort?.param === param && sort?.direction === 'DESC'
+    'sort-asc': sort?.param === paramater && sort?.direction === 'ASC',
+    'sort-desc': sort?.param === paramater && sort?.direction === 'DESC'
   });
 
   const changeParam = useMemo(

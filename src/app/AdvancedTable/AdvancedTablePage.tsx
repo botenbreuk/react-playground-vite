@@ -27,6 +27,7 @@ export default function AdvancedTablePage() {
         headColumns={
           <tr>
             <TableHeader label="Name" />
+            <TableHeader label="Sorting" sortable filterable />
             <TableHeader label="Actions" />
           </tr>
         }
@@ -34,6 +35,7 @@ export default function AdvancedTablePage() {
         {({ data }) =>
           data.content.map(v => (
             <tr key={v.name}>
+              <TableColumn>{v.name}</TableColumn>
               <TableColumn>{v.name}</TableColumn>
               <TableColumn>
                 <Icon type="bi-pencil-fill" />
