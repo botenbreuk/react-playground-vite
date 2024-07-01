@@ -1,0 +1,39 @@
+#pika {
+  width: 344px;
+  height: 250px;
+  top: 10px;
+  left: 0;
+  position: fixed;
+  animation: pika-move 10s 1;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  z-index: 9999;
+  perspective: 100%;
+}
+
+@keyframes pika-move {
+  0% {
+    left: -50%;
+    transform: rotateY(180deg);
+  }
+
+  49% {
+    transform: rotateY(180deg);
+  }
+
+  50% {
+    top: 210px;
+    left: 115%;
+    transform: rotateY(0deg);
+  }
+
+  99% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    top: 410px;
+    left: -60%;
+    transform: rotateY(180deg);
+  }
+}

@@ -98,7 +98,7 @@ export function AdvancedTable<T, QP extends Record<string, any>>(props: Props<T,
       )}
       {state.isError && (
         <div className="d-flex justify-content-center p-5 gap-2 border-primary border">
-          Er is iets mis gegeaan! Probeer het later nog een keer.
+          Er is iets mis gegaan! Probeer het later nog een keer.
         </div>
       )}
       <Pagination
