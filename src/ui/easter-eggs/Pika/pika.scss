@@ -11,6 +11,19 @@
   perspective: 100%;
 }
 
+#pika-pixel {
+  width: 344px;
+  height: 250px;
+  top: 70%;
+  right: 0;
+  position: fixed;
+  animation: pika-pixel-move 10s 1;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  z-index: 9999;
+  perspective: 100%;
+}
+
 @keyframes pika-move {
   0% {
     left: -50%;
@@ -34,6 +47,33 @@
   100% {
     top: 410px;
     left: -60%;
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes pika-pixel-move {
+  0% {
+    right: -50%;
+    transform: rotateY(180deg);
+  }
+
+  49% {
+    transform: rotateY(180deg);
+  }
+
+  50% {
+    top: 10px;
+    right: 125%;
+    transform: rotateY(0deg);
+  }
+
+  99% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    top: 410px;
+    right: -60%;
     transform: rotateY(180deg);
   }
 }

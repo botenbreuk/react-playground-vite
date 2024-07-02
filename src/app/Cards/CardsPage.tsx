@@ -91,7 +91,13 @@ export default function CardsPage() {
               footer={
                 <>
                   {footer ? <CardIcon type="bi-check" color="green" /> : undefined}
-                  <span className="text">{footer}</span>
+                  <span className="text d-flex justify-content-between">{footer}</span>
+                  <div className="px-2">
+                    <Badge color="success" className="d-inline-flex gap-1 fs-7" pill>
+                      <Icon type="bi-clock" />
+                      10 days
+                    </Badge>
+                  </div>
                 </>
               }
               icon={icon}
