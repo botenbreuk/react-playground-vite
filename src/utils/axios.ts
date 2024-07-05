@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { AxiosError } from 'axios';
 import { isEmpty } from 'lodash';
+
+export type ErrorResponse = {
+  errorCode?: string;
+};
 
 async function downloadFile(url: string, params?: Record<string, any>) {
   const queryString = params
@@ -34,4 +39,9 @@ async function downloadFile(url: string, params?: Record<string, any>) {
   // clean up "a" element & remove ObjectURL
   link.remove();
   URL.revokeObjectURL(href);
+}
+
+export default function getAxiosError(error: any) {
+  const response = (error as AxiosError<ErrorResponse>).response;
+  return { ...response?.data, status: response?.status };
 }

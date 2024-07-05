@@ -1,0 +1,73 @@
+$dialog-sizes: (100, 90, 80, 70, 60, 50, 40, 30);
+
+dialog {
+  width: 30%;
+  padding: 0;
+  margin: 3rem auto;
+  border: none;
+  border-radius: 0.5rem;
+  display: none;
+  flex-direction: column;
+
+  &[open] {
+    display: flex;
+    animation: appear 1s ease normal;
+  }
+
+  &::backdrop {
+    background-color: hsla(0, 0, 0, 60%);
+  }
+
+  & > form {
+    padding: 0;
+  }
+
+  & > *,
+  form > * {
+    padding: 0.875rem;
+  }
+
+  .dialog-title {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid hsl(0, 0%, 80%);
+    font-weight: bold;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  .dialog-search {
+    display: flex;
+  }
+
+  .dialog-body {
+    display: block;
+  }
+
+  .dialog-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: hsl(0, 0, 95);
+    border-top: 1px solid hsl(0, 0%, 80%);
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  @each $size in $dialog-sizes {
+    &.width-#{$size} {
+      width: $size * 1%;
+    }
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
