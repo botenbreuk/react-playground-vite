@@ -1,5 +1,5 @@
 import { omit } from 'lodash';
-import { FinalFieldProps } from '../types';
+import { FinalFieldProps } from '../../types/final-form-types';
 
 type Props = {
   label?: string;

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Alert, Button } from 'reactstrap';
 import test from '../../assets/logo.svg';
-import { ConfirmModal, Page } from '../../ui';
+import { Page } from '../../ui';
 import LineText from '../../ui/LineText/LineText';
 import Logo from '../../ui/Logo/Logo';
+import { ModalButton } from '../../ui/Modal';
 
 export function Dashboard() {
   const [status, setStatus] = useState(false);
@@ -100,10 +101,10 @@ export function Dashboard() {
               Edit <code>src/App.tsx</code> and save to reload.
             </p>
             <Alert color="primary">This is a primary alert — check it out!</Alert>
-            <ConfirmModal
-              buttonLabel="Test"
-              primaryClicked={() => undefined}
-              closeClicked={() => undefined}
+            <ModalButton
+              title="Modal button test"
+              button={{ label: 'Test', casing: 'lowercase' }}
+              primary={{ onClick: () => undefined }}
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -111,7 +112,7 @@ export function Dashboard() {
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
               non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </ConfirmModal>
+            </ModalButton>
           </header>
         </div>
       </div>

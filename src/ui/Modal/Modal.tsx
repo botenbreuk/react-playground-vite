@@ -1,13 +1,19 @@
 import classNames from 'classnames';
 import { ReactNode } from 'react';
-import { Button, InputGroup, InputGroupText } from 'reactstrap';
-import Icon from '../Icon/Icon';
-import './dialog.scss';
-import { useDialog } from './hooks/useDialog';
+import {
+  Modal as BModal,
+  InputGroup,
+  InputGroupText,
+  ModalBody,
+  ModalFooter,
+  ModalHeader
+} from 'reactstrap';
+import { Button, Icon } from '../';
+import './modal.scss';
 
-export type DialogProps = {
+export type ModalProps = {
   children: ReactNode;
-  title?: string;
+  title: string;
   footer?: ReactNode;
   width?: 100 | 90 | 80 | 70 | 60 | 50 | 40 | 30;
   primary: {
@@ -16,12 +22,11 @@ export type DialogProps = {
   };
   cancel?: { onClick: () => void };
   show: boolean;
-  searchable?: boolean;
   onSearch?: (value: string) => void;
   hideFooter?: boolean;
 };
 
-export default function Dialog(props: DialogProps) {
+export function Modal(props: ModalProps) {
   const {
     children,
     title,
@@ -30,29 +35,29 @@ export default function Dialog(props: DialogProps) {
     primary,
     cancel,
     show = false,
-    searchable = false,
     onSearch,
     hideFooter = false
   } = props;
-  const { ref, onCancel } = useDialog({
-    show,
-    cancelFn: cancel?.onClick
-  });
 
   async function onPrimaryClick() {
     try {
       await primary.onClick();
-    } catch (e) {}
+    } catch {}
   }
 
   return (
-    <dialog ref={ref} className={classNames({ [`width-${width}`]: width })}>
-      <div className="dialog-title">
+    <BModal
+      isOpen={show}
+      backdrop={!!cancel?.onClick || 'static'}
+      toggle={cancel?.onClick}
+      className={classNames({ [`width-${width}`]: width })}
+    >
+      <ModalHeader>
         <div>{title}</div>
-        <Icon type="icon-cross" className="clickable" onClick={onCancel} />
-      </div>
-      {searchable && onSearch && (
-        <div className="dialog-search">
+        <Icon type="icon-cross" className="clickable" onClick={cancel?.onClick} />
+      </ModalHeader>
+      {onSearch && (
+        <ModalBody>
           <InputGroup>
             <input
               className="form-control"
@@ -63,23 +68,23 @@ export default function Dialog(props: DialogProps) {
               <Icon type="bi-search" />
             </InputGroupText>
           </InputGroup>
-        </div>
+        </ModalBody>
       )}
-      <section className="dialog-body">{children}</section>
+      <ModalBody>{children}</ModalBody>
       {!hideFooter && (
-        <div className="dialog-footer">
+        <ModalFooter>
           <div className="footer">{footer}</div>
           <div className="buttons">
-            <Button color="link" className="text-uppercase" onClick={onCancel}>
+            <Button color="link" casing="uppercase" onClick={cancel?.onClick}>
               Annuleren
             </Button>
 
-            <Button color="primary" className="text-uppercase" onClick={onPrimaryClick}>
+            <Button casing="uppercase" onClick={onPrimaryClick}>
               {primary.label ?? 'Selecteer'}
             </Button>
           </div>
-        </div>
+        </ModalFooter>
       )}
-    </dialog>
+    </BModal>
   );
 }

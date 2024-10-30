@@ -4,7 +4,7 @@ import moment, { Moment } from 'moment';
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import DateTime from 'react-datetime';
 import { Input } from 'reactstrap';
-import Icon from '../../Icon/Icon';
+import { Icon } from '../../';
 import { useTableParams } from '../hooks/useTableParams';
 import { DatePickerTypes, HeaderTypeProps, SortFilterProps } from './header-types';
 

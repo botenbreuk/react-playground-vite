@@ -35,6 +35,29 @@
   color: $danger;
 }
 
+.bi-caret-down-fill {
+  font-size: 1rem;
+}
+
+.bi-caret-up-fill {
+  font-size: 1rem;
+}
+
+.icon-spin {
+  display: inline-block;
+  animation: icon-spin 2s infinite linear;
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
 .input-group {
   & i {
     font-size: inherit !important;

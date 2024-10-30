@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import Icon from '../../Icon/Icon';
+import { Icon } from '../../';
 import { IconType } from '../../Icon/icon-types';
 
 type Props = {

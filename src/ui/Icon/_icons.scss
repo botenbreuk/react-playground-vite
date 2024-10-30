@@ -10,17 +10,20 @@
   font-weight: normal !important;
   font-variant: normal;
   text-transform: none;
-  margin-top: 0;
-  vertical-align: -0.125em !important;
+  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 $icons: (
-  'icon-onderhoud': '\e800',
+  'icon-help': '\e800',
+  'icon-onderhoud': '\e801',
+  'icon-arrows-ccw': '\e802',
   'icon-folder-open': '\e804',
   'icon-folder': '\e805',
   'icon-doc-text': '\e806',
+  'icon-clipboard-1': '\e807',
+  'icon-retweet': '\e808',
   'icon-lock': '\e822',
   'icon-lock-open': '\e823',
   'icon-download': '\e82d',
@@ -53,6 +56,7 @@ $icons: (
   'icon-chain': '\e916',
   'icon-support': '\e917',
   'icon-sort': '\e918',
+  'icon-link-ext': '\f08e',
   'icon-filter': '\f0b0',
   'icon-clipboard': '\f0ea',
   'icon-laptop': '\f109',
@@ -62,8 +66,5 @@ $icons: (
   'icon-trash': '\f1f8',
   'icon-envelope-open-o': '\f2b7',
   'icon-window-maximize': '\f2d0',
-  'icon-info-circled': '\f2d1',
-  'icon-clipboard-1': '\e807',
-  'icon-retweet': '\e808',
-  'icon-refresh': '\e801'
+  'icon-info-circled': '\f2d1'
 );

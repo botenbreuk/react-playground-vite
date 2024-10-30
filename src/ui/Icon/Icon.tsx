@@ -1,19 +1,31 @@
 import classnames from 'classnames';
-import { IconType } from './icon-types';
+import { IconType } from './';
 
 type Props = {
+  id?: string;
   type: IconType;
   color?: string;
   className?: string;
   onClick?: () => void;
+  onMouseOver?: () => void;
+  onMouseOut?: () => void;
 };
 
-export default function Icon(props: Props) {
-  const { type, color = 'inherit', onClick, className } = props;
+export function Icon(props: Props) {
+  const { id, type, color, onClick, onMouseOver, onMouseOut, className } = props;
 
   const classNames = classnames(`icon ${type}`, className, {
     clickable: onClick
   });
 
-  return <i className={classNames} style={{ color }} onClick={onClick} />;
+  return (
+    <i
+      id={id}
+      className={classNames}
+      style={{ color }}
+      onClick={onClick}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+    />
+  );
 }

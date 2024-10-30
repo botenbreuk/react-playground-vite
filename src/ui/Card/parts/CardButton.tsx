@@ -1,5 +1,4 @@
-import Icon from '../../Icon/Icon';
-import { IconType } from '../../Icon/icon-types';
+import { Icon, IconType } from '../../';
 
 type Props = {
   type: IconType;

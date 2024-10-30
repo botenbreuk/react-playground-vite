@@ -1,6 +1,7 @@
 @import './variables';
 @import 'bootstrap/scss/bootstrap';
 
+@import './abstracts/mixins';
 @import './mixins/nth-child';
 
 @import '../app/Dashboard/app';

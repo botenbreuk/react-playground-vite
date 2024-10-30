@@ -12,7 +12,7 @@ interface Props {
   scrollToTop?: boolean;
 }
 
-export default function Page(props: Props) {
+export function Page(props: Props) {
   const { title, filter, children, scrollToTop = false } = props;
 
   const [{ menuOpen }, dispatch] = useUserSettings();

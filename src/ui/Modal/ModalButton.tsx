@@ -1,15 +1,11 @@
-import classNames from 'classnames';
 import { useCallback, useRef, useState } from 'react';
-import { Button, ButtonProps, Tooltip } from 'reactstrap';
-import Alert from '../Alert/Alert';
-import Icon from '../Icon/Icon';
-import { IconType } from '../Icon/icon-types';
-import Dialog, { DialogProps } from './Dialog';
-import './dialog.scss';
+import { Tooltip } from 'reactstrap';
+import { Alert, Button, ButtonProps, IconType } from '../';
+import { Modal, ModalProps } from './Modal';
 
-export type DialogButtonProps = Omit<DialogProps, 'show'> & {
+export type ModalButtonProps = Omit<ModalProps, 'show'> & {
   button: (TooltipButton | NoTooltipButton) &
-    Omit<ButtonProps, 'onCLick'> & {
+    Omit<ButtonProps, 'onClick' | 'children'> & {
       label: string;
       className?: string;
       onClick?: (isOpen: boolean) => void | Promise<void>;
@@ -28,7 +24,7 @@ type NoTooltipButton = {
   id?: string;
 };
 
-export default function DialogButton(props: DialogButtonProps) {
+export function ModalButton(props: ModalButtonProps) {
   const { primary, cancel, button, children } = props;
   const [error, setError] = useState<string>();
   const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -70,15 +66,10 @@ export default function DialogButton(props: DialogButtonProps) {
     <>
       <Button
         {...button}
-        className={classNames(
-          'align-self-start',
-          { 'text-uppercase': button.color !== 'link' },
-          button.className
-        )}
+        casing={button.color === 'link' ? 'keep-text' : 'uppercase'}
         onClick={onButtonCLick}
       >
         {button.label}
-        {button.icon && <Icon type={button.icon} />}
       </Button>
       {button.tooltip && (
         <Tooltip
@@ -90,7 +81,7 @@ export default function DialogButton(props: DialogButtonProps) {
           {button.tooltip}
         </Tooltip>
       )}
-      <Dialog
+      <Modal
         {...props}
         primary={{ ...primary, onClick: onPrimaryClick }}
         cancel={{ ...cancel, onClick: onCancel }}
@@ -102,7 +93,7 @@ export default function DialogButton(props: DialogButtonProps) {
             {error}
           </Alert>
         )}
-      </Dialog>
+      </Modal>
     </>
   );
 }

@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &.selected {
+    border-color: $black !important;
+  }
+
+  &-light {
+    background-color: white;
+    border-color: hsl(0, 0%, 88%);
+  }
+
+  &-outline-light {
+    background-color: white;
+    color: black !important;
+    border-color: hsl(0, 0%, 66%);
+
+    &:hover {
+      border-color: initial;
+      background-color: hsl(0, 0%, 91%);
+    }
+  }
+}

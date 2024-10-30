@@ -1,5 +1,5 @@
 import { useBlocker } from 'react-router-dom';
-import ConfirmModal from '../Modal/ConfirmModal';
+import { Modal } from '../Modal';
 
 type Props = {
   when: boolean;
@@ -19,15 +19,19 @@ export default function Prompt(props: Props) {
 
   return (
     blocker.state === 'blocked' && (
-      <ConfirmModal
-        primary="Proceed"
-        primaryClicked={blocker.proceed}
-        close="Cancel"
-        closeClicked={blocker.reset}
-        open
+      <Modal
+        title=""
+        primary={{
+          label: 'Proceed',
+          onClick: blocker.proceed
+        }}
+        cancel={{
+          onClick: blocker.reset
+        }}
+        show
       >
         {message}
-      </ConfirmModal>
+      </Modal>
     )
   );
 }

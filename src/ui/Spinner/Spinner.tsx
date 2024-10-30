@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import './_spinner.scss';
+import './spinner.scss';
 
 type Props = {
   /**
@@ -28,7 +28,8 @@ type Props = {
  *
  * Use it for example when data is fetching during navigation to a page.
  */
-export default function Spinner({ className, color = 'white', stroke = 4, size }: Props) {
+export function Spinner(props: Props) {
+  const { className, color = 'white', stroke = 4, size } = props;
   return (
     <svg
       className={classNames('spinner', className)}

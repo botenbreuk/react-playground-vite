@@ -1,4 +1,4 @@
-import Icon from '../../Icon/Icon';
+import { Icon } from '../../';
 import { useEasetEgg } from '../hooks/useEasterEgg';
 import './_firework.scss';
 

@@ -1,0 +1,55 @@
+$dialog-sizes: (100, 90, 80, 70, 60, 50, 40, 30);
+
+.modal {
+  @each $size in $dialog-sizes {
+    .width-#{$size} {
+      --bs-modal-width: #{$size * 1%};
+    }
+  }
+
+  & > form {
+    padding: 0;
+  }
+
+  & > *,
+  form > * {
+    padding: 0.875rem;
+  }
+
+  .modal-header {
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    .modal-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  .modal-body {
+    display: block;
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: hwb(0 95% 5%);
+    border-top: 1px solid hsl(0, 0%, 80%);
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

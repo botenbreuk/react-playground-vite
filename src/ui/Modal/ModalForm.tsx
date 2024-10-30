@@ -2,15 +2,21 @@ import classNames from 'classnames';
 import arrayMutators from 'final-form-arrays';
 import { ReactNode } from 'react';
 import { Form, FormRenderProps } from 'react-final-form';
-import { Button, InputGroup, InputGroupText } from 'reactstrap';
-import Icon from '../Icon/Icon';
-import { DialogProps } from './Dialog';
-import './dialog.scss';
-import { useDialog } from './hooks/useDialog';
+import {
+  Modal as BModal,
+  InputGroup,
+  InputGroupText,
+  ModalBody,
+  ModalFooter,
+  ModalHeader
+} from 'reactstrap';
+import { Button, Icon } from '../';
+import { ModalProps } from './Modal';
+import './modal.scss';
 
 type FinalFormRenderProps<T> = FormRenderProps<T, Partial<T>>;
 
-type Props<T> = Omit<DialogProps, 'children' | 'primary'> & {
+type Props<T> = Omit<ModalProps, 'children' | 'primary'> & {
   primary: {
     onClick: (values: T) => void | Promise<void>;
     label?: string;
@@ -20,7 +26,7 @@ type Props<T> = Omit<DialogProps, 'children' | 'primary'> & {
   children: ((values: FinalFormRenderProps<T>) => ReactNode) | ReactNode;
 };
 
-export default function DialogForm<T>(props: Props<T>) {
+export function ModalForm<T>(props: Props<T>) {
   const {
     children,
     title,
@@ -28,26 +34,18 @@ export default function DialogForm<T>(props: Props<T>) {
     width = 30,
     primary,
     cancel,
-    show,
-    searchable = false,
+    show = false,
     onSearch,
     hideFooter = false,
     initialValues,
     hasArrayFields = false
   } = props;
-  const { ref, onCancel } = useDialog({
-    show,
-    cancelFn: cancel?.onClick
-  });
-
-  if (!show) {
-    return null;
-  }
 
   return (
-    <dialog
-      autoFocus={false}
-      ref={ref}
+    <BModal
+      isOpen={show}
+      backdrop={!!cancel?.onClick}
+      toggle={cancel?.onClick}
       className={classNames({ [`width-${width}`]: width })}
     >
       <Form<T>
@@ -56,13 +54,13 @@ export default function DialogForm<T>(props: Props<T>) {
         mutators={hasArrayFields ? { ...arrayMutators } : undefined}
       >
         {values => (
-          <form method="dialog">
-            <div className="dialog-title">
+          <form onSubmit={values.handleSubmit}>
+            <ModalHeader>
               <div>{title}</div>
-              <Icon type="icon-cross" className="clickable" onClick={onCancel} />
-            </div>
-            {searchable && onSearch && (
-              <div className="dialog-search">
+              <Icon type="icon-cross" className="clickable" onClick={cancel?.onClick} />
+            </ModalHeader>
+            {onSearch && (
+              <ModalBody>
                 <InputGroup>
                   <input
                     className="form-control"
@@ -73,33 +71,26 @@ export default function DialogForm<T>(props: Props<T>) {
                     <Icon type="bi-search" />
                   </InputGroupText>
                 </InputGroup>
-              </div>
+              </ModalBody>
             )}
-            <section className="dialog-body">
+            <ModalBody>
               {typeof children === 'function' ? children(values) : children}
-            </section>
+            </ModalBody>
             {!hideFooter && (
-              <div className="dialog-footer">
+              <ModalFooter>
                 <div className="footer">{footer}</div>
                 <div className="buttons">
-                  <Button color="link" className="text-uppercase" onClick={onCancel}>
+                  <Button color="link" casing="uppercase" onClick={cancel?.onClick}>
                     Annuleren
                   </Button>
 
-                  <Button
-                    type="submit"
-                    color="primary"
-                    className="text-uppercase"
-                    onClick={values.handleSubmit}
-                  >
-                    {primary.label ?? 'Selecteer'}
-                  </Button>
+                  <Button casing="uppercase">{primary.label ?? 'Selecteer'}</Button>
                 </div>
-              </div>
+              </ModalFooter>
             )}
           </form>
         )}
       </Form>
-    </dialog>
+    </BModal>
   );
 }

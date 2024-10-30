@@ -1,11 +1,8 @@
 import react from '@vitejs/plugin-react-swc';
-import dns from 'dns';
+import { DATA, SELF, UNSAFE_INLINE, getCSP } from 'csp-header';
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
-
-// Used to change 127.0.0.1 to localhost for node version prior to 17
-dns.setDefaultResultOrder('verbatim');
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
@@ -29,11 +26,7 @@ export default defineConfig(() => ({
       output: {
         assetFileNames: assetInfo => {
           let extType = assetInfo?.name?.split('.').at(1);
-          if (
-            /png|jpe?g|svg|gif|tiff|ttf|woff|woff2|eot|bmp|ico/i.test(
-              `${extType}`
-            )
-          ) {
+          if (/png|jpe?g|svg|gif|tiff|ttf|woff|woff2|eot|bmp|ico/i.test(`${extType}`)) {
             extType = 'img';
           }
           return `static/${extType}/[name]-[hash][extname]`;
@@ -52,6 +45,19 @@ export default defineConfig(() => ({
         changeOrigin: true,
         secure: false
       }
+    }
+  },
+  preview: {
+    headers: {
+      'content-security-policy': getCSP({
+        directives: {
+          'default-src': [SELF],
+          'frame-ancestors': [SELF],
+          'form-action': [SELF],
+          'style-src': [SELF, UNSAFE_INLINE],
+          'img-src': [SELF, DATA]
+        }
+      })
     }
   },
   resolve: {
