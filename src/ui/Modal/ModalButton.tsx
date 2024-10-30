@@ -66,7 +66,7 @@ export function ModalButton(props: ModalButtonProps) {
     <>
       <Button
         {...button}
-        casing={button.color === 'link' ? 'keep-text' : 'uppercase'}
+        casing={button.color === 'link' ? 'keep-text' : button.casing}
         onClick={onButtonCLick}
       >
         {button.label}

@@ -80,7 +80,7 @@ export function Modal(props: ModalProps) {
             </Button>
 
             <Button casing="uppercase" onClick={onPrimaryClick}>
-              {primary.label ?? 'Selecteer'}
+              {primary.label ?? 'Bevestig'}
             </Button>
           </div>
         </ModalFooter>
