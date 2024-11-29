@@ -42,9 +42,9 @@ export function TableHeader(props: Props) {
 
   const headerClassNames = classNames('th-column', className);
 
-  function onChange(value: string) {
-    setValue(value);
-    changeParam(param, value);
+  function onChange(v: string) {
+    setValue(v);
+    changeParam(param, v);
   }
 
   return (
@@ -115,8 +115,8 @@ function Select(props: {
   return (
     <select {...selectProps}>
       <option value="">{emptyOptionText}</option>
-      {options.map(({ value, label }) => (
-        <option key={value} value={value}>
+      {options.map(({ value: v, label }) => (
+        <option key={v} value={v}>
           {label}
         </option>
       ))}

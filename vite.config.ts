@@ -2,7 +2,7 @@ import react from '@vitejs/plugin-react-swc';
 import { DATA, SELF, UNSAFE_INLINE, getCSP } from 'csp-header';
 import * as path from 'path';
 import { defineConfig } from 'vite';
-import checker from 'vite-plugin-checker';
+import { checker } from 'vite-plugin-checker';
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({

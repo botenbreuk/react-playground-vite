@@ -1,7 +1,7 @@
 import { CSSProperties, useCallback } from 'react';
 import { useDrop } from 'react-dnd';
 import QuestionBox from './QuestionBox';
-import { QuestionTypes } from './QuestionTypes';
+import { questionTypes } from './QuestionTypes';
 
 const style: CSSProperties = {
   minHeight: '12rem',
@@ -13,23 +13,23 @@ const style: CSSProperties = {
   lineHeight: 'normal'
 };
 
-export interface BoxType {
+export type BoxType = {
   id: number;
   name: string;
   index: number;
   type: string;
-}
+};
 
-interface Props {
+type Props = {
   value: BoxType[];
   onChange: (value: BoxType[]) => void;
-}
+};
 
 export default function QuestionList(props: Props) {
   const { value, onChange } = props;
 
   const [{ canDrop, isOver }, drop] = useDrop({
-    accept: QuestionTypes.NEW_QUESTION,
+    accept: questionTypes.NEW_QUESTION,
     drop(item: BoxType) {
       const copy: BoxType[] = [...value];
       const id = copy.length ? copy.length + 1 : 0;

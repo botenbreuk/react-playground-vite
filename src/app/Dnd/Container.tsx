@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Question from './Question';
 import QuestionList, { BoxType } from './QuestionList';
-import { QuestionTypes } from './QuestionTypes';
+import { questionTypes } from './QuestionTypes';
 
 export default function Container() {
   const [questions, setQuestions] = useState<BoxType[]>([]);
@@ -10,7 +10,7 @@ export default function Container() {
     const copy = [...questions];
     const id = copy.length ? copy.length + 1 : 0;
     copy.push({
-      type: QuestionTypes.NEW_QUESTION,
+      type: questionTypes.NEW_QUESTION,
       name,
       id,
       index: questions.length + 1

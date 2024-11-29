@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { useDrag } from 'react-dnd';
-import { QuestionTypes } from './QuestionTypes';
+import { questionTypes } from './QuestionTypes';
 
 const style: CSSProperties = {
   border: '1px dashed gray',
@@ -12,15 +12,15 @@ const style: CSSProperties = {
   float: 'left'
 };
 
-interface Props {
+type Props = {
   name: string;
   onClick: (type: string) => void;
-}
+};
 
 export default function Question(props: Props) {
   const { name, onClick } = props;
   const [{ isDragging }, drag] = useDrag({
-    type: QuestionTypes.NEW_QUESTION,
+    type: questionTypes.NEW_QUESTION,
     item: { name },
     collect: monitor => ({
       isDragging: monitor.isDragging()

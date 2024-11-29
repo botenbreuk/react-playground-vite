@@ -4,12 +4,12 @@ type CreateArrayWithLengthX<
 > = ACC['length'] extends LENGTH ? ACC : CreateArrayWithLengthX<LENGTH, [...ACC, 1]>;
 
 type NumericRange<
-  START_ARR extends number[],
+  ARRAY extends number[],
   END extends number,
   ACC extends number = never
-> = START_ARR['length'] extends END
+> = ARRAY['length'] extends END
   ? ACC | END
-  : NumericRange<[...START_ARR, 1], END, ACC | START_ARR['length']>;
+  : NumericRange<[...ARRAY, 1], END, ACC | ARRAY['length']>;
 
 export type NumberRange<B extends number, E extends number> = NumericRange<
   CreateArrayWithLengthX<B>,

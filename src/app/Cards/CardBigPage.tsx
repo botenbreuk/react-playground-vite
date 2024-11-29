@@ -26,10 +26,12 @@ export default function CardBigPage() {
       <CardPanel
         title="Form elements"
         icon="bi-smartwatch"
-        footer={[
-          <CardIcon type="bi-check" color="green" />,
-          <span className="text">2022-01-01</span>
-        ]}
+        footer={
+          <>
+            <CardIcon type="bi-check" color="green" />,
+            <span className="text">2022-01-01</span>
+          </>
+        }
       >
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">

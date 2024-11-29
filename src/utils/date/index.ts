@@ -19,9 +19,9 @@ export function format(date?: MomentType | null, type?: DateFormatType) {
     date = moment.utc(date);
   }
 
-  const format = type || 'DEFAULT';
+  const formatType = type || 'DEFAULT';
 
-  return date.isValid() ? date.format(dateFormat[format]) : '';
+  return date.isValid() ? date.format(dateFormat[formatType]) : '';
 }
 
 export function now() {

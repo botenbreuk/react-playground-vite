@@ -1,7 +1,7 @@
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Page } from '../../ui';
-import Container from './Container';
+import { Container } from './Container';
 
 export default function DndExample() {
   return (

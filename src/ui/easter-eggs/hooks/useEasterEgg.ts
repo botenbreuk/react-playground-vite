@@ -29,6 +29,8 @@ export function useEasetEgg({
     if (duration && active) {
       const cancelTime = setTimeout(() => setActive(false), duration);
       return () => clearTimeout(cancelTime);
+    } else {
+      return () => undefined;
     }
   }, [active, duration]);
 
@@ -40,6 +42,8 @@ export function useEasetEgg({
 
       const timer = setTimeout(reset, 2000);
       return () => clearTimeout(timer);
+    } else {
+      return () => undefined;
     }
   }, [keyPresses]);
 

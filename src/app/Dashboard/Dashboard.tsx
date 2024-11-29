@@ -16,13 +16,13 @@ export function Dashboard() {
         fetch('/api/status'),
         fetch('/api/actuator/info')
       ]);
-      const [{ status }, { version }] = await Promise.all([
+      const [{ status: responseStatus }, { version: apiVersion }] = await Promise.all([
         response.json(),
         actuator.json()
       ]);
 
-      setStatus(!!status);
-      setVersion(version);
+      setStatus(!!responseStatus);
+      setVersion(apiVersion);
     }
 
     fetchStatus();

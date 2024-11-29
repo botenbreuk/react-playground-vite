@@ -22,20 +22,20 @@ export default function useLoadPage<T, P>(
   const [pageItems, setPageItems] = useState(emptyPage<T>());
 
   const loadPage = useCallback(
-    async (pageNumber: number) => {
-      const newPageItems = await pageRequest(pageNumber, queryParams as P);
-      setPageItems(pageItems =>
-        mergePages ? mergePagesOrReset(pageItems, newPageItems) : newPageItems
+    async (page: number) => {
+      const newPageItems = await pageRequest(page, queryParams as P);
+      setPageItems(items =>
+        mergePages ? mergePagesOrReset(items, newPageItems) : newPageItems
       );
     },
     [queryParams, pageRequest, mergePages]
   );
 
   const loadPageWithoutParams = useCallback(
-    async (pageNumber: number) => {
-      const newPageItems = await pageRequest(pageNumber, {} as P);
-      setPageItems(pageItems =>
-        mergePages ? mergePagesOrReset(pageItems, newPageItems) : newPageItems
+    async (page: number) => {
+      const newPageItems = await pageRequest(page, {} as P);
+      setPageItems(items =>
+        mergePages ? mergePagesOrReset(items, newPageItems) : newPageItems
       );
     },
     [pageRequest, mergePages]

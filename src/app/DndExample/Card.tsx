@@ -1,7 +1,7 @@
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties } from 'react';
 import { memo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
-import { ItemTypes } from './ItemTypes';
+import { itemTypes } from './ItemTypes';
 
 const style: CSSProperties = {
   border: '1px dashed gray',
@@ -11,32 +11,32 @@ const style: CSSProperties = {
   cursor: 'move'
 };
 
-export interface CardProps {
+export type CardProps = {
   id: string;
   text: string;
   moveCard: (id: string, to: number) => void;
   findCard: (id: string) => { index: number };
-}
+};
 
-interface Item {
+type Item = {
   id: string;
   originalIndex: number;
-}
+};
 
-export const Card: FC<CardProps> = memo(function Card({ id, text, moveCard, findCard }) {
+export const Card = memo(function Card({ id, text, moveCard, findCard }: CardProps) {
   const originalIndex = findCard(id).index;
   const [{ isDragging }, drag] = useDrag(
     () => ({
-      type: ItemTypes.CARD,
+      type: itemTypes.CARD,
       item: { id, originalIndex },
       collect: monitor => ({
         isDragging: monitor.isDragging()
       }),
       end: (item, monitor) => {
-        const { id: droppedId, originalIndex } = item;
+        const { id: droppedId, originalIndex: ogIndex } = item;
         const didDrop = monitor.didDrop();
         if (!didDrop) {
-          moveCard(droppedId, originalIndex);
+          moveCard(droppedId, ogIndex);
         }
       }
     }),
@@ -45,7 +45,7 @@ export const Card: FC<CardProps> = memo(function Card({ id, text, moveCard, find
 
   const [, drop] = useDrop(
     () => ({
-      accept: ItemTypes.CARD,
+      accept: itemTypes.CARD,
       hover({ id: draggedId }: Item) {
         if (draggedId !== id) {
           const { index: overIndex } = findCard(id);

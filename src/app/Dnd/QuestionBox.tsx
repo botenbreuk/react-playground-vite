@@ -2,7 +2,7 @@ import { CSSProperties, useRef } from 'react';
 import { DropTargetMonitor, XYCoord, useDrag, useDrop } from 'react-dnd';
 import { Button, Col, Row } from 'reactstrap';
 import { BoxType } from './QuestionList';
-import { QuestionTypes } from './QuestionTypes';
+import { questionTypes } from './QuestionTypes';
 
 interface Props {
   id: any;
@@ -16,7 +16,7 @@ export default function QuestionBox(props: Props) {
   const { id, value, index, moveCard, remove } = props;
   const ref = useRef<HTMLDivElement>(null);
   const [, drop] = useDrop<BoxType>({
-    accept: QuestionTypes.UPDATE_QUESTION,
+    accept: questionTypes.UPDATE_QUESTION,
     hover(item, monitor: DropTargetMonitor) {
       if (!ref.current) {
         return;
@@ -67,7 +67,7 @@ export default function QuestionBox(props: Props) {
   });
 
   const [{ opacity }, drag] = useDrag({
-    type: QuestionTypes.UPDATE_QUESTION,
+    type: questionTypes.UPDATE_QUESTION,
     item: { id, index },
     collect: (monitor: any) => ({
       opacity: monitor.isDragging() ? 0.4 : 1

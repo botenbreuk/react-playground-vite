@@ -15,7 +15,7 @@ async function downloadFile(url: string, params?: Record<string, any>) {
     : '';
   const newUrl = isEmpty(queryString) ? url : `${url}?${queryString}`;
 
-  // @ts-ignore. TODO: include axsion lib.
+  // @ts-expect-error. TODO: include axsion lib.
   const response = await axios({
     url: newUrl,
     method: 'GET',

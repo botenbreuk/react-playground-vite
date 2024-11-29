@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 import { z } from 'zod';
 
-export const FormSchema = z.object({
+export const schema = z.object({
   firstName: z
     .string({ required_error: 'Is verplicht' })
     // .includes('Test', { message: 'bevat geen Test' })
@@ -21,10 +21,10 @@ export const FormSchema = z.object({
   petTotal: z.number().min(2, 'Minimaal 2')
 });
 
-export type FormData = z.infer<typeof FormSchema>;
+export type FormData = z.infer<typeof schema>;
 
 export async function validate(values: FormData) {
-  const result = await FormSchema.safeParseAsync(values);
+  const result = await schema.safeParseAsync(values);
   const errors = result.success ? {} : result.error.flatten().fieldErrors;
 
   const errorObj: Record<string, string> = {};

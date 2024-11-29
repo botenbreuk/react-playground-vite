@@ -1,17 +1,16 @@
 import update from 'immutability-helper';
-import type { FC } from 'react';
 import { memo, useCallback, useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { Card } from './Card';
-import { ItemTypes } from './ItemTypes';
+import { itemTypes } from './ItemTypes';
 
 const style = {
   width: 400
 };
 
-export interface ContainerState {
+export type ContainerState = {
   cards: any[];
-}
+};
 
 const ITEMS = [
   {
@@ -44,7 +43,7 @@ const ITEMS = [
   }
 ];
 
-export const Container: FC = memo(function Container() {
+export const Container = memo(function Container() {
   const [cards, setCards] = useState(ITEMS);
 
   const findCard = useCallback(
@@ -76,7 +75,7 @@ export const Container: FC = memo(function Container() {
     [findCard, cards, setCards]
   );
 
-  const [, drop] = useDrop(() => ({ accept: ItemTypes.CARD }));
+  const [, drop] = useDrop(() => ({ accept: itemTypes.CARD }));
   return (
     <div ref={drop} style={style}>
       {cards.map(card => (
