@@ -35,10 +35,7 @@ function getSort(queryParams?: Record<string, any>): any {
 
   if (sortParam) {
     const strArr = sortParam.split(',');
-    return {
-      param: strArr[0],
-      direction: strArr[1].toLocaleUpperCase() as SortType
-    };
+    return { param: strArr[0], direction: strArr[1].toLocaleUpperCase() as SortType };
   }
 
   return {};
@@ -56,21 +53,14 @@ export function AdvancedTable<T, QP extends Record<string, any>>(props: Props<T,
   const [sort, setSort] = useState<CurrentSort>();
 
   const location = useLocation();
-  const queryParams = useQueryParams({
-    location,
-    defaultQueryParams: defaultParams
-  });
+  const queryParams = useQueryParams({ location, defaultQueryParams: defaultParams });
   const state = useQuery({
     queryKey: ['loadZorgaanbieders', queryParams],
     queryFn: () => loadData(queryParams)
   });
 
   const values = useMemo<ContextProps>(
-    () => ({
-      queryParams,
-      onParamChange: value => onParamChange(value as QP),
-      sort
-    }),
+    () => ({ queryParams, onParamChange: value => onParamChange(value as QP), sort }),
     [onParamChange, queryParams, sort]
   );
 
@@ -82,9 +72,9 @@ export function AdvancedTable<T, QP extends Record<string, any>>(props: Props<T,
     <AdvancedTableContext.Provider value={values}>
       <Table striped hover>
         <thead>{headColumns}</thead>
-        {state.isSuccess && state.data.content.length !== 0 && (
-          <tbody>{children(state)}</tbody>
-        )}
+        {state.isSuccess &&
+          !state.isPlaceholderData &&
+          state.data.content.length !== 0 && <tbody>{children(state)}</tbody>}
       </Table>
       {state.isSuccess && state.data.content.length === 0 && (
         <div className="d-flex justify-content-center p-5 border-primary border">
