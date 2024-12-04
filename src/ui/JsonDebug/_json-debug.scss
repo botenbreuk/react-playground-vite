@@ -1,0 +1,36 @@
+.json-debug-overlay {
+  display: flex;
+  background-color: hsla(0, 0%, 11%, 0.813);
+  color: white;
+  position: fixed;
+  height: 100vh;
+  min-width: 30%;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+  backdrop-filter: blur(10px);
+
+  &.left {
+    left: 0;
+    right: initial;
+  }
+
+  &.right {
+    left: initial;
+    right: 0;
+  }
+
+  i {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    align-self: flex-start;
+    position: absolute;
+    right: 0;
+  }
+
+  pre {
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+  }
+}
