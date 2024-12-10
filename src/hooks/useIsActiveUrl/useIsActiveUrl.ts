@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 export default function useIsActiveUrl(path: string) {
   const location = useLocation();

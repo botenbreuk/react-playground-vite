@@ -2,7 +2,7 @@ import { Page } from '../../ui';
 import CardPanel from '../Cards/CardPanel';
 import CardIcon from '../Cards/parts/CardIcon';
 
-export default function FinalFormPage() {
+export default function SettingsPage() {
   return (
     <Page>
       <CardPanel

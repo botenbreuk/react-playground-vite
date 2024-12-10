@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink as RRNavLink } from 'react-router-dom';
+import { NavLink as RRNavLink } from 'react-router';
 import { Button, Col, Container, Nav, NavItem, NavLink, Row } from 'reactstrap';
 import { SETTINGS_PAGE_URL } from '../../../app/Settings/SettingsPage';
 import useOutsideClick from '../../../hooks/useOutsideClick/useOutsideClick';

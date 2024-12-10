@@ -29,7 +29,13 @@ export default function Question(props: Props) {
   const opacity = isDragging ? 0.4 : 1;
 
   return (
-    <div ref={drag} style={{ ...style, opacity }} onClick={() => onClick(name)}>
+    <div
+      ref={ref => {
+        drag(ref);
+      }}
+      style={{ ...style, opacity }}
+      onClick={() => onClick(name)}
+    >
       {name}
     </div>
   );

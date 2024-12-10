@@ -1,5 +1,5 @@
 import { FieldMetaState, Form, useField } from 'react-final-form';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { Button } from 'reactstrap';
 import { FieldProps } from '../../types/final-form-types';
 import { Page, Spinner } from '../../ui';
@@ -10,6 +10,7 @@ import { FormData, validate } from './zod';
 
 export default function FinalFormPage() {
   const params = useParams();
+  console.log('Params', params);
 
   function submit(form: FormData) {
     alert(JSON.stringify(form, null, 2));

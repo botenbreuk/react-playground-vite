@@ -1,4 +1,4 @@
-import { useBlocker } from 'react-router-dom';
+import { useBlocker } from 'react-router';
 import { Modal } from '../Modal';
 
 type Props = {

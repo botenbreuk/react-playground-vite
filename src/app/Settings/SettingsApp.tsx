@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 
 const SettingsPage = lazy(() => import('./SettingsPage'));
 

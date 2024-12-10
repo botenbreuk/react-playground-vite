@@ -5,38 +5,39 @@
   "dependencies": {
     "@42.nl/jarb-final-form": "3.1.4",
     "@42.nl/react-url": "3.1.0",
-    "@tanstack/react-query": "5.62.0",
-    "axios": "1.7.8",
+    "@tanstack/react-query": "5.62.7",
+    "axios": "1.7.9",
     "bootstrap": "5.3.3",
     "bootstrap-icons": "1.11.3",
     "check-dependencies": "2.0.0",
     "classnames": "2.5.1",
+    "date-fns": "4.1.0",
     "final-form": "4.20.10",
     "final-form-arrays": "3.1.0",
     "immutability-helper": "3.1.1",
     "lodash": "4.17.21",
     "moment": "2.30.1",
-    "react": "18.3.1",
-    "react-datetime": "3.2.0",
+    "react": "19.0.0",
+    "react-datepicker": "7.5.0",
+    "react-datetime": "3.3.1",
     "react-dnd": "16.0.1",
     "react-dnd-html5-backend": "16.0.1",
-    "react-dom": "18.3.1",
+    "react-dom": "19.0.0",
     "react-final-form": "6.5.9",
     "react-final-form-arrays": "3.1.4",
-    "react-icons": "5.3.0",
-    "react-router-dom": "7.0.1",
+    "react-icons": "5.4.0",
+    "react-router": "7.0.2",
     "reactstrap": "9.2.3",
-    "zod": "3.23.8"
+    "zod": "3.24.1"
   },
   "devDependencies": {
     "@types/express": "5.0.0",
     "@types/lodash": "4.17.13",
-    "@types/node": "22.10.1",
-    "@types/react": "18.3.12",
-    "@types/react-dom": "18.3.1",
-    "@types/react-router-dom": "5.3.3",
-    "@typescript-eslint/eslint-plugin": "8.16.0",
-    "@typescript-eslint/parser": "8.16.0",
+    "@types/node": "22.10.2",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.2",
+    "@typescript-eslint/eslint-plugin": "8.18.0",
+    "@typescript-eslint/parser": "8.18.0",
     "@vitejs/plugin-react-swc": "3.7.2",
     "better-npm-audit": "3.11.0",
     "csp-header": "6.0.0",
@@ -48,17 +49,18 @@
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.2",
+    "eslint-plugin-react-hooks": "5.1.0",
     "husky": "9.1.7",
-    "lint-staged": "15.2.10",
-    "prettier": "3.4.1",
+    "lint-staged": "15.2.11",
+    "prettier": "3.4.2",
     "prettier-plugin-organize-imports": "4.1.0",
-    "sass": "1.81.0",
-    "stylelint": "16.11.0",
+    "sass": "1.83.0",
+    "stylelint": "16.12.0",
     "stylelint-config-prettier-scss": "1.0.0",
-    "stylelint-config-standard-scss": "13.1.0",
-    "terser": "5.36.0",
+    "stylelint-config-standard-scss": "14.0.0",
+    "terser": "5.37.0",
     "typescript": "5.7.2",
-    "vite": "6.0.1",
+    "vite": "6.0.3",
     "vite-plugin-checker": "0.8.0"
   },
   "scripts": {
@@ -67,7 +69,7 @@
     "check-dependencies": "check-dependencies",
     "check-project": "npm run check-dependencies && npm run lint && npm run ts",
     "prepare": "husky",
-    "lint": "eslint src --ext js,jsx,ts,tsx --max-warnings=0",
+    "lint": "TIMING=1 eslint src --ext js,jsx,ts,tsx --max-warnings=0",
     "prettier": "prettier --write ./src",
     "preview": "vite build --mode preview && vite preview",
     "start": "vite",
@@ -76,6 +78,27 @@
     "stylelint-check": "stylelint-config-prettier-scss-check",
     "test-all": "npm run check-dependencies && npm run lint && npm run ts",
     "ts": "tsc --version && tsc"
+  },
+  "overrides": {
+    "@42.nl/react-url": {
+      "react": "19.0.0"
+    },
+    "@42.nl/final-form-field-validation": {
+      "react": "19.0.0"
+    },
+    "react-datetime": {
+      "react": "19.0.0"
+    },
+    "react-datepicker": {
+      "react": "19.0.0",
+      "react-dom": "19.0.0"
+    },
+    "react-final-form": {
+      "react": "19.0.0"
+    },
+    "react-final-form-arrays": {
+      "react": "19.0.0"
+    }
   },
   "lint-staged": {
     "{src,test}/**/*.{js,jsx,json,scss,tsx,ts}": [

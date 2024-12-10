@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ReactNode, useState } from 'react';
-import { NavLink as RRNavLink } from 'react-router-dom';
+import { NavLink as RRNavLink } from 'react-router';
 import { Badge, Button, Nav, NavItem, NavLink, Popover, PopoverHeader } from 'reactstrap';
 import { FINAL_FORM_PAGE_URL } from '../../../app/FinalForm/FinalFormPage';
 import { FINAL_FORM_TOTP_FIELD_PAGE_URL } from '../../../app/FinalForm/TotpInput/TotpInputPage';

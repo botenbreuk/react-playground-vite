@@ -1,7 +1,7 @@
 import { useQueryParams } from '@42.nl/react-url';
 import { QueryObserverSuccessResult, useQuery } from '@tanstack/react-query';
 import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { Table } from 'reactstrap';
 import { Spinner } from '../';
 import { Page } from '../../hooks/useLoadPage/spring-models';

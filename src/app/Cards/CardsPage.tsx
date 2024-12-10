@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ReactNode, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import {
   Badge,
   Button,

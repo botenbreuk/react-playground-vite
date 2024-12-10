@@ -63,7 +63,13 @@ export default function QuestionList(props: Props) {
   const isActive = canDrop && isOver;
 
   return (
-    <div ref={drop} style={{ ...style }} className="bg-primary">
+    <div
+      ref={ref => {
+        drop(ref);
+      }}
+      style={{ ...style }}
+      className="bg-primary"
+    >
       {isActive ? 'Release to drop' : 'Drag a box here'}
       {value.map((val, index) => (
         <QuestionBox
