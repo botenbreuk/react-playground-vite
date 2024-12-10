@@ -77,7 +77,12 @@ export const Container = memo(function Container() {
 
   const [, drop] = useDrop(() => ({ accept: itemTypes.CARD }));
   return (
-    <div ref={drop} style={style}>
+    <div
+      ref={ref => {
+        drop(ref);
+      }}
+      style={style}
+    >
       {cards.map(card => (
         <Card
           key={card.id}

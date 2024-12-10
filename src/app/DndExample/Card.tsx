@@ -59,7 +59,12 @@ export const Card = memo(function Card({ id, text, moveCard, findCard }: CardPro
   const opacity = isDragging ? 0 : 1;
 
   return (
-    <div ref={node => drag(drop(node))} style={{ ...style, opacity }}>
+    <div
+      ref={node => {
+        drag(drop(node));
+      }}
+      style={{ ...style, opacity }}
+    >
       {originalIndex} - {text}
     </div>
   );
