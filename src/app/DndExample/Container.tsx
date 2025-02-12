@@ -95,5 +95,3 @@ export const Container = memo(function Container() {
     </div>
   );
 });
-
-export default Container;
