@@ -6,8 +6,8 @@
   "author": "botenbreuk@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "express": "4.21.1",
-    "nodemon": "3.1.7"
+    "express": "4.21.2",
+    "nodemon": "3.1.9"
   },
   "scripts": {
     "start": "npm i && nodemon ./server/server.js"
