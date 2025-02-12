@@ -1,4 +1,3 @@
-import { lazy } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,12 +11,10 @@ import CardsPage from '../Cards/CardsPage';
 import { Dashboard } from '../Dashboard/Dashboard';
 import Dnd from '../Dnd/Dnd';
 import DndExample from '../DndExample/DndExample';
+import { FinalFormApp } from '../FinalForm/FinalFormApp';
 import NotFound from '../NotFound/NotFound';
 import SettingsApp from '../Settings/SettingsApp';
 import ShuffleList from '../Shuffle/ShuffleList';
-
-const FinalFormPage = lazy(() => import('../FinalForm/FinalFormPage'));
-const TotpInputPage = lazy(() => import('../FinalForm/TotpInput/TotpInputPage'));
 
 export function App() {
   return (
@@ -35,11 +32,7 @@ export function App() {
               <Route path="dnd" element={<Dnd />} />
               <Route path="dnd-sort" element={<DndExample />} />
               <Route path="table" element={<AdvancedTablePage />} />
-              <Route path="final-form">
-                <Route index element={<FinalFormPage />} />
-                <Route path=":id" element={<FinalFormPage />} />
-                <Route path="totp-field" element={<TotpInputPage />} />
-              </Route>
+              <Route path="final-form/*" element={<FinalFormApp />} />
               <Route path="settings" element={<SettingsApp />} />
             </Route>
             <Route path="*" element={<NotFound />} />
