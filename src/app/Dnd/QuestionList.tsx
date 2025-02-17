@@ -5,7 +5,6 @@ import { questionTypes } from './QuestionTypes';
 
 const style: CSSProperties = {
   minHeight: '12rem',
-  margin: '1rem',
   color: 'white',
   padding: '1rem',
   textAlign: 'center',
