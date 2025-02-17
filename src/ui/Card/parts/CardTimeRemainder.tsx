@@ -4,7 +4,7 @@ type Props = {
   date?: string | Moment;
 };
 
-export default function CardTimeRemainer(props: Props) {
+export default function CardTimeRemainder(props: Props) {
   const { date } = props;
 
   function getDurationTillNow() {

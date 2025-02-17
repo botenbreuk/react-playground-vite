@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Alert, Button } from 'reactstrap';
 import test from '../../assets/logo.svg';
 import { Page } from '../../ui';
+import { Dropdown } from '../../ui/Dropdown/Dropdown';
 import LineText from '../../ui/LineText/LineText';
 import Logo from '../../ui/Logo/Logo';
 import { ModalButton } from '../../ui/Modal';
@@ -34,6 +35,60 @@ export function Dashboard() {
         <h1 className="display-3">Hello, world!</h1>
         <LineText text={<div style={{ fontSize: '2rem' }}>Example</div>} />
 
+        <div className="d-flex justify-content-center gap-2">
+          <Dropdown
+            toggleElement={({ ref, onClick }) => (
+              <button className="btn btn-primary" ref={ref} onClick={onClick}>
+                Bottom
+              </button>
+            )}
+          >
+            <div className="d-grid gap-2 p-2">
+              <button className="btn btn-warning">CSV</button>
+              <button className="btn btn-warning">XLSX</button>
+            </div>
+          </Dropdown>
+          <Dropdown
+            toggleElement={({ ref, onClick }) => (
+              <button className="btn btn-primary" ref={ref} onClick={onClick}>
+                Top
+              </button>
+            )}
+            position="top"
+          >
+            <div className="d-grid gap-2 p-2">
+              <button className="btn btn-warning">CSV</button>
+              <button className="btn btn-warning">XLSX</button>
+            </div>
+          </Dropdown>
+          <Dropdown
+            toggleElement={({ ref, onClick }) => (
+              <button className="btn btn-primary" ref={ref} onClick={onClick}>
+                Left
+              </button>
+            )}
+            position="left"
+          >
+            <div className="d-grid gap-2 p-2">
+              <button className="btn btn-warning">CSV</button>
+              <button className="btn btn-warning">XLSX</button>
+            </div>
+          </Dropdown>
+          <Dropdown
+            toggleElement={({ ref, onClick }) => (
+              <button className="btn btn-primary" ref={ref} onClick={onClick}>
+                RIght
+              </button>
+            )}
+            position="right"
+          >
+            <div className="d-grid gap-2 p-2">
+              <button className="btn btn-warning">CSV</button>
+              <button className="btn btn-warning">XLSX</button>
+            </div>
+          </Dropdown>
+        </div>
+
         <p className="lead">
           This is a simple hero unit, a simple Jumbotron-style component for calling extra
           attention to featured content or information.
@@ -62,7 +117,15 @@ export function Dashboard() {
           className="lead"
           style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem' }}
         >
-          <Button color="primary">Learn More</Button>
+          <Dropdown
+            toggleElement={({ ref, onClick }) => (
+              <Button ref={ref} onClick={onClick} color="primary">
+                Learn More
+              </Button>
+            )}
+          >
+            <div className="p-2">You learned more</div>
+          </Dropdown>
           <Button color="secondary">Learn More</Button>
           <Button color="danger">Learn More</Button>
           <Button color="success">Learn More</Button>

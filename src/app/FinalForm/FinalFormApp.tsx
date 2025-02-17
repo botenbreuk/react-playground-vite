@@ -13,3 +13,5 @@ export function FinalFormApp() {
     </Routes>
   );
 }
+
+export const FINAL_FORM_APP_URL = 'final-form/*';

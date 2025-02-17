@@ -1,3 +1,4 @@
+import { Container } from 'reactstrap';
 import { Page as PageType } from '../../hooks/useLoadPage/spring-models';
 import { Icon, Page } from '../../ui';
 import { AdvancedTable } from '../../ui/AdvancedTable/AdvancedTable';
@@ -20,30 +21,32 @@ function getPage<T = { name: string; age: number }>(items: T[]): Promise<PageTyp
 export default function AdvancedTablePage() {
   return (
     <Page>
-      <AdvancedTable
-        loadData={() => getPage([{ name: 'test', age: 18 }])}
-        defaultParams={{}}
-        onParamChange={() => undefined}
-        headColumns={
-          <tr>
-            <TableHeader label="Name" />
-            <TableHeader label="Sorting" sortable filterable />
-            <TableHeader label="Actions" />
-          </tr>
-        }
-      >
-        {({ data }) =>
-          data.content.map(v => (
-            <tr key={v.name}>
-              <TableColumn>{v.name}</TableColumn>
-              <TableColumn>{v.name}</TableColumn>
-              <TableColumn>
-                <Icon type="bi-pencil-fill" />
-              </TableColumn>
+      <Container className="p-3 bg-light" fluid>
+        <AdvancedTable
+          loadData={() => getPage([{ name: 'test', age: 18 }])}
+          defaultParams={{}}
+          onParamChange={() => undefined}
+          headColumns={
+            <tr>
+              <TableHeader label="Name" />
+              <TableHeader label="Sorting" sortable filterable />
+              <TableHeader label="Actions" />
             </tr>
-          ))
-        }
-      </AdvancedTable>
+          }
+        >
+          {({ data }) =>
+            data.content.map(v => (
+              <tr key={v.name}>
+                <TableColumn>{v.name}</TableColumn>
+                <TableColumn>{v.name}</TableColumn>
+                <TableColumn>
+                  <Icon type="bi-pencil-fill" />
+                </TableColumn>
+              </tr>
+            ))
+          }
+        </AdvancedTable>
+      </Container>
     </Page>
   );
 }

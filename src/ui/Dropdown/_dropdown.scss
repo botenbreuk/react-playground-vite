@@ -1,0 +1,11 @@
+.rdb-dropdown {
+  position: relative;
+
+  &-container {
+    min-width: 15rem;
+    position: absolute;
+    background-color: hsl(0, 0, 100%);
+    border: 1px solid hsl(0, 0, 30%);
+    z-index: 99999;
+  }
+}

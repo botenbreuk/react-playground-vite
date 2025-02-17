@@ -6,7 +6,7 @@ import { IconType } from '../Icon/icon-types';
 import ScrollTo from '../ScrollTo/ScrollTo';
 import CardButton from './parts/CardButton';
 import CardIcon from './parts/CardIcon';
-import CardTimeRemainer from './parts/CardTimeRemainer';
+import CardTimeRemainder from './parts/CardTimeRemainder';
 
 export type IconBg =
   | 'bg-primary'
@@ -39,7 +39,7 @@ export type Props = {
   progress?: { current: number; max: number; suffix?: string };
   date?: string | Moment;
   theme?: 'lg' | 'dg' | 'lw' | 'dw' | 'wd';
-  autoHeihgt?: boolean;
+  autoHeight?: boolean;
   noScrollTo?: boolean;
 };
 
@@ -59,7 +59,7 @@ export default function CardPanel(props: Props) {
     progress,
     date,
     theme = 'lg',
-    autoHeihgt = false,
+    autoHeight = false,
     noScrollTo = false
   } = props;
 
@@ -80,7 +80,7 @@ export default function CardPanel(props: Props) {
   }
 
   const classes = classNames({ big: bigView }, className, `theme-${theme}`);
-  const cardBodyClasses = classNames({ 'auto-height': autoHeihgt && !bigView });
+  const cardBodyClasses = classNames({ 'auto-height': autoHeight && !bigView });
 
   const card = (
     <Card className={classes}>
@@ -89,7 +89,7 @@ export default function CardPanel(props: Props) {
         <CardTitle className={headerClick ? 'clickable' : ''} onClick={headerClick}>
           <span>{title}</span>
         </CardTitle>
-        <CardTimeRemainer date={date} />
+        <CardTimeRemainder date={date} />
 
         {rightComponent && <div className="right-component">{rightComponent}</div>}
 

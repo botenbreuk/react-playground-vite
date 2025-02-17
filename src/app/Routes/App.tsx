@@ -11,7 +11,7 @@ import CardsPage from '../Cards/CardsPage';
 import { Dashboard } from '../Dashboard/Dashboard';
 import Dnd from '../Dnd/Dnd';
 import DndExample from '../DndExample/DndExample';
-import { FinalFormApp } from '../FinalForm/FinalFormApp';
+import { FINAL_FORM_APP_URL, FinalFormApp } from '../FinalForm/FinalFormApp';
 import NotFound from '../NotFound/NotFound';
 import SettingsApp from '../Settings/SettingsApp';
 import ShuffleList from '../Shuffle/ShuffleList';
@@ -32,7 +32,7 @@ export function App() {
               <Route path="dnd" element={<Dnd />} />
               <Route path="dnd-sort" element={<DndExample />} />
               <Route path="table" element={<AdvancedTablePage />} />
-              <Route path="final-form/*" element={<FinalFormApp />} />
+              <Route path={FINAL_FORM_APP_URL} element={<FinalFormApp />} />
               <Route path="settings" element={<SettingsApp />} />
             </Route>
             <Route path="*" element={<NotFound />} />
