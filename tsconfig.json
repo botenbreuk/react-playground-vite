@@ -18,6 +18,6 @@
     "jsx": "react-jsx",
     "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["src", "./.eslintrc.js", "vite.config.ts"],
+  "include": ["src", "eslint.config.js", "vite.config.ts"],
   "exclude": ["node_modules", "scripts"]
 }

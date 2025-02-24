@@ -11,7 +11,8 @@ export default defineConfig(() => ({
     checker({
       typescript: true,
       eslint: {
-        lintCommand: 'eslint src --ext js,jsx,ts,tsx --max-warnings=0"'
+        useFlatConfig: true,
+        lintCommand: 'eslint src --max-warnings 0"'
       },
       enableBuild: false
     })
