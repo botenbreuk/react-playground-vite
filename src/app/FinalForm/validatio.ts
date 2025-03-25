@@ -6,7 +6,6 @@ async function findUsers() {
 
 export const usernameAvailable = simpleMemoize(async (value: string) => {
   const values = await findUsers();
-  console.log('Includes', values.includes(value.toLowerCase()));
 
   if (values.includes(value.toLowerCase())) {
     return 'Username taken!';

@@ -11,7 +11,7 @@ const specialKeys: Record<string, string> = {
   CapsLock: 'caps'
 };
 
-export function useEasetEgg({
+export function useEasterEgg({
   code,
   duration
 }: {
@@ -59,8 +59,6 @@ export function useEasetEgg({
     }
 
     function keyDownHandler(e: KeyboardEvent) {
-      console.log(e.key);
-
       setKeyPresses(current => [...current, specialKeys[e.key] || e.key]);
     }
 

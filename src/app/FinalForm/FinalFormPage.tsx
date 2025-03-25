@@ -10,7 +10,6 @@ import { FormData, validate } from './zod';
 
 export default function FinalFormPage() {
   const params = useParams();
-  console.log('Params', params);
 
   function submit(form: FormData) {
     alert(JSON.stringify(form, null, 2));

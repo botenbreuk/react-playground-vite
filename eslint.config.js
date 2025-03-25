@@ -1,11 +1,9 @@
-import { FlatCompat } from '@eslint/eslintrc';
 import pluginPrettier from 'eslint-config-prettier';
 import pluginCheckFile from 'eslint-plugin-check-file';
 import pluginImport from 'eslint-plugin-import';
 import pluginReact from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
-
-const compat = new FlatCompat();
 
 export default tseslint.config(
   tseslint.configs.recommended,
@@ -13,7 +11,7 @@ export default tseslint.config(
   pluginReact.configs.flat['jsx-runtime'],
   pluginImport.flatConfigs.recommended,
   pluginImport.flatConfigs.typescript,
-  ...compat.extends('plugin:react-hooks/recommended'),
+  reactHooks.configs['recommended-latest'],
   pluginPrettier,
   {
     plugins: {
@@ -35,7 +33,7 @@ export default tseslint.config(
       // e.g. "@typescript-eslint/explicit-function-return-type": "off",
       'import/no-unresolved': ['off'],
       'react/jsx-curly-brace-presence': ['warn', 'never'], // Removes curly braces from react properties if its not needed
-      'react/no-children-prop': 'off', // Is used to ignore error of react-popover in src/ui/InfoPopup/InfoPopup.tsx
+      'react/no-children-prop': 'off',
       '@typescript-eslint/no-explicit-any': 'off', // Allows any typing, mostly used for Record<string, any>
       'no-shadow': 'off',
       'no-unused-vars': 'off',
@@ -54,7 +52,7 @@ export default tseslint.config(
       '@typescript-eslint/naming-convention': namingConventions(),
       'check-file/filename-naming-convention': [
         'error',
-        { 'src/{core,app}/**/*.{jsx,tsx}': 'PASCAL_CASE' }
+        { 'src/{core,app,ui}/**/*.{jsx,tsx}': 'PASCAL_CASE' }
       ],
       'check-file/folder-naming-convention': [
         'warn',
@@ -84,7 +82,7 @@ function namingConventions() {
     {
       selector: 'variable',
       modifiers: ['destructured'],
-      format: ['camelCase', 'PascalCase'],
+      format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
       leadingUnderscore: 'forbid',
       trailingUnderscore: 'forbid'
     },
@@ -124,6 +122,12 @@ function namingConventions() {
       selector: 'parameter',
       modifiers: ['unused'],
       format: null
+    },
+    {
+      selector: ['classProperty'],
+      format: ['camelCase', 'UPPER_CASE'],
+      leadingUnderscore: 'forbid',
+      trailingUnderscore: 'forbid'
     },
     {
       selector: ['property', 'method'],
