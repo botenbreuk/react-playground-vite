@@ -14,7 +14,7 @@ import { Button, Icon } from '../';
 import { ModalProps } from './Modal';
 import './modal.scss';
 
-type FinalFormRenderProps<T> = FormRenderProps<T, Partial<T>>;
+type FinalFormRenderProps<T> = FormRenderProps<T>;
 
 type Props<T> = Omit<ModalProps, 'children' | 'primary'> & {
   primary: {

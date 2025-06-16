@@ -1,6 +1,7 @@
 import { JarbProps } from '@42.nl/jarb-final-form';
 import { FieldValidator } from 'final-form';
-import { useField, UseFieldConfig } from 'react-final-form';
+import { useField } from 'react-final-form';
+import { UseFieldConfig } from '../../types/final-form-types';
 import { useComposeValidators, useJarbValidators } from './jarbValidators';
 
 export type JarbFieldInputProps<FieldValue> = JarbFieldOptions<FieldValue> & {

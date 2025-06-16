@@ -1,7 +1,7 @@
-import { FieldMetaState, Form, useField } from 'react-final-form';
+import { Form, useField } from 'react-final-form';
 import { useParams } from 'react-router';
 import { Button } from 'reactstrap';
-import { FieldProps } from '../../types/final-form-types';
+import { FieldMetaState, FieldProps } from '../../types/final-form-types';
 import { Page, Spinner } from '../../ui';
 import Prompt from '../../ui/Prompt/Prompt';
 import CardPanel from '../Cards/CardPanel';
@@ -33,7 +33,10 @@ export default function FinalFormPage() {
         <Form onSubmit={submit} validate={validate}>
           {({ handleSubmit, submitting, dirty, values }) => (
             <>
-              <Prompt when={dirty} message="Are you sure you want to leave this page?" />
+              <Prompt
+                when={!!dirty}
+                message="Are you sure you want to leave this page?"
+              />
               <form onSubmit={handleSubmit}>
                 <FinalInput name="firstName" label="First name" />
                 <FinalInput name="lastName" label="Last name" />
@@ -67,7 +70,7 @@ type FinalInputProps = {
 };
 
 function FinalInput(props: FieldProps<FinalInputProps, string>) {
-  const { input, meta } = useField(props.name, { ...props });
+  const { input, meta } = useField<string>(props.name, { ...props });
 
   return (
     <div className="mb-2">
@@ -87,7 +90,7 @@ type FinalRangeProps = {
 
 function FinalRange(props: FieldProps<FinalRangeProps, number>) {
   const { label, name, minValue, maxValue, step = 1 } = props;
-  const { input, meta } = useField(name, { ...props });
+  const { input, meta } = useField<number>(name, { ...props });
 
   return (
     <div className="mb-2">
