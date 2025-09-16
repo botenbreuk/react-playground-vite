@@ -1,9 +1,9 @@
 import { get } from 'lodash';
 import { z } from 'zod';
+import { stringRequired } from './utils';
 
 export const schema = z.object({
-  firstName: z
-    .string({ required_error: 'Is verplicht' })
+  firstName: stringRequired('Voornaam')
     // .includes('Test', { message: 'bevat geen Test' })
     .refine(
       async value => {
@@ -17,7 +17,7 @@ export const schema = z.object({
       },
       { message: 'Naam bestaat al' }
     ),
-  lastName: z.string({ required_error: 'Is verplicht' }),
+  lastName: stringRequired('Achternaam'),
   petTotal: z.number().min(2, 'Minimaal 2')
 });
 
