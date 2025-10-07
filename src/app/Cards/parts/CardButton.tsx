@@ -7,7 +7,7 @@ type Props = {
   onClick?: () => void;
 };
 
-export default function CardButton(props: Props) {
+export function CardButton(props: Props) {
   const { type, color, onClick } = props;
 
   return (

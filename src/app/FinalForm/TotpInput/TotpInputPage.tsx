@@ -3,7 +3,7 @@ import { Page } from '../../../ui';
 
 import './_totp-fields.scss';
 
-export default function TotpInputPage() {
+export function TotpInputPage() {
   useEffect(() => {
     // script.js
     const inputs = document.getElementById('inputs');

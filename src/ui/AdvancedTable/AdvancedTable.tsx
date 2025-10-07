@@ -5,7 +5,7 @@ import { useLocation } from 'react-router';
 import { Table } from 'reactstrap';
 import { Spinner } from '../';
 import { Page } from '../../hooks/useLoadPage/spring-models';
-import Pagination from '../Pagination/Pagination';
+import { Pagination } from '../Pagination/Pagination';
 import './_table.scss';
 import { SortType } from './parts/TableHeader';
 

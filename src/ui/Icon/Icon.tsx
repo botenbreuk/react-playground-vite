@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import { IconType } from './';
 
 type Props = {
@@ -14,14 +14,14 @@ type Props = {
 export function Icon(props: Props) {
   const { id, type, color, onClick, onMouseOver, onMouseOut, className } = props;
 
-  const classNames = classnames(`icon ${type}`, className, {
+  const classes = clsx(`icon ${type}`, className, {
     clickable: onClick
   });
 
   return (
     <i
       id={id}
-      className={classNames}
+      className={classes}
       style={{ color }}
       onClick={onClick}
       onMouseOver={onMouseOver}

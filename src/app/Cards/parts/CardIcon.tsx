@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { Icon } from '../../../ui';
 import { IconType } from '../../../ui/Icon/icon-types';
 
@@ -8,10 +8,10 @@ type Props = {
   color?: string;
 };
 
-export default function CardIcon(props: Props) {
+export function CardIcon(props: Props) {
   const { type, bgColor, color } = props;
 
-  const className = classNames('card-icon', bgColor);
+  const className = clsx('card-icon', bgColor);
 
   return (
     <div className={className}>

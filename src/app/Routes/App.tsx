@@ -5,16 +5,16 @@ import {
   Route,
   RouterProvider
 } from 'react-router';
-import AdvancedTablePage from '../AdvancedTable/AdvancedTablePage';
-import CardBigPage from '../Cards/CardBigPage';
-import CardsPage from '../Cards/CardsPage';
+import { AdvancedTablePage } from '../AdvancedTable/AdvancedTablePage';
+import { CardBigPage } from '../Cards/CardBigPage';
+import { CardsPage } from '../Cards/CardsPage';
 import { Dashboard } from '../Dashboard/Dashboard';
-import Dnd from '../Dnd/Dnd';
-import DndExample from '../DndExample/DndExample';
+import { Dnd } from '../Dnd/Dnd';
+import { DndExample } from '../DndExample/DndExample';
 import { FinalFormApp } from '../FinalForm/FinalFormApp';
-import NotFound from '../NotFound/NotFound';
-import SettingsApp from '../Settings/SettingsApp';
-import ShuffleList from '../Shuffle/ShuffleList';
+import { NotFound } from '../NotFound/NotFound';
+import { SettingsApp } from '../Settings/SettingsApp';
+import { ShuffleList } from '../Shuffle/ShuffleList';
 
 export function App() {
   return (

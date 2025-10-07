@@ -3,7 +3,7 @@ import Pikachu from '../../../styles/images/pikachu.gif';
 import { useEasterEgg } from '../hooks/useEasterEgg';
 import './pika.scss';
 
-export default function Pika() {
+export function Pika() {
   const { active } = useEasterEgg({ code: 'pikachu', duration: 11000 });
 
   if (!active) {

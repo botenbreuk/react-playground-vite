@@ -20,7 +20,7 @@ export type JarbFieldOptions<FieldValue> = Omit<
   asyncValidatorsDebounce?: number;
 };
 
-export default function useJarbField<FieldValue>(options: JarbFieldOptions<FieldValue>) {
+export function useJarbField<FieldValue>(options: JarbFieldOptions<FieldValue>) {
   const {
     name,
     jarb,

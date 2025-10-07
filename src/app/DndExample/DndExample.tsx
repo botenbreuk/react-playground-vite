@@ -3,7 +3,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Page } from '../../ui';
 import { Container } from './Container';
 
-export default function DndExample() {
+export function DndExample() {
   return (
     <Page title="Drag and Drop page">
       <DndProvider backend={HTML5Backend}>

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import {
   Modal as BModal,
@@ -50,7 +50,7 @@ export function Modal(props: ModalProps) {
       isOpen={show}
       backdrop={!!cancel?.onClick || 'static'}
       toggle={cancel?.onClick}
-      className={classNames({ [`width-${width}`]: width })}
+      className={clsx({ [`width-${width}`]: width })}
     >
       <ModalHeader>
         <div>{title}</div>

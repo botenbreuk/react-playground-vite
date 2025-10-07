@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import { ReactNode, useEffect, useState } from 'react';
+import { clsx } from 'clsx';
+import { ReactNode, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
   Badge,
@@ -13,10 +13,10 @@ import {
 } from 'reactstrap';
 import { Icon, Page } from '../../ui';
 import { IconType } from '../../ui/Icon/icon-types';
-import DescriptionList from '../../ui/List/DescriptionList';
-import DescriptionListItem from '../../ui/List/DescriptionListItem';
-import CardPanel from './CardPanel';
-import CardIcon from './parts/CardIcon';
+import { DescriptionList } from '../../ui/List/DescriptionList';
+import { DescriptionListItem } from '../../ui/List/DescriptionListItem';
+import { CardPanel } from './CardPanel';
+import { CardIcon } from './parts/CardIcon';
 import { generateList } from './utils';
 
 export type IconColor =
@@ -40,18 +40,14 @@ export type CardObj = {
   showTime?: boolean;
 };
 
-export default function CardsPage() {
+export function CardsPage() {
   const [listMode, setListMode] = useState(false);
   const [bigCard, setBigCard] = useState<number>();
-  const [cards, setCards] = useState<CardObj[]>([]);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setCards(generateList(50));
-  }, []);
-
-  const names = classNames('card-columns', { horizontal: listMode });
+  const cards = useMemo(() => generateList(50), []);
+  const names = clsx('card-columns', { horizontal: listMode });
 
   return (
     <Page

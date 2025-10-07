@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { CSSProperties, ReactNode } from 'react';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   style?: CSSProperties;
 };
 
-export default function DescriptionList(props: Props) {
+export function DescriptionList(props: Props) {
   const {
     children,
     className,
@@ -18,7 +18,7 @@ export default function DescriptionList(props: Props) {
     horizontalLeft = false
   } = props;
 
-  const classes = classNames(
+  const classes = clsx(
     'dl mb-0',
     {
       'dl-horizontal': horizontal,

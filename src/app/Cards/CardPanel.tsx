@@ -1,10 +1,10 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { ReactNode } from 'react';
 import { Card, CardBody, CardFooter, CardHeader, CardTitle, Progress } from 'reactstrap';
 import { IconType } from '../../ui/Icon/icon-types';
-import ScrollTo from '../../ui/ScrollTo/ScrollTo';
-import CardButton from './parts/CardButton';
-import CardIcon from './parts/CardIcon';
+import { ScrollTo } from '../../ui/ScrollTo/ScrollTo';
+import { CardButton } from './parts/CardButton';
+import { CardIcon } from './parts/CardIcon';
 
 type IconBg =
   | 'bg-primary'
@@ -31,7 +31,7 @@ type Props = {
   theme?: 'lg' | 'dg' | 'lw' | 'dw' | 'wd';
 };
 
-export default function CardPanel(props: Props) {
+export function CardPanel(props: Props) {
   const {
     title,
     icon,
@@ -64,7 +64,7 @@ export default function CardPanel(props: Props) {
     return 'danger';
   }
 
-  const classes = classNames({ big: bigView }, className, `theme-${theme}`);
+  const classes = clsx({ big: bigView }, className, `theme-${theme}`);
 
   const card = (
     <Card className={classes}>

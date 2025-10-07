@@ -34,7 +34,7 @@ export type BootstrapSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
  *  )
  * }
  */
-const useBootstrapSize = () => {
+export function useBootstrapSize() {
   const [mobileSize, setMobileSize] = useState(settingMobileSize(window.innerWidth));
 
   useEffect(() => {
@@ -64,6 +64,4 @@ const useBootstrapSize = () => {
   }
 
   return mobileSize;
-};
-
-export default useBootstrapSize;
+}

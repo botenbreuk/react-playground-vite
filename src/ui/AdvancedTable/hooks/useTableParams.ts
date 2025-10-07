@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { debounce } from 'lodash';
 import { useContext, useMemo } from 'react';
 import { AdvancedTableContext } from '../AdvancedTable';
@@ -17,11 +17,11 @@ export function useTableParams({
 }: UseTableParamsOptions) {
   const { queryParams, onParamChange, sort } = useContext(AdvancedTableContext);
 
-  const paramater = paramOverride || param;
+  const parameter = paramOverride || param;
 
   function onSort() {
     let newSort: SortType | undefined;
-    if (sort?.param === paramater) {
+    if (sort?.param === parameter) {
       switch (sort?.direction) {
         case 'ASC':
           newSort = 'DESC';
@@ -39,14 +39,14 @@ export function useTableParams({
 
     onParamChange({
       ...queryParams,
-      sort: newSort ? `${paramater},${newSort}` : undefined
+      sort: newSort ? `${parameter},${newSort}` : undefined
     });
   }
 
-  const sortClassNames = classNames({
+  const sortClasses = clsx({
     sort: sortable,
-    'sort-asc': sort?.param === paramater && sort?.direction === 'ASC',
-    'sort-desc': sort?.param === paramater && sort?.direction === 'DESC'
+    'sort-asc': sort?.param === parameter && sort?.direction === 'ASC',
+    'sort-desc': sort?.param === parameter && sort?.direction === 'DESC'
   });
 
   const changeParam = useMemo(
@@ -61,5 +61,5 @@ export function useTableParams({
     [onParamChange, queryParams]
   );
 
-  return { queryParams, changeParam, sortClassNames, onSort };
+  return { queryParams, changeParam, sortClasses, onSort };
 }

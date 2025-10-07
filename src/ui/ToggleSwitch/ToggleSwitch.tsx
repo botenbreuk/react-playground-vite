@@ -5,9 +5,7 @@ type Props = {
   label?: string;
 };
 
-export default function ToggleSwitch(
-  props: Omit<FinalFieldProps<Props, boolean>, 'value'>
-) {
+export function ToggleSwitch(props: Omit<FinalFieldProps<Props, boolean>, 'value'>) {
   const { label = '' } = props;
   return (
     <label className="toggle-switch">

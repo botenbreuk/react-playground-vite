@@ -1,11 +1,11 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { ReactNode, useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router';
 import { Badge, Button, Nav, NavItem, NavLink, Popover, PopoverHeader } from 'reactstrap';
 import { FINAL_FORM_PAGE_URL } from '../../../app/FinalForm/FinalFormPage';
 import { FINAL_FORM_TOTP_FIELD_PAGE_URL } from '../../../app/FinalForm/TotpInput/TotpInputPage';
 import { IconType } from '../../Icon/icon-types';
-import Logo from '../../Logo/Logo';
+import { Logo } from '../../Logo/Logo';
 import { Icon } from '../../index';
 
 type MenuLink = {
@@ -80,7 +80,7 @@ const links = (): MenuLink[] => [
   }
 ];
 
-export default function MenuLeft(props: Props) {
+export function MenuLeft(props: Props) {
   const { isOpen, toggle } = props;
 
   const navLinks = links().map((link, index) => {
@@ -101,7 +101,7 @@ export default function MenuLeft(props: Props) {
     );
   });
 
-  const className = classNames('menu-left', { closed: !isOpen });
+  const className = clsx('menu-left', { closed: !isOpen });
 
   return (
     <div className={className}>

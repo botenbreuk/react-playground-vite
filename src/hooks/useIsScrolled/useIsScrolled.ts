@@ -4,7 +4,7 @@ type UseIsScrolledOptions = {
   scrollLimit?: number;
 };
 
-export default function useIsScrolled(options?: UseIsScrolledOptions) {
+export function useIsScrolled(options?: UseIsScrolledOptions) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {

@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { ReactNode } from 'react';
 
 type Props = {
@@ -9,10 +8,8 @@ type Props = {
 export function TableColumn(props: Props) {
   const { className, children } = props;
 
-  const classes = classNames('', className);
-
   return (
-    <td className={classes}>
+    <td className={className}>
       {typeof children === 'function' ? children() : children}
     </td>
   );

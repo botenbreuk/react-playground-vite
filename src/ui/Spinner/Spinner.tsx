@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import './spinner.scss';
 
 type Props = {
@@ -30,9 +30,10 @@ type Props = {
  */
 export function Spinner(props: Props) {
   const { className, color = 'white', stroke = 4, size } = props;
+
   return (
     <svg
-      className={classNames('spinner', className)}
+      className={clsx('spinner', className)}
       width={size}
       height={size}
       viewBox="25 25 50 50"

@@ -1,7 +1,7 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { isEmpty } from 'lodash';
 import moment, { Moment } from 'moment';
-import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import { ChangeEvent, ReactNode, useState } from 'react';
 import DateTime from 'react-datetime';
 import { Input } from 'reactstrap';
 import { Icon } from '../../';
@@ -29,18 +29,14 @@ export function TableHeader(props: Props) {
     type = 'input',
     width
   } = props;
-  const { queryParams, changeParam, sortClassNames, onSort } = useTableParams({
+  const { queryParams, changeParam, sortClasses, onSort } = useTableParams({
     param,
     sortable,
     paramOverride
   });
   const [value, setValue] = useState<string>(param ? queryParams[param] : '');
 
-  useEffect(() => {
-    setValue(param ? queryParams[param] : '');
-  }, [param, queryParams]);
-
-  const headerClassNames = classNames('th-column', className);
+  const headerClasses = clsx('th-column', className);
 
   function onChange(v: string) {
     setValue(v);
@@ -48,8 +44,8 @@ export function TableHeader(props: Props) {
   }
 
   return (
-    <th className={headerClassNames} style={{ width }}>
-      <div className={sortClassNames} onClick={sortable ? onSort : undefined}>
+    <th className={headerClasses} style={{ width }}>
+      <div className={sortClasses} onClick={sortable ? onSort : undefined}>
         <label>{label}</label>
         {sortable && <Icon type="bi-sort-up" color="muted" />}
       </div>

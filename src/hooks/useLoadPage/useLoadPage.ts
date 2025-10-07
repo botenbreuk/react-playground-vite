@@ -14,9 +14,7 @@ interface LoadPageReturn<T> {
   pageItems: Page<T>;
 }
 
-export default function useLoadPage<T, P>(
-  options: LoadPageOptions<T, P>
-): LoadPageReturn<T> {
+export function useLoadPage<T, P>(options: LoadPageOptions<T, P>): LoadPageReturn<T> {
   const { pageRequest, queryParams, pageNumber = 1, mergePages = true } = options;
   const [loading, setLoading] = useState(true);
   const [pageItems, setPageItems] = useState(emptyPage<T>());

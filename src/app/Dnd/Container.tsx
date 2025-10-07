@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Question from './Question';
-import QuestionList, { BoxType } from './QuestionList';
+import { Question } from './Question';
+import { BoxType, QuestionList } from './QuestionList';
 import { questionTypes } from './QuestionTypes';
 
-export default function Container() {
+export function Container() {
   const [questions, setQuestions] = useState<BoxType[]>([]);
 
   function addTotList(name: string) {

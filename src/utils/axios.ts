@@ -41,7 +41,7 @@ async function downloadFile(url: string, params?: Record<string, any>) {
   URL.revokeObjectURL(href);
 }
 
-export default function getAxiosError(error: any) {
+export function getAxiosError(error: any) {
   const response = (error as AxiosError<ErrorResponse>).response;
   return { ...response?.data, status: response?.status };
 }

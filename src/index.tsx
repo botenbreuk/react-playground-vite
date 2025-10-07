@@ -7,8 +7,8 @@ import { App } from './app/Routes/App';
 import './assets/main.scss';
 import { UserSettingsProvider } from './context/SettingsContext';
 import { Spinner } from './ui';
-import Firework from './ui/easter-eggs/Firework/Firework';
-import Pika from './ui/easter-eggs/Pika/Pika';
+import { Firework } from './ui/easter-eggs/Firework/Firework';
+import { Pika } from './ui/easter-eggs/Pika/Pika';
 
 // React datepicker config
 registerLocale('nl', nl);

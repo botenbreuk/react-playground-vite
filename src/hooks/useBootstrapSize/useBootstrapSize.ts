@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export type BootstrapSizes = 'xs' | 'sm' | 'md' | 'lg';
 
-const useBootstrapSize = () => {
+export function useBootstrapSize() {
   const [mobileSize, setMobileSize] = useState(settingMobileSize(window.innerWidth));
 
   useEffect(() => {
@@ -30,6 +30,4 @@ const useBootstrapSize = () => {
   }
 
   return mobileSize;
-};
-
-export default useBootstrapSize;
+}

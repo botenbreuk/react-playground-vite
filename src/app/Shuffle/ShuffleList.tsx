@@ -1,6 +1,6 @@
 import { Page } from '../../ui';
 
-export default function ShuffleList() {
+export function ShuffleList() {
   return (
     <Page title="Shuffle page">
       <textarea></textarea>

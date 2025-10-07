@@ -1,7 +1,7 @@
 import { Page } from '../../ui';
 import './_not-found.scss';
 
-export default function NotFound() {
+export function NotFound() {
   return (
     <Page>
       <div className="not-found">

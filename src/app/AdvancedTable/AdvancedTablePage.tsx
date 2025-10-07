@@ -17,17 +17,17 @@ function getPage<T = { name: string; age: number }>(items: T[]): Promise<PageTyp
   });
 }
 
-export default function AdvancedTablePage() {
+export function AdvancedTablePage() {
   return (
     <Page>
       <AdvancedTable
         loadData={() => getPage([{ name: 'test', age: 18 }])}
-        defaultParams={{}}
+        defaultParams={{ sorting: '' }}
         onParamChange={() => undefined}
         headColumns={
           <tr>
             <TableHeader label="Name" />
-            <TableHeader label="Sorting" sortable filterable />
+            <TableHeader label="Sorting" param="sorting" sortable filterable />
             <TableHeader label="Actions" />
           </tr>
         }

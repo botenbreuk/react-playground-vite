@@ -6,7 +6,7 @@ interface Options {
   margin?: number;
 }
 
-export default function useScrollTo(options: Options): void {
+export function useScrollTo(options: Options): void {
   const { scrollTo, margin = 0, element } = options;
   const [scrolled, setScrolled] = useState(false);
 

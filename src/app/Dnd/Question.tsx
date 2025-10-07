@@ -17,7 +17,7 @@ type Props = {
   onClick: (type: string) => void;
 };
 
-export default function Question(props: Props) {
+export function Question(props: Props) {
   const { name, onClick } = props;
   const [{ isDragging }, drag] = useDrag({
     type: questionTypes.NEW_QUESTION,

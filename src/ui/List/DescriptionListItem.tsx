@@ -15,7 +15,7 @@ export type Props = {
   noOverflow?: boolean;
 };
 
-export default function DescriptionListItem(props: Props) {
+export function DescriptionListItem(props: Props) {
   const {
     label,
     children,

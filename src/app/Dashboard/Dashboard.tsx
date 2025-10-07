@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Alert, Button } from 'reactstrap';
 import test from '../../assets/logo.svg';
 import { Page } from '../../ui';
-import LineText from '../../ui/LineText/LineText';
-import Logo from '../../ui/Logo/Logo';
+import { LineText } from '../../ui/LineText/LineText';
+import { Logo } from '../../ui/Logo/Logo';
 import { ModalButton } from '../../ui/Modal';
 
 export function Dashboard() {

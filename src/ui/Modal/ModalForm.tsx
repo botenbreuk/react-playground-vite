@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import arrayMutators from 'final-form-arrays';
 import { ReactNode } from 'react';
 import { Form, FormRenderProps } from 'react-final-form';
@@ -46,7 +46,7 @@ export function ModalForm<T>(props: Props<T>) {
       isOpen={show}
       backdrop={!!cancel?.onClick}
       toggle={cancel?.onClick}
-      className={classNames({ [`width-${width}`]: width })}
+      className={clsx({ [`width-${width}`]: width })}
     >
       <Form<T>
         onSubmit={primary.onClick}
@@ -65,7 +65,7 @@ export function ModalForm<T>(props: Props<T>) {
                   <input
                     className="form-control"
                     onChange={v => onSearch(v.target.value)}
-                    placeholder="Zooeken..."
+                    placeholder="Zoeken..."
                   />
                   <InputGroupText>
                     <Icon type="bi-search" />

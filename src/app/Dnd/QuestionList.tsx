@@ -1,6 +1,6 @@
 import { CSSProperties, useCallback } from 'react';
 import { useDrop } from 'react-dnd';
-import QuestionBox from './QuestionBox';
+import { QuestionBox } from './QuestionBox';
 import { questionTypes } from './QuestionTypes';
 
 const style: CSSProperties = {
@@ -25,7 +25,7 @@ type Props = {
   onChange: (value: BoxType[]) => void;
 };
 
-export default function QuestionList(props: Props) {
+export function QuestionList(props: Props) {
   const { value, onChange } = props;
 
   const [{ canDrop, isOver }, drop] = useDrop({

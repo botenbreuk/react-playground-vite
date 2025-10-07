@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import getAxiosError from '../../utils/axios';
+import { getAxiosError } from '../../utils/axios';
 
 type Return = {
   loading: boolean;
@@ -7,7 +7,7 @@ type Return = {
   setLoading: (loading: boolean) => void;
 };
 
-export default function useFnWithLoading(): Return {
+export function useFnWithLoading(): Return {
   const [loading, setLoading] = useState(false);
 
   async function fnWithLoading(fn: () => Promise<void>) {

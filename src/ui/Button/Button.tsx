@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { ButtonHTMLAttributes, ElementType, Ref } from 'react';
 import { Button as BButton } from 'reactstrap';
 import { Icon, IconType, Spinner } from '../';
@@ -42,7 +42,7 @@ export function Button(props: ButtonProps) {
   return (
     <BButton
       {...buttonProps}
-      className={classNames(className, {
+      className={clsx(className, {
         'text-uppercase': casing === 'uppercase',
         'text-lowercase': casing === 'lowercase'
       })}

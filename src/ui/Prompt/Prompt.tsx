@@ -6,7 +6,7 @@ type Props = {
   message?: string;
 };
 
-export default function Prompt(props: Props) {
+export function Prompt(props: Props) {
   const {
     when,
     message = 'Er zijn niet opgeslagen gegevens! Weet u zeker dat u de pagina wilt verlaten?'

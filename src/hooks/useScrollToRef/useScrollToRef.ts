@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import useScrollTo from '../useScrollTo/useScrollTo';
+import { useScrollTo } from '../useScrollTo/useScrollTo';
 
-export default function useScrollToRef() {
+export function useScrollToRef() {
   const ref = useRef(null);
 
   useScrollTo({

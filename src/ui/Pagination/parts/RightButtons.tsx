@@ -7,7 +7,7 @@ type Props = {
   totalPages: number;
 };
 
-export default function RightButtons(props: Props) {
+export function RightButtons(props: Props) {
   const { offset, current, totalPages, onSelect } = props;
   const buttons = [];
 

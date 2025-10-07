@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { useState } from 'react';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon';
@@ -52,7 +52,7 @@ export function JsonDebug<T>(props: Props<T>) {
       <Button className="json-debug-overlay-toggle" onClick={toggle}>
         Open JSON
       </Button>
-      <div className={classNames('json-debug-overlay', alignment)}>
+      <div className={clsx('json-debug-overlay', alignment)}>
         <pre>{JSON.stringify(keys ? getKeys() : value, null, 2)}</pre>
         <Icon type="icon-cross" onClick={toggle} />
       </div>

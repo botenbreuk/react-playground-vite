@@ -3,12 +3,12 @@ import { useParams } from 'react-router';
 import { Button } from 'reactstrap';
 import { FieldMetaState, FieldProps } from '../../types/final-form-types';
 import { Page, Spinner } from '../../ui';
-import Prompt from '../../ui/Prompt/Prompt';
-import CardPanel from '../Cards/CardPanel';
-import CardIcon from '../Cards/parts/CardIcon';
+import { Prompt } from '../../ui/Prompt/Prompt';
+import { CardPanel } from '../Cards/CardPanel';
+import { CardIcon } from '../Cards/parts/CardIcon';
 import { FormData, validate } from './zod';
 
-export default function FinalFormPage() {
+export function FinalFormPage() {
   const params = useParams();
 
   function submit(form: FormData) {

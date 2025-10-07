@@ -1,9 +1,11 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router';
 
-const SettingsPage = lazy(() => import('./SettingsPage'));
+const SettingsPage = lazy(async () => ({
+  default: (await import('./SettingsPage')).SettingsPage
+}));
 
-export default function SettingsApp() {
+export function SettingsApp() {
   return (
     <Routes>
       <Route index element={<SettingsPage />} />

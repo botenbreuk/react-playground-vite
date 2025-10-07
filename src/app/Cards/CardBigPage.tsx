@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { ReactNode, useState } from 'react';
 import {
   Card,
@@ -14,13 +14,13 @@ import {
 } from 'reactstrap';
 import { Icon, Page } from '../../ui';
 import { IconType } from '../../ui/Icon/icon-types';
-import DescriptionList from '../../ui/List/DescriptionList';
-import DescriptionListItem from '../../ui/List/DescriptionListItem';
-import CardPanel from './CardPanel';
-import CardButton from './parts/CardButton';
-import CardIcon from './parts/CardIcon';
+import { DescriptionList } from '../../ui/List/DescriptionList';
+import { DescriptionListItem } from '../../ui/List/DescriptionListItem';
+import { CardPanel } from './CardPanel';
+import { CardButton } from './parts/CardButton';
+import { CardIcon } from './parts/CardIcon';
 
-export default function CardBigPage() {
+export function CardBigPage() {
   return (
     <Page>
       <CardPanel
@@ -569,7 +569,7 @@ function ToggleCard(props: {
   } = props;
   const [show, setShow] = useState(defaultOpen);
 
-  const names = classNames('theme-wd', className);
+  const names = clsx('theme-wd', className);
 
   return (
     <Card className={names}>

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { Pagination as BPagination, PaginationItem, PaginationLink } from 'reactstrap';
 import {
   LeftButtons,
@@ -16,7 +16,7 @@ type Props = {
   maxButtons?: number;
 };
 
-export default function Pagination(props: Props) {
+export function Pagination(props: Props) {
   const { className, totalPages, activePage, onSelect, maxButtons = 5 } = props;
 
   const total = totalPages === 0 ? 1 : totalPages;
@@ -44,7 +44,7 @@ export default function Pagination(props: Props) {
   const isBackBtnActive = current === 1;
   const isNextBtnActive = current === total;
 
-  const classes = classNames('m-1', className);
+  const classes = clsx('m-1', className);
 
   return (
     <BPagination className={classes}>

@@ -5,7 +5,7 @@ type Props = {
   totalPages: number;
 };
 
-export default function MiddleButton(props: Props) {
+export function MiddleButton(props: Props) {
   const { current, totalPages } = props;
   if (current === 1 || current === totalPages) {
     return null;

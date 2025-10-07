@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { setMenuOpen, useUserSettings } from '../../context/SettingsContext';
-import useIsScrolled from '../../hooks/useIsScrolled/useIsScrolled';
+import { useIsScrolled } from '../../hooks/useIsScrolled/useIsScrolled';
 import { Icon } from '../index';
-import Header from './menu/Header';
-import MenuLeft from './menu/MenuLeft';
+import { Header } from './menu/Header';
+import { MenuLeft } from './menu/MenuLeft';
 
 interface Props {
   title?: string;

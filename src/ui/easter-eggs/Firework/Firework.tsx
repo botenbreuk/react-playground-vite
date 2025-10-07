@@ -2,7 +2,7 @@ import { Icon } from '../../';
 import { useEasterEgg } from '../hooks/useEasterEgg';
 import './_firework.scss';
 
-export default function Firework() {
+export function Firework() {
   const { active, cancel } = useEasterEgg({
     code: 'happynewyear',
     duration: 10000

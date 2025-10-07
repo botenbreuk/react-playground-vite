@@ -12,7 +12,7 @@ interface Props {
   remove: (index: number) => void;
 }
 
-export default function QuestionBox(props: Props) {
+export function QuestionBox(props: Props) {
   const { id, value, index, moveCard, remove } = props;
   const ref = useRef<HTMLDivElement>(null);
   const [, drop] = useDrop<BoxType>({

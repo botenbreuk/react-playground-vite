@@ -1,13 +1,13 @@
 import { NavLink as RRNavLink } from 'react-router';
 import { Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarText } from 'reactstrap';
-import Logo from '../../Logo/Logo';
-import MenuRight from './MenuRight';
+import { Logo } from '../../Logo/Logo';
+import { MenuRight } from './MenuRight';
 
 type Props = {
   title?: string;
 };
 
-export default function Header(props: Props) {
+export function Header(props: Props) {
   const { title } = props;
 
   return (

@@ -1,8 +1,8 @@
 import { Page } from '../../ui';
-import CardPanel from '../Cards/CardPanel';
-import CardIcon from '../Cards/parts/CardIcon';
+import { CardPanel } from '../Cards/CardPanel';
+import { CardIcon } from '../Cards/parts/CardIcon';
 
-export default function SettingsPage() {
+export function SettingsPage() {
   return (
     <Page>
       <CardPanel

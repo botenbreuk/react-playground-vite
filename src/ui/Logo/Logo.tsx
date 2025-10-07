@@ -1,13 +1,13 @@
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 
 type Props = {
   height?: number;
   className?: string;
 };
 
-export default function Logo(props: Props) {
+export function Logo(props: Props) {
   const { height, className } = props;
-  const classes = classNames('logo', className);
+  const classes = clsx('logo', className);
 
   return (
     <svg

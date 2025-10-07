@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router';
 import { Button, Col, Container, Nav, NavItem, NavLink, Row } from 'reactstrap';
 import { SETTINGS_PAGE_URL } from '../../../app/Settings/SettingsPage';
-import useOutsideClick from '../../../hooks/useOutsideClick/useOutsideClick';
+import { useOutsideClick } from '../../../hooks/useOutsideClick/useOutsideClick';
 import { Icon } from '../../index';
 
-export default function MenuRight() {
+export function MenuRight() {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useOutsideClick(toggle);
 
