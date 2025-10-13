@@ -75,6 +75,6 @@ const sortedKeys = Object.keys(packageJson.dependencies).toSorted();
   // Write to file
   fs.writeFile(`${__dirname}/${fileName}`, JSON.stringify(filtered, null, 2), err => {
     if (err) throw err;
-    console.log(`Data written to: ${__dirname}/${fileName}`);
+    console.log(`\nData written to: ${__dirname}/${fileName}`);
   });
 })();
