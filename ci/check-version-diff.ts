@@ -12,10 +12,25 @@ const __filename = fileURLToPath(import.meta.url); // get the resolved path to t
 const __dirname = path.dirname(__filename); // get the name of the directory
 const fileName = 'diff.json';
 
-function latestVersion(packageName: string) {
+// Via api
+function latestVersionApi(packageName: string) {
   return axios
     .get(`https://registry.npmjs.org/${packageName}/latest`)
     .then(res => res.data.version);
+}
+
+// Via NPM command
+function latestVersionCmd(packageName: string): Promise<string> {
+  return new Promise((resolve, reject) =>
+    exec(`npm view ${packageName} version --json`, (error, stdout, stderr) => {
+      if (error) {
+        reject(new Error(stderr));
+        return;
+      }
+
+      resolve(JSON.parse(stdout));
+    })
+  );
 }
 
 function check(
@@ -30,7 +45,7 @@ function check(
   latest: string;
 }> {
   return new Promise(async (resolve, reject) => {
-    const latest = await latestVersion(packageName);
+    const latest = await latestVersionApi(packageName);
     exec(`npm show ${packageName} time --json`, (error, stdout, stderr) => {
       if (error) {
         reject(new Error(stderr));
