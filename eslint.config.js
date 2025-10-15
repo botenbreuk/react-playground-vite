@@ -11,11 +11,11 @@ export default tseslint.config(
   pluginReact.configs.flat['jsx-runtime'],
   pluginImport.flatConfigs.recommended,
   pluginImport.flatConfigs.typescript,
+  reactHooks.configs.flat['recommended-latest'],
   pluginPrettier,
   {
     plugins: {
-      'check-file': pluginCheckFile,
-      'react-hooks': reactHooks
+      'check-file': pluginCheckFile
     },
     languageOptions: {
       parserOptions: {
