@@ -1,8 +1,0 @@
-{
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
-  "rules": {
-    "declaration-empty-line-before": "never",
-    "color-function-notation": null,
-    "hue-degree-notation": null
-  }
-}

@@ -4,12 +4,12 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noImplicitReturns": true,
@@ -18,6 +18,6 @@
     "jsx": "react-jsx",
     "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["src", "eslint.config.js", "vite.config.ts", "ci"],
+  "include": ["src", "eslint.config.js", "vite.config.ts", "stylelint.config.js", "ci"],
   "exclude": ["node_modules", "scripts"]
 }

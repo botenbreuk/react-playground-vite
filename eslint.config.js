@@ -11,7 +11,7 @@ export default tseslint.config(
   pluginReact.configs.flat['jsx-runtime'],
   pluginImport.flatConfigs.recommended,
   pluginImport.flatConfigs.typescript,
-  reactHooks.configs.flat['recommended-latest'],
+  reactHooks.configs.flat.recommended,
   pluginPrettier,
   {
     plugins: {
@@ -19,6 +19,7 @@ export default tseslint.config(
     },
     languageOptions: {
       parserOptions: {
+        ecmaVersion: 'latest',
         projectService: true
       }
     },

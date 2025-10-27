@@ -10,6 +10,9 @@ export default defineConfig(() => ({
     react(),
     checker({
       typescript: true,
+      stylelint: {
+        lintCommand: 'stylelint \"src/**/*.scss\"'
+      },
       eslint: {
         useFlatConfig: true,
         lintCommand: 'eslint src --max-warnings 0"'
@@ -22,7 +25,7 @@ export default defineConfig(() => ({
     emptyOutDir: true,
     outDir: './build',
     minify: 'terser',
-    terserOptions: { output: { comments: false } },
+    terserOptions: { format: { comments: false } },
     rollupOptions: {
       output: {
         assetFileNames: assetInfo => {
