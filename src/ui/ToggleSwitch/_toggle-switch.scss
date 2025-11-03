@@ -6,6 +6,10 @@ $transform: $switch-size-w / 2.5;
 $unchecked-bg: hsl(0, 0%, 76%);
 $checked-bg: $brand-primary;
 
+input {
+  accent-color: $checked-bg;
+}
+
 .toggle-switch {
   display: inline-flex;
   align-items: center;
@@ -32,9 +36,7 @@ $checked-bg: $brand-primary;
       &:checked + .slider {
         background-color: $checked-bg;
 
-        &:before {
-          -webkit-transform: translateX($transform) !important;
-          -moz-transform: translateX($transform / 1.5) !important;
+        &::before {
           transform: translateX($transform / 1.3);
         }
       }
@@ -46,7 +48,7 @@ $checked-bg: $brand-primary;
 
     /* The slider */
     .slider {
-      &:before {
+      &::before {
         content: '';
         display: flex;
         align-self: baseline;
@@ -56,7 +58,7 @@ $checked-bg: $brand-primary;
       }
 
       &.round {
-        &:before {
+        &::before {
           border-radius: 50%;
         }
       }
@@ -66,8 +68,4 @@ $checked-bg: $brand-primary;
       background-color: $checked-bg;
     }
   }
-}
-
-input {
-  accent-color: $checked-bg;
 }

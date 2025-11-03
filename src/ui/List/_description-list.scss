@@ -44,14 +44,14 @@
         /* This will make it work in Firefox >= 35.0a1 */
         min-width: 0;
         flex-basis: 40%;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
 
       dd {
         margin-left: 0;
         flex-basis: 60%;
         min-width: 0;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
     }
   }

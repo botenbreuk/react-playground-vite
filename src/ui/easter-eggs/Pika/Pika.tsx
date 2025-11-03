@@ -1,5 +1,5 @@
-import Pikachu2 from '../../../styles/images/pikachu-running.gif';
-import Pikachu from '../../../styles/images/pikachu.gif';
+import Pikachu2 from '../../../assets/images/pikachu-running.gif';
+import Pikachu from '../../../assets/images/pikachu.gif';
 import { useEasterEgg } from '../hooks/useEasterEgg';
 import './pika.scss';
 

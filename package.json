@@ -72,7 +72,7 @@
     "preview": "vite build --mode preview && vite preview",
     "start": "vite",
     "start-api": "cd _rest-api && npm start",
-    "stylelint": "stylelint src/**/*.{css,scss}",
+    "stylelint": "stylelint \"src/**/*.{css,scss}\"",
     "stylelint-check": "stylelint-config-prettier-scss-check",
     "test-all": "npm run check-dependencies && npm run lint && npm run ts",
     "ts": "tsc --version && tsc"
