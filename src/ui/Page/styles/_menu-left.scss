@@ -95,6 +95,7 @@
       grid-area: middle;
       padding-top: 1rem;
 
+      /* stylelint-disable-next-line no-descending-specificity */
       & a {
         flex-direction: column;
         gap: 0;

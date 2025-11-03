@@ -1,3 +1,4 @@
+import { lazy } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -16,6 +17,10 @@ import { NotFound } from '../NotFound/NotFound';
 import { SettingsApp } from '../Settings/SettingsApp';
 import { ShuffleList } from '../Shuffle/ShuffleList';
 
+const ContactPage = lazy(() =>
+  import('../Contact/ContactPage').then(m => ({ default: m.ContactPage }))
+);
+
 export function App() {
   return (
     <RouterProvider
@@ -28,6 +33,7 @@ export function App() {
                 <Route index element={<CardsPage />} />
                 <Route path="big" element={<CardBigPage />} />
               </Route>
+              <Route path="contact" element={<ContactPage />} />
               <Route path="shuffle" element={<ShuffleList />} />
               <Route path="dnd" element={<Dnd />} />
               <Route path="dnd-sort" element={<DndExample />} />

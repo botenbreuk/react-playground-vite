@@ -37,6 +37,14 @@ export function stringRequired(label: string) {
     .min(1, { error: `${label} is verplicht` });
 }
 
+export function emailRequired(label: string) {
+  return z
+    .email({
+      error: issue => (!issue.input ? `${label} is verplicht` : undefined)
+    })
+    .min(1, { error: `${label} is verplicht` });
+}
+
 export function required(label: string) {
   return {
     required: { value: true, message: `${label} is verplicht` },

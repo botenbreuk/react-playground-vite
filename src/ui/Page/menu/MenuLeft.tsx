@@ -2,6 +2,7 @@ import { clsx } from 'clsx';
 import { ReactNode, useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router';
 import { Badge, Button, Nav, NavItem, NavLink, Popover, PopoverHeader } from 'reactstrap';
+import { toContact } from '../../../app/Contact/ContactPage';
 import { FINAL_FORM_PAGE_URL } from '../../../app/FinalForm/FinalFormPage';
 import { FINAL_FORM_TOTP_FIELD_PAGE_URL } from '../../../app/FinalForm/TotpInput/TotpInputPage';
 import { IconType } from '../../Icon/icon-types';
@@ -36,6 +37,11 @@ const links = (): MenuLink[] => [
     icon: 'bi-card-list',
     url: '/cards',
     label: 'Cards example'
+  },
+  {
+    icon: 'bi-headset',
+    url: toContact(),
+    label: 'Contact'
   },
   {
     icon: 'bi-card-image',

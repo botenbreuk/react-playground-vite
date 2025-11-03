@@ -9,7 +9,7 @@ type Props = {
 export function Prompt(props: Props) {
   const {
     when,
-    message = 'Er zijn niet opgeslagen gegevens! Weet u zeker dat u de pagina wilt verlaten?'
+    message = 'Form has changes. Are you sure you want to leave this page?'
   } = props;
 
   const blocker = useBlocker(
