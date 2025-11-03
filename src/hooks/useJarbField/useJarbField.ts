@@ -41,9 +41,10 @@ export function useJarbField<FieldValue>(options: JarbFieldOptions<FieldValue>) 
     validate
   });
 
-  const onChange = fieldProps.input.onChange;
-  fieldProps.input.onChange = (value: FieldValue) => {
+  const copy = { ...fieldProps };
+  const onChange = copy.input.onChange;
+  copy.input.onChange = (value: FieldValue) => {
     onChange(value);
   };
-  return fieldProps;
+  return copy;
 }

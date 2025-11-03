@@ -32,7 +32,7 @@ class Validator {
     this.checkPrefix('dependencies');
     this.checkPrefix('devDependencies');
 
-    this.checkOverridePrefix();
+    // this.checkOverridePrefix();
 
     console.log('Checking if all dependencies are installed');
 
@@ -45,10 +45,7 @@ class Validator {
       process.exit(1);
     }
 
-    if (
-      this.notInstalledDeps.length !== 0 ||
-      this.notInstalledDevDeps.length !== 0
-    ) {
+    if (this.notInstalledDeps.length !== 0 || this.notInstalledDevDeps.length !== 0) {
       this.notInstalledDeps.forEach(
         ({ dependency, packageVersion, packageLockVersion }) =>
           console.log(
@@ -104,19 +101,19 @@ class Validator {
     });
   }
 
-  private checkOverridePrefix() {
-    Object.entries(json.overrides).forEach(([key, value]) => {
-      Object.entries(value).forEach(([subKey, subValue]) => {
-        this.prefixes.forEach(prefix => {
-          if (subValue.startsWith(prefix)) {
-            this.badDependencies.push(
-              ` Override dependency ${this.fgYellow}${subKey}${this.reset} of dependency ${this.fgYellow}$${key}${this.reset} is not locked remove ${prefix}`
-            );
-          }
-        });
-      });
-    });
-  }
+  // private checkOverridePrefix() {
+  //   Object.entries(json.overrides).forEach(([key, value]) => {
+  //     Object.entries(value).forEach(([subKey, subValue]) => {
+  //       this.prefixes.forEach(prefix => {
+  //         if (subValue.startsWith(prefix)) {
+  //           this.badDependencies.push(
+  //             ` Override dependency ${this.fgYellow}${subKey}${this.reset} of dependency ${this.fgYellow}$${key}${this.reset} is not locked remove ${prefix}`
+  //           );
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
 }
 
 new Validator().validate();

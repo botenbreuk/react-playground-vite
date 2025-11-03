@@ -11,6 +11,22 @@ import { useEffect, useState } from 'react';
  */
 export type BootstrapSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
+function settingMobileSize(width: number): BootstrapSizes {
+  if (width < 576) {
+    return 'xs';
+  } else if (width >= 576 && width < 768) {
+    return 'sm';
+  } else if (width >= 768 && width < 992) {
+    return 'md';
+  } else if (width >= 992 && width < 1200) {
+    return 'lg';
+  } else if (width >= 1200) {
+    return 'xl';
+  } else {
+    return 'xl';
+  }
+}
+
 /**
  * This hook returns the type of Bootstrap 4 size based on the screen width.
  *
@@ -37,31 +53,15 @@ export type BootstrapSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export function useBootstrapSize() {
   const [mobileSize, setMobileSize] = useState(settingMobileSize(window.innerWidth));
 
+  function updateWindowDimensions() {
+    setMobileSize(settingMobileSize(window.innerWidth));
+  }
+
   useEffect(() => {
     window.addEventListener('resize', updateWindowDimensions);
 
     return () => window.removeEventListener('resize', updateWindowDimensions);
   });
-
-  function updateWindowDimensions() {
-    setMobileSize(settingMobileSize(window.innerWidth));
-  }
-
-  function settingMobileSize(width: number): BootstrapSizes {
-    if (width < 576) {
-      return 'xs';
-    } else if (width >= 576 && width < 768) {
-      return 'sm';
-    } else if (width >= 768 && width < 992) {
-      return 'md';
-    } else if (width >= 992 && width < 1200) {
-      return 'lg';
-    } else if (width >= 1200) {
-      return 'xl';
-    } else {
-      return 'xl';
-    }
-  }
 
   return mobileSize;
 }
