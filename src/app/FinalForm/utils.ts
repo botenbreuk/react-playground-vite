@@ -29,6 +29,12 @@ export const composeValidators =
   async (value: T, allValues: Record<string, any>, meta?: FieldState<T>) =>
     await Promise.resolve(validators.map(val => val(value, allValues, meta)));
 
+export function enumRequired(label: string, values: string[]) {
+  return z.enum(values, {
+    error: issue => (!issue.input ? `${label} is verplicht` : undefined)
+  });
+}
+
 export function stringRequired(label: string) {
   return z
     .string({

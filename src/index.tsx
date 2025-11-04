@@ -4,11 +4,13 @@ import { StrictMode, Suspense } from 'react';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { createRoot } from 'react-dom/client';
 import { App } from './app/Routes/App';
-import './assets/main.scss';
 import { UserSettingsProvider } from './context/SettingsContext';
 import { Spinner } from './ui';
 import { Firework } from './ui/easter-eggs/Firework/Firework';
 import { Pika } from './ui/easter-eggs/Pika/Pika';
+
+import '@mdxeditor/editor/style.css';
+import './assets/main.scss';
 
 // React datepicker config
 registerLocale('nl', nl);
