@@ -3,6 +3,7 @@
 @use 'sass:map';
 
 @import './variables';
+@import '@mdxeditor/editor/style.css';
 @import 'bootstrap/scss/bootstrap';
 @import 'react-datepicker/dist/react-datepicker.css';
 

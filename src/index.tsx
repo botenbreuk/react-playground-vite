@@ -9,7 +9,6 @@ import { Spinner } from './ui';
 import { Firework } from './ui/easter-eggs/Firework/Firework';
 import { Pika } from './ui/easter-eggs/Pika/Pika';
 
-import '@mdxeditor/editor/style.css';
 import './assets/main.scss';
 
 // React datepicker config
