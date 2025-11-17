@@ -25,7 +25,10 @@ export default defineConfig(() => ({
     emptyOutDir: true,
     outDir: './build',
     minify: 'terser',
-    terserOptions: { format: { comments: false } },
+    terserOptions: {
+      format: { comments: false },
+      compress: { pure_funcs: ['console.log', 'console.info'] }
+    },
     rollupOptions: {
       output: {
         assetFileNames: assetInfo => {
