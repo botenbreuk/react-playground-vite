@@ -1,35 +1,53 @@
-import moment, { Moment } from 'moment';
-import 'moment/locale/nl';
-import { DateFormatType, MomentType } from './types';
+import { UTCDate } from '@date-fns/utc';
+import { format as dateFormat, parseISO, setDefaultOptions } from 'date-fns';
+import { nl } from 'date-fns/locale/nl';
 
-const dateFormat = {
-  SHORT: 'D-M-Y H:mm',
-  DEFAULT: 'DD-MM-YYYY HH:mm',
-  LONG: 'LLLL',
-  LONG_DATE: 'LL',
-  DETAILED: 'DD-MM-YYYY HH:mm:ss'
+setDefaultOptions({ locale: nl });
+
+const dateFormats = {
+  SHORT: 'd-M-y H:mm',
+  DEFAULT: 'dd-MM-yyyy HH:mm',
+  DATE_LONG: 'dd-MM-yyyy',
+  LONG: 'EEEE d MMMM yyyy HH:mm',
+  LONG_DATE: 'EEEE d MMMM yyyy',
+  DETAILED: 'dd-MM-yyyy HH:mm:ss'
 };
 
-export function format(date?: MomentType | null, type?: DateFormatType) {
-  if (date === undefined || date === null) {
+export function format(
+  date: Date | string | null | undefined,
+  type: keyof typeof dateFormats = 'DEFAULT'
+) {
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+
+  if (!date) {
     return '-';
   }
 
-  if (typeof date === 'string') {
-    date = moment.utc(date);
-  }
-
-  const formatType = type || 'DEFAULT';
-
-  return date.isValid() ? date.format(dateFormat[formatType]) : '';
+  return dateFormat(date, dateFormats[type]);
 }
 
 export function now() {
-  return moment.utc(new Date().toLocaleString('nl-NL'), 'DD-M-YYYY HH:mm:ss');
+  return new UTCDate();
 }
 
-export function toISOString(date?: Moment) {
-  return date ? moment.utc(date).toISOString() : '';
+export function roundTime(date: Date) {
+  const minutes = date.getMinutes();
+  let hours = date.getHours();
+
+  const m = (Math.round(minutes / 15) * 15) % 60;
+  const h = minutes > 52 ? (hours === 23 ? 0 : ++hours) : hours;
+
+  return { minutes: m, hours: h };
+}
+
+export function fromString(value: string) {
+  return parseISO(value);
+}
+
+export function toString(value: Date) {
+  return dateFormat(value, "yyyy-MM-dd'T'HH:mm:ss.SSS");
 }
 
 export * as dateUtils from './';

@@ -34,6 +34,7 @@ export default defineConfig(
       // TODO Fix later
       'react-hooks/refs': ['off'],
       'react-hooks/set-state-in-effect': ['off'],
+      'react-hooks/immutability': ['off'],
       // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
       // e.g. "@typescript-eslint/explicit-function-return-type": "off",
       'import/no-unresolved': ['off'],
