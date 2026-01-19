@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { DatePicker } from 'react-datepicker';
 import { Alert, Button } from 'reactstrap';
 import test from '../../assets/logo.svg';
 import { Page } from '../../ui';
@@ -73,6 +74,7 @@ export function Dashboard() {
           className="lead"
           style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem' }}
         >
+          <DatePicker timeFormat="HH:mm" showTimeSelect />
           <Button color="primary" outline>
             Learn More
           </Button>
