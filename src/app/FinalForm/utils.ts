@@ -80,9 +80,11 @@ async function validateFormValues<T>(values: T, schema: z.ZodSchema) {
     return undefined;
   } catch (e) {
     if (e instanceof z.ZodError) {
-      return e.issues.reduce((formError: object, issue: z.ZodIssue) => {
-        return setIn(formError, issue.path.join('.'), issue.message);
-      }, {});
+      return e.issues.reduce(
+        (formError: object, issue: z.ZodIssue) =>
+          setIn(formError, issue.path.join('.'), issue.message),
+        {}
+      );
     }
     throw e; // rethrow the error if it's not a ZodError
   }

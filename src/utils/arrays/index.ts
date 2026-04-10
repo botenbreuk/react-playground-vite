@@ -44,8 +44,12 @@ export function sort<T>(
       return order === 'asc' ? aValue - bValue : bValue - aValue;
     }
 
-    if (aValue < bValue) return order === 'asc' ? -1 : 1;
-    if (aValue > bValue) return order === 'asc' ? 1 : -1;
+    if (aValue < bValue) {
+      return order === 'asc' ? -1 : 1;
+    }
+    if (aValue > bValue) {
+      return order === 'asc' ? 1 : -1;
+    }
     return 0;
   };
 }

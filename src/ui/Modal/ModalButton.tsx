@@ -48,7 +48,9 @@ export function ModalButton(props: ModalButtonProps) {
 
   function onButtonCLick() {
     setError(undefined);
-    if (button.onClick) button.onClick(!isOpen);
+    if (button.onClick) {
+      void button.onClick(!isOpen);
+    }
     toggle();
   }
 

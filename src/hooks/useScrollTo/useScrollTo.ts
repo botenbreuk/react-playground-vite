@@ -1,10 +1,10 @@
 import { MutableRefObject, useEffect, useState } from 'react';
 
-interface Options {
+type Options = {
   scrollTo: MutableRefObject<any>;
   element?: Element;
   margin?: number;
-}
+};
 
 export function useScrollTo(options: Options): void {
   const { scrollTo, margin = 0, element } = options;

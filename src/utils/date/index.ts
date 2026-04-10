@@ -37,7 +37,11 @@ export function roundTime(date: Date) {
   let hours = date.getHours();
 
   const m = (Math.round(minutes / 15) * 15) % 60;
-  const h = minutes > 52 ? (hours === 23 ? 0 : ++hours) : hours;
+  let h = hours;
+
+  if (minutes > 52) {
+    h = hours === 23 ? 0 : ++hours;
+  }
 
   return { minutes: m, hours: h };
 }

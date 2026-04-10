@@ -53,7 +53,7 @@ export function CardsPage() {
     <Page
       filter={
         <>
-          <div className="left"></div>
+          <div className="left" />
           <div className="right">
             <Icon
               type={listMode ? 'bi-grid-3x3-gap-fill' : 'bi-list'}

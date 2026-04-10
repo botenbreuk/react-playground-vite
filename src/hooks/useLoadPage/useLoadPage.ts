@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Page, emptyPage } from './spring-models';
 
-interface LoadPageOptions<T, P> {
+type LoadPageOptions<T, P> = {
   pageRequest: (pageNumber: number, queryParams: P) => Promise<Page<T>>;
   queryParams?: P;
   pageNumber?: number;
   mergePages?: boolean;
-}
+};
 
-interface LoadPageReturn<T> {
+type LoadPageReturn<T> = {
   loading: boolean;
   loadPage: (pageNumber: number) => void;
   pageItems: Page<T>;
-}
+};
 
 export function useLoadPage<T, P>(options: LoadPageOptions<T, P>): LoadPageReturn<T> {
   const { pageRequest, queryParams, pageNumber = 1, mergePages = true } = options;
@@ -40,7 +40,7 @@ export function useLoadPage<T, P>(options: LoadPageOptions<T, P>): LoadPageRetur
   );
 
   useEffect(() => {
-    async function init() {
+    void (async () => {
       setLoading(true);
       if (!queryParams) {
         await loadPageWithoutParams(pageNumber);
@@ -48,9 +48,7 @@ export function useLoadPage<T, P>(options: LoadPageOptions<T, P>): LoadPageRetur
         await loadPage(pageNumber);
       }
       setLoading(false);
-    }
-
-    init();
+    })();
   }, [loadPage, loadPageWithoutParams, queryParams, pageNumber]);
 
   return { loading, loadPage, pageItems };

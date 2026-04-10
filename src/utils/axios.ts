@@ -10,7 +10,7 @@ async function downloadFile(url: string, params?: Record<string, any>) {
   const queryString = params
     ? Object.keys(params)
         .filter(key => params[key])
-        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
         .join('&')
     : '';
   const newUrl = isEmpty(queryString) ? url : `${url}?${queryString}`;

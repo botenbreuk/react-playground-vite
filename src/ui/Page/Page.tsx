@@ -5,12 +5,12 @@ import { Icon } from '../index';
 import { Header } from './menu/Header';
 import { MenuLeft } from './menu/MenuLeft';
 
-interface Props {
+type Props = {
   title?: string;
   filter?: ReactNode;
   children?: ReactNode | ReactNode[];
   scrollToTop?: boolean;
-}
+};
 
 export function Page(props: Props) {
   const { title, filter, children, scrollToTop = false } = props;

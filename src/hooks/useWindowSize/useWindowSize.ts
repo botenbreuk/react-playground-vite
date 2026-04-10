@@ -3,19 +3,19 @@ import { useLayoutEffect, useState } from 'react';
 export function useWindowSize() {
   const [windowSize, setWindowSize] = useState<number>();
 
+  function updateWindowDimensions() {
+    setWindowSize(document.documentElement.clientWidth);
+  }
+
   useLayoutEffect(() => {
     if (!windowSize) {
-      setWindowSize(document.documentElement.clientWidth);
+      updateWindowDimensions();
     } else {
       window.addEventListener('resize', updateWindowDimensions);
     }
 
     return () => window.removeEventListener('resize', updateWindowDimensions);
   }, [windowSize]);
-
-  function updateWindowDimensions() {
-    setWindowSize(document.documentElement.clientWidth);
-  }
 
   return windowSize || 0;
 }

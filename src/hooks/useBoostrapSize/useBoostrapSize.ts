@@ -22,9 +22,8 @@ function settingMobileSize(width: number): BootstrapSizes {
     return 'lg';
   } else if (width >= 1200) {
     return 'xl';
-  } else {
-    return 'xl';
   }
+  return 'xl';
 }
 
 /**

@@ -22,7 +22,7 @@ export function TotpInputPage() {
           return;
         }
 
-        if (val != '') {
+        if (val !== '') {
           const next = target.nextElementSibling as HTMLElement;
           if (next) {
             next.focus();
@@ -36,13 +36,12 @@ export function TotpInputPage() {
         const target = e.target;
         const key = e.key.toLowerCase();
 
-        if (key == 'backspace' || key == 'delete') {
+        if (key === 'backspace' || key === 'delete') {
           target.value = '';
           const prev = target.previousElementSibling as HTMLElement;
           if (prev) {
             prev.focus();
           }
-          return;
         }
       }
     });

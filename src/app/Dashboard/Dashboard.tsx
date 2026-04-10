@@ -12,7 +12,7 @@ export function Dashboard() {
   const [version, setVersion] = useState('');
 
   useEffect(() => {
-    async function fetchStatus() {
+    void (async () => {
       const [response, actuator] = await Promise.all([
         fetch('/api/status'),
         fetch('/api/actuator/info')
@@ -24,9 +24,7 @@ export function Dashboard() {
 
       setStatus(!!responseStatus);
       setVersion(apiVersion);
-    }
-
-    fetchStatus();
+    })();
   }, []);
 
   return (

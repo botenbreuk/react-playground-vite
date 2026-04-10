@@ -89,23 +89,21 @@ const links = (): MenuLink[] => [
 export function MenuLeft(props: Props) {
   const { isOpen, toggle } = props;
 
-  const navLinks = links().map((link, index) => {
-    return (
-      <NavItem key={link.url}>
-        <PopoverIcon id={`${index}`} title={link.label} isActive={!isOpen}>
-          <NavLink to={link.url} tag={RRNavLink} end disabled={link.disabled}>
-            {isOpen && `${link.label} `}
-            {isOpen && link.badgeNumber && link.badgeNumber > 0 && (
-              <Badge className="bg-danger" pill>
-                {link.badgeNumber}
-              </Badge>
-            )}
-            {link.icon && <Icon type={link.icon} />}
-          </NavLink>
-        </PopoverIcon>
-      </NavItem>
-    );
-  });
+  const navLinks = links().map((link, index) => (
+    <NavItem key={link.url}>
+      <PopoverIcon id={`${index}`} title={link.label} isActive={!isOpen}>
+        <NavLink to={link.url} tag={RRNavLink} end disabled={link.disabled}>
+          {isOpen && `${link.label} `}
+          {isOpen && link.badgeNumber && link.badgeNumber > 0 && (
+            <Badge className="bg-danger" pill>
+              {link.badgeNumber}
+            </Badge>
+          )}
+          {link.icon && <Icon type={link.icon} />}
+        </NavLink>
+      </PopoverIcon>
+    </NavItem>
+  ));
 
   const className = clsx('menu-left', { closed: !isOpen });
 

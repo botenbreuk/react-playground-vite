@@ -467,7 +467,7 @@ export function CardBigPage() {
 
           <div className="input-group">
             <span className="input-group-text">With textarea</span>
-            <textarea className="form-control" aria-label="With textarea"></textarea>
+            <textarea className="form-control" aria-label="With textarea" />
           </div>
         </div>
         <div className="mb-3">

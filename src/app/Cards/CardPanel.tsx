@@ -105,5 +105,9 @@ export function CardPanel(props: Props) {
     </Card>
   );
 
-  return bigView ? <ScrollTo>{card}</ScrollTo> : card;
+  if (bigView) {
+    return <ScrollTo>{card}</ScrollTo>;
+  }
+
+  return card;
 }

@@ -1,11 +1,11 @@
 import { PaginationItem, PaginationLink } from 'reactstrap';
 
-interface ButtonsProps {
+type ButtonsProps = {
   offset: number;
   current: number;
   onSelect: (page: number) => void;
   totalPages: number;
-}
+};
 
 export function LeftButtons({ offset, current, onSelect }: ButtonsProps) {
   const buttons = [];
@@ -24,5 +24,5 @@ export function LeftButtons({ offset, current, onSelect }: ButtonsProps) {
     );
   }
 
-  return <>{buttons}</>;
+  return buttons;
 }

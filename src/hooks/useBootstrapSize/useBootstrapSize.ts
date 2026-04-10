@@ -11,9 +11,8 @@ function settingMobileSize(width: number): BootstrapSizes {
     return 'md';
   } else if (width >= 1200) {
     return 'lg';
-  } else {
-    return 'lg';
   }
+  return 'lg';
 }
 
 export function useBootstrapSize() {

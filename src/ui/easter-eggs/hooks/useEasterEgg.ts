@@ -29,9 +29,8 @@ export function useEasterEgg({
     if (duration && active) {
       const cancelTime = setTimeout(() => setActive(false), duration);
       return () => clearTimeout(cancelTime);
-    } else {
-      return () => undefined;
     }
+    return () => undefined;
   }, [active, duration]);
 
   useEffect(() => {
@@ -42,9 +41,8 @@ export function useEasterEgg({
 
       const timer = setTimeout(reset, 2000);
       return () => clearTimeout(timer);
-    } else {
-      return () => undefined;
     }
+    return () => undefined;
   }, [keyPresses]);
 
   useEffect(() => {
@@ -73,9 +71,15 @@ export function useEasterEgg({
 }
 
 function arrayEquals(a: string[], b: string[]) {
-  if (a === b) return true;
-  if (a == null || b == null) return false;
-  if (a.length !== b.length) return false;
+  if (a === b) {
+    return true;
+  }
+  if (a == null || b == null) {
+    return false;
+  }
+  if (a.length !== b.length) {
+    return false;
+  }
 
   // If you don't care about the order of the elements inside
   // the array, you should sort both arrays here.
@@ -83,7 +87,9 @@ function arrayEquals(a: string[], b: string[]) {
   // you might want to clone your array first.
 
   for (let i = 0; i < a.length; ++i) {
-    if (a[i] !== b[i]) return false;
+    if (a[i] !== b[i]) {
+      return false;
+    }
   }
   return true;
 }

@@ -25,5 +25,5 @@ export function RightButtons(props: Props) {
     );
   }
 
-  return <>{buttons}</>;
+  return buttons;
 }

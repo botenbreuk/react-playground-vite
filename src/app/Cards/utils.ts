@@ -9,7 +9,7 @@ const titles: string[] = [
 ];
 const icons: IconType[] = ['icon-onderhoud', 'icon-bolt', 'icon-broken'];
 const iconGbs: IconColor[] = ['bg-danger', 'bg-warning', 'bg-orange'];
-const progesses: number[] = [15, 25, 40, 55, 75, 100];
+const progresses: number[] = [15, 25, 40, 55, 75, 100];
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
@@ -26,7 +26,7 @@ export function generateList(total: number) {
       footer: getRandomInt(20) <= 5 ? 'Footer text' : undefined,
       buttonClick: getRandomInt(20) <= 5 ? () => console.log('Hallow') : undefined,
       progress:
-        getRandomInt(20) <= 5 ? progesses[getRandomInt(progesses.length)] : undefined,
+        getRandomInt(20) <= 5 ? progresses[getRandomInt(progresses.length)] : undefined,
       customEdit: getRandomInt(100) < 10,
       showTime: getRandomInt(100) < 50
     });

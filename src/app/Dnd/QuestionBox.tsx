@@ -4,13 +4,13 @@ import { Button, Col, Row } from 'reactstrap';
 import { BoxType } from './QuestionList';
 import { questionTypes } from './QuestionTypes';
 
-interface Props {
+type Props = {
   id: any;
   value: BoxType;
   index: number;
   moveCard: (dragIndex: number, hoverIndex: number) => void;
   remove: (index: number) => void;
-}
+};
 
 export function QuestionBox(props: Props) {
   const { id, value, index, moveCard, remove } = props;

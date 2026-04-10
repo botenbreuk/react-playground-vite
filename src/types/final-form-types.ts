@@ -4,7 +4,6 @@ import {
   FieldInputProps,
   FieldRenderProps
 } from 'react-final-form';
-import { JarbFieldInputProps } from '../hooks/useJarbField/useJarbField';
 
 type InputProps<FieldValue> = Pick<
   FieldInputProps<FieldValue, any>,
@@ -16,8 +15,7 @@ export type FinalFieldProps<P, FieldValue> = P &
   Partial<Pick<InputProps<FieldValue>, 'onBlur'>>;
 
 export type FieldProps<P, FieldValue> = P &
-  UseFieldConfig<FieldValue> &
-  Pick<JarbFieldInputProps<FieldValue>, 'fieldName' | 'name'>;
+  UseFieldConfig<FieldValue> & { fieldName?: string; name: string };
 
 export type UseFieldConfig<FieldValue> = Omit<
   FFUseFieldConfig,
