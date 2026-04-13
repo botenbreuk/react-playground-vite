@@ -23,7 +23,7 @@ export function Page(props: Props) {
   }
 
   return (
-    <div className="container-page bg-dark">
+    <div className="container-page">
       <MenuLeft isOpen={menuOpen} toggle={toggle} />
       <div className="page-content">
         <div className="navbars">

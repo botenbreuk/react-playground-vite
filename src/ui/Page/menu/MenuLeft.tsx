@@ -1,12 +1,10 @@
 import { clsx } from 'clsx';
-import { ReactNode, useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router';
-import { Badge, Button, Nav, NavItem, NavLink, Popover, PopoverHeader } from 'reactstrap';
+import { Badge, Nav, NavItem, NavLink } from 'reactstrap';
 import { toContact } from '../../../app/Contact/ContactPage';
 import { FINAL_FORM_PAGE_URL } from '../../../app/FinalForm/FinalFormPage';
 import { FINAL_FORM_TOTP_FIELD_PAGE_URL } from '../../../app/FinalForm/TotpInput/TotpInputPage';
 import { IconType } from '../../Icon/icon-types';
-import { Logo } from '../../Logo/Logo';
 import { Icon } from '../../index';
 
 type MenuLink = {
@@ -37,11 +35,6 @@ const links = (): MenuLink[] => [
     icon: 'bi-card-list',
     url: '/cards',
     label: 'Cards example'
-  },
-  {
-    icon: 'bi-headset',
-    url: toContact(),
-    label: 'Contact'
   },
   {
     icon: 'bi-card-image',
@@ -89,82 +82,50 @@ const links = (): MenuLink[] => [
 export function MenuLeft(props: Props) {
   const { isOpen, toggle } = props;
 
-  const navLinks = links().map((link, index) => (
-    <NavItem key={link.url}>
-      <PopoverIcon id={`${index}`} title={link.label} isActive={!isOpen}>
-        <NavLink to={link.url} tag={RRNavLink} end disabled={link.disabled}>
-          {isOpen && `${link.label} `}
-          {isOpen && link.badgeNumber && link.badgeNumber > 0 && (
-            <Badge className="bg-danger" pill>
-              {link.badgeNumber}
-            </Badge>
-          )}
-          {link.icon && <Icon type={link.icon} />}
-        </NavLink>
-      </PopoverIcon>
+  const navLinks = links().map(link => (
+    <NavItem key={link.url} className="sidebar-nav-item">
+      <NavLink to={link.url} tag={RRNavLink} end disabled={link.disabled}>
+        <Icon type={link.icon} />
+        <span className="nav-label">{link.label}</span>
+        {link.badgeNumber && link.badgeNumber > 0 && (
+          <Badge className="bg-danger ms-auto" pill>
+            {link.badgeNumber}
+          </Badge>
+        )}
+      </NavLink>
+      <span className="nav-tooltip">{link.label}</span>
     </NavItem>
   ));
 
-  const className = clsx('menu-left', { closed: !isOpen });
-
   return (
-    <div className={className}>
-      <Icon
-        type={isOpen ? 'bi-caret-left-fill' : 'bi-caret-right-fill'}
-        className="toggle-menu-button"
-        color="#244e9b"
-        onClick={toggle}
-      />
-
+    <div className={clsx('menu-left', { closed: !isOpen })}>
       <div className="menu-container">
-        <div className="logo-wrapper">
-          <Logo height={100} />
+        <div className="sidebar-header">
+          <span className="brand-text">Playground</span>
+          <button
+            className="toggle-sidebar-btn"
+            onClick={toggle}
+            aria-label="Toggle sidebar"
+          >
+            <Icon type={isOpen ? 'bi-chevron-double-left' : 'bi-chevron-double-right'} />
+          </button>
         </div>
         <div className="links-container">
-          <Nav vertical className="text-end" pills>
-            {navLinks.map(i => i)}
+          <Nav vertical pills>
+            {navLinks}
           </Nav>
         </div>
         <div className="footer">
-          <Button color="link" className="text-white p-0">
-            {isOpen ? 'About' : <Icon type="bi-question-circle-fill" />}
-          </Button>
-          <Button color="link" className="text-white p-0">
-            {isOpen ? 'Contact' : <Icon type="bi-headset" />}
-          </Button>
+          <NavLink to="#" tag={RRNavLink} className="footer-btn">
+            <Icon type="bi-question-circle" />
+            <span className="nav-label">About</span>
+          </NavLink>
+          <NavLink to={toContact()} tag={RRNavLink} className="footer-btn">
+            <Icon type="bi-headset" />
+            <span className="nav-label">Contact</span>
+          </NavLink>
         </div>
       </div>
     </div>
-  );
-}
-
-function PopoverIcon({
-  id,
-  title,
-  children,
-  isActive
-}: {
-  id: string;
-  title: string;
-  children: ReactNode;
-  isActive: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-
-  function toggle() {
-    if (isActive) {
-      setOpen(value => !value);
-    }
-  }
-
-  return (
-    <span>
-      <div id={`Popover-${id}`} onMouseOver={toggle} onMouseOutCapture={toggle}>
-        {children}
-      </div>
-      <Popover placement="right" isOpen={open} target={`Popover-${id}`} toggle={toggle}>
-        <PopoverHeader>{title}</PopoverHeader>
-      </Popover>
-    </span>
   );
 }

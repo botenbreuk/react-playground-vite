@@ -1,66 +1,65 @@
+import { clsx } from 'clsx';
 import { useState } from 'react';
 import { NavLink as RRNavLink } from 'react-router';
-import { Button, Col, Container, Nav, NavItem, NavLink, Row } from 'reactstrap';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 import { SETTINGS_PAGE_URL } from '../../../app/Settings/SettingsPage';
-import { useOutsideClick } from '../../../hooks/useOutsideClick/useOutsideClick';
-import { Icon } from '../../index';
 
 export function MenuRight() {
   const [isOpen, setIsOpen] = useState(false);
-  const ref = useOutsideClick(toggle);
 
   function toggle() {
-    setIsOpen(!isOpen);
-  }
-
-  if (!isOpen) {
-    return <RenderOpenButton toggle={toggle} />;
+    setIsOpen(current => !current);
   }
 
   return (
     <>
-      <RenderOpenButton toggle={toggle} />
-      <div ref={ref} className="menu-right">
-        <Container fluid>
-          <Row>
-            <Col xs={12} className="d-flex justify-content-end">
-              <Icon
-                type="bi-x"
-                className="close-button"
-                color="#ffffff"
-                onClick={toggle}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Nav vertical className="text-center" pills>
-              <NavItem>
-                <NavLink to="/change-password" tag={RRNavLink} exact>
-                  Change Password
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to={SETTINGS_PAGE_URL} tag={RRNavLink} exact>
-                  Settings
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/logout" tag={RRNavLink} exact>
-                  Logout
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Row>
-        </Container>
+      <button className="user-avatar-btn" onClick={toggle} aria-label="Open account menu">
+        <span className="user-avatar">RB</span>
+      </button>
+
+      <div className={clsx('menu-right-overlay', { 'is-open': isOpen })}>
+        <div className="menu-right-backdrop" onClick={toggle} />
+        <aside className="menu-right">
+          <div className="menu-right-header">
+            <span className="menu-right-title">Account</span>
+            <button
+              className="menu-right-close"
+              onClick={toggle}
+              aria-label="Close panel"
+            >
+              <i className="bi bi-x-lg" />
+            </button>
+          </div>
+          <div className="menu-right-user">
+            <div className="menu-right-avatar">RB</div>
+            <p className="menu-right-name">Username</p>
+            <p className="menu-right-email">user@example.com</p>
+            <span className="menu-right-role">Admin</span>
+          </div>
+          <Nav vertical className="menu-right-nav">
+            <NavItem>
+              <NavLink to="/change-password" tag={RRNavLink}>
+                <i className="bi bi-person" /> Change Password
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to={SETTINGS_PAGE_URL} tag={RRNavLink}>
+                <i className="bi bi-gear" /> Settings
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/logout" tag={RRNavLink}>
+                <i className="bi bi-question-circle" /> Help &amp; Support
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <div className="menu-right-footer">
+            <button className="menu-right-logout">
+              <i className="bi bi-box-arrow-right" /> Sign out
+            </button>
+          </div>
+        </aside>
       </div>
     </>
-  );
-}
-
-function RenderOpenButton({ toggle }: { toggle: () => void }) {
-  return (
-    <Button color="danger" onClick={toggle}>
-      <Icon type="bi-people-fill" className="menu-right-open-button" color="#fff" />
-    </Button>
   );
 }
