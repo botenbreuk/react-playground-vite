@@ -24,7 +24,7 @@ export function generateList(total: number) {
       iconColor: iconGbs[getRandomInt(iconGbs.length)],
       body: 'Body text',
       footer: getRandomInt(20) <= 5 ? 'Footer text' : undefined,
-      buttonClick: getRandomInt(20) <= 5 ? () => console.log('Hallow') : undefined,
+      buttonClick: getRandomInt(20) <= 5 ? () => alert("I'm pressed") : undefined,
       progress:
         getRandomInt(20) <= 5 ? progresses[getRandomInt(progresses.length)] : undefined,
       customEdit: getRandomInt(100) < 10,
@@ -135,7 +135,7 @@ export function getFixedList() {
       iconColor: 'bg-danger',
       body: 'Body text',
       footer: 'footer text',
-      buttonClick: () => console.log('Hallow')
+      buttonClick: () => undefined
     },
     {
       title: 'Item 4 with a very long text so this will turn into a ellipsis',

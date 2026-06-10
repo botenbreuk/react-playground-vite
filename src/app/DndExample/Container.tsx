@@ -43,15 +43,12 @@ const ITEMS = [
   }
 ];
 
-export const Container = memo(function Container() {
+export const Container = memo(function Component() {
   const [cards, setCards] = useState(ITEMS);
 
   const findCard = useCallback(
     (id: string) => {
-      const card = cards.filter(c => `${c.id}` === id)[0] as {
-        id: number;
-        text: string;
-      };
+      const card = cards.filter(c => `${c.id}` === id)[0];
       return {
         card,
         index: cards.indexOf(card)

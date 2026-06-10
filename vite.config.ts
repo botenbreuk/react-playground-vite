@@ -15,7 +15,7 @@ export default defineConfig(() => ({
       },
       eslint: {
         useFlatConfig: true,
-        lintCommand: 'eslint src --max-warnings 0"'
+        lintCommand: 'eslint src --ext js,jsx,ts,tsx --max-warnings=0'
       },
       enableBuild: false
     })
@@ -25,14 +25,11 @@ export default defineConfig(() => ({
     emptyOutDir: true,
     outDir: './build',
     minify: 'terser',
-    terserOptions: {
-      format: { comments: false },
-      compress: { pure_funcs: ['console.log', 'console.info'] }
-    },
-    rollupOptions: {
+    terserOptions: { format: { comments: false } },
+    rolldownOptions: {
       output: {
         assetFileNames: assetInfo => {
-          let extType = assetInfo?.name?.split('.').at(1);
+          let extType = assetInfo?.names?.[0]?.split('.').at(1);
           if (/png|jpe?g|svg|gif|tiff|ttf|woff|woff2|eot|bmp|ico/i.test(`${extType}`)) {
             extType = 'img';
           }

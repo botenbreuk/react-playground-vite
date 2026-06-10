@@ -16,7 +16,7 @@ export default defineConfig(
   reactHooks.configs.flat['recommended-latest'],
   pluginPromise.configs['flat/recommended'],
   pluginPrettier,
-  globalIgnores(['./eslint.config.js']),
+  globalIgnores(['./eslint.config.js', 'vite.config.ts']),
   {
     plugins: {
       'check-file': pluginCheckFile
@@ -34,8 +34,6 @@ export default defineConfig(
     },
     files: ['**/*.{js,jsx,ts,tsx}'],
     rules: {
-      // TODO Fix later
-      'react-hooks/refs': ['off'],
       'react-hooks/set-state-in-effect': ['off'],
       // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
       // e.g. "@typescript-eslint/explicit-function-return-type": "off",
@@ -71,7 +69,7 @@ export default defineConfig(
       'no-nested-ternary': 'warn',
       'object-shorthand': 'warn',
       'no-useless-return': 'warn',
-      // 'no-console': ['warn', { allow: ['warn', 'error', 'time', 'timeEnd'] }],
+      'no-console': ['warn', { allow: ['warn', 'error', 'time', 'timeEnd'] }],
       eqeqeq: ['warn', 'smart'],
       curly: ['warn', 'all'],
       '@typescript-eslint/prefer-includes': 'warn',

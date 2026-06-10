@@ -73,6 +73,7 @@ export function QuestionBox(props: Props) {
       opacity: monitor.isDragging() ? 0.4 : 1
     })
   });
+  // eslint-disable-next-line react-hooks/refs -- react-dnd requires passing ref objects to drag/drop connectors
   drag(drop(ref));
 
   let backgroundColor = 'black';

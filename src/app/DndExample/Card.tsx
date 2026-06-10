@@ -23,7 +23,7 @@ type Item = {
   originalIndex: number;
 };
 
-export const Card = memo(function Card({ id, text, moveCard, findCard }: CardProps) {
+export const Card = memo(function Component({ id, text, moveCard, findCard }: CardProps) {
   const originalIndex = findCard(id).index;
   const [{ isDragging }, drag] = useDrag(
     () => ({
