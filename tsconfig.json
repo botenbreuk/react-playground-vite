@@ -19,5 +19,11 @@
     "typeRoots": ["node_modules/@types", "src/types"]
   },
   "include": ["src", "eslint.config.js", "vite.config.ts", "stylelint.config.js", "ci"],
-  "exclude": ["node_modules", "scripts"]
+  "exclude": ["node_modules", "scripts"],
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicPriority",
+    "excludeDirectories": ["**/node_modules", "build"]
+  }
 }

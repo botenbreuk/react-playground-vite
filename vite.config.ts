@@ -11,11 +11,13 @@ export default defineConfig(() => ({
     checker({
       typescript: true,
       stylelint: {
-        lintCommand: 'stylelint \"src/**/*.scss\"'
+        lintCommand: 'stylelint \"src/**/*.scss\"',
+        watchPath: './src'
       },
       eslint: {
         useFlatConfig: true,
-        lintCommand: 'eslint src --ext js,jsx,ts,tsx --max-warnings=0'
+        lintCommand: 'eslint src --ext js,jsx,ts,tsx --max-warnings=0',
+        watchPath: './src'
       },
       enableBuild: false
     })
