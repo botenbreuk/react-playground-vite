@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import { DATA, SELF, UNSAFE_INLINE, getCSP } from 'csp-header';
 import * as path from 'path';
 import { defineConfig } from 'vite';
@@ -22,12 +22,11 @@ export default defineConfig(() => ({
       enableBuild: false
     })
   ],
-  root: path.resolve(__dirname),
+  root: path.resolve(import.meta.dirname),
   build: {
     emptyOutDir: true,
     outDir: './build',
-    minify: 'terser',
-    terserOptions: { format: { comments: false } },
+    minify: true,
     rolldownOptions: {
       output: {
         assetFileNames: assetInfo => {
@@ -68,7 +67,7 @@ export default defineConfig(() => ({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(import.meta.dirname, 'src')
     }
   },
   define: {
