@@ -63,9 +63,6 @@
     "vite": "8.2.0",
     "vite-plugin-checker": "0.14.5"
   },
-  "overrides": {
-    "js-yaml": "4.3.1"
-  },
   "scripts": {
     "better-audit": "node node_modules/better-npm-audit audit --production",
     "build": "tsc && vite build",
