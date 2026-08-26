@@ -9,13 +9,13 @@ const pokemon = [
 ];
 
 // middleware that is specific to this router
-router.use((req, res, next) => {
+router.use((_, _, next) => {
   console.log('Time: ', Date.now());
   next();
 });
 
 // define the home page route
-router.get('/', (req, res) => {
+router.get('/', (_, res) => {
   res.send({ data: pokemon });
 });
 

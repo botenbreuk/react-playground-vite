@@ -1,10 +1,10 @@
 import express from 'express';
-import pjson from '../package.json' assert { type: 'json' };
+import pjson from '../package.json' with { type: 'json' };
 
 const router = express.Router();
 
 // middleware that is specific to this router
-router.use((req, res, next) => {
+router.use((_, _, next) => {
   console.log('Time: ', Date.now());
   next();
 });

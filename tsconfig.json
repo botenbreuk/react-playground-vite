@@ -18,7 +18,14 @@
     "jsx": "react-jsx",
     "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["src", "eslint.config.js", "vite.config.ts", "stylelint.config.js", "ci"],
+  "include": [
+    "src",
+    "eslint.config.js",
+    "vite.config.ts",
+    "stylelint.config.js",
+    "ci",
+    "_rest-api"
+  ],
   "exclude": ["node_modules", "scripts"],
   "watchOptions": {
     "watchFile": "useFsEvents",
