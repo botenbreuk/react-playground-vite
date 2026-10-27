@@ -1,0 +1,10 @@
+glob_matcher: doublestar
+
+pre-commit:
+  commands:
+    prettier:
+      glob: '{src,test}/**/*.{js,jsx,json,scss,tsx,ts}'
+      run: npx prettier --single-quote --write {staged_files}
+      stage_fixed: true
+    check-dependencies:
+      run: npm run check-dependencies
