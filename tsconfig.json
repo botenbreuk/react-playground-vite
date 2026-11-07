@@ -22,7 +22,7 @@
     "src",
     "eslint.config.js",
     "vite.config.ts",
-    "stylelint.config.js",
+    "stylelint.config.ts",
     "ci",
     "_rest-api"
   ],

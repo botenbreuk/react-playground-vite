@@ -1,4 +1,8 @@
+# yaml-language-server: $schema=https://lefthook.dev/schema.json
+
 glob_matcher: doublestar
+# # Loads nvm when git runs the hooks without it, see .lefthookrc. Keep the ./: sh looks a bare name up on PATH.
+rc: ./.lefthookrc
 
 pre-commit:
   commands:

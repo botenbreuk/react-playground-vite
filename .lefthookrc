@@ -1,0 +1,7 @@
+# Sourced by the git hooks before their commands run (`rc` in lefthook.yml). A hook gets the
+# environment of whatever started the commit: VS Code's Source Control, or another app opened from
+# the Dock, has macOS's bare PATH without nvm, so npm is missing. Load nvm as the shell profile does.
+if ! command -v npm >/dev/null 2>&1; then
+  export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+fi

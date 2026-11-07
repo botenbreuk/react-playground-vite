@@ -101,6 +101,7 @@
     & .card-button {
       background-color: transparent;
       border-left: $border-width $border-style $border-color;
+
       @extend %card-icon;
 
       &:hover {
