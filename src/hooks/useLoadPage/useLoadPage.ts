@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Page, emptyPage } from './spring-models';
 
 type LoadPageOptions<T, P> = {
@@ -14,42 +14,46 @@ type LoadPageReturn<T> = {
   pageItems: Page<T>;
 };
 
+function applyPage<T>(
+  items: ReturnType<typeof emptyPage<T>>,
+  newPageItems: ReturnType<typeof emptyPage<T>>,
+  mergePages: boolean
+) {
+  return mergePages ? mergePagesOrReset(items, newPageItems) : newPageItems;
+}
+
 export function useLoadPage<T, P>(options: LoadPageOptions<T, P>): LoadPageReturn<T> {
   const { pageRequest, queryParams, pageNumber = 1, mergePages = true } = options;
   const [loading, setLoading] = useState(true);
   const [pageItems, setPageItems] = useState(emptyPage<T>());
 
-  const loadPage = useCallback(
-    async (page: number) => {
-      const newPageItems = await pageRequest(page, queryParams as P);
-      setPageItems(items =>
-        mergePages ? mergePagesOrReset(items, newPageItems) : newPageItems
-      );
-    },
-    [queryParams, pageRequest, mergePages]
-  );
-
-  const loadPageWithoutParams = useCallback(
-    async (page: number) => {
-      const newPageItems = await pageRequest(page, {} as P);
-      setPageItems(items =>
-        mergePages ? mergePagesOrReset(items, newPageItems) : newPageItems
-      );
-    },
-    [pageRequest, mergePages]
-  );
+  async function loadPage(page: number) {
+    const newPageItems = await pageRequest(page, (queryParams ?? {}) as P);
+    setPageItems(items => applyPage(items, newPageItems, mergePages));
+  }
 
   useEffect(() => {
+    // Flag to protect against race condition
+    let ignore = false;
+
     void (async () => {
-      setLoading(true);
-      if (!queryParams) {
-        await loadPageWithoutParams(pageNumber);
-      } else {
-        await loadPage(pageNumber);
+      try {
+        setLoading(true);
+        const newPageItems = await pageRequest(pageNumber, (queryParams ?? {}) as P);
+        if (!ignore) {
+          setPageItems(items => applyPage(items, newPageItems, mergePages));
+        }
+      } finally {
+        if (!ignore) {
+          setLoading(false);
+        }
       }
-      setLoading(false);
     })();
-  }, [loadPage, loadPageWithoutParams, queryParams, pageNumber]);
+
+    return () => {
+      ignore = true;
+    };
+  }, [pageRequest, queryParams, pageNumber, mergePages]);
 
   return { loading, loadPage, pageItems };
 }

@@ -1,4 +1,5 @@
-import react from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { DATA, SELF, UNSAFE_INLINE, getCSP } from 'csp-header';
 import * as path from 'path';
 import { defineConfig } from 'vite';
@@ -8,6 +9,9 @@ import { checker } from 'vite-plugin-checker';
 export default defineConfig(() => ({
   plugins: [
     react(),
+    babel({
+      presets: [reactCompilerPreset()]
+    }),
     checker({
       typescript: true,
       stylelint: {

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Tooltip } from 'reactstrap';
 import { Alert, Button, ButtonProps, IconType } from '../';
 import { Modal, ModalProps } from './Modal';
@@ -31,7 +31,7 @@ export function ModalButton(props: ModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDialogElement>(null);
 
-  const toggle = useCallback(() => {
+  function toggle() {
     if (!isOpen) {
       ref.current?.showModal();
     } else {
@@ -39,7 +39,7 @@ export function ModalButton(props: ModalButtonProps) {
     }
 
     setIsOpen(current => !current);
-  }, [isOpen]);
+  }
 
   function onCancel() {
     cancel?.onClick();

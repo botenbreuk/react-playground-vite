@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import { debounce } from 'lodash';
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import { AdvancedTableContext } from '../AdvancedTable';
 import { SortType } from '../parts/TableHeader';
 
@@ -49,17 +49,13 @@ export function useTableParams({
     'sort-desc': sort?.param === parameter && sort?.direction === 'DESC'
   });
 
-  const changeParam = useMemo(
-    () =>
-      debounce((label: string | undefined, value: string) => {
-        if (!label) {
-          return;
-        }
+  const changeParam = debounce((label: string | undefined, value: string) => {
+    if (!label) {
+      return;
+    }
 
-        onParamChange({ ...queryParams, [label]: value });
-      }, 200),
-    [onParamChange, queryParams]
-  );
+    onParamChange({ ...queryParams, [label]: value });
+  }, 200);
 
   return { queryParams, changeParam, sortClasses, onSort };
 }

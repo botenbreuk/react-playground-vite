@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import { memo } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { itemTypes } from './ItemTypes';
 
@@ -23,7 +22,7 @@ type Item = {
   originalIndex: number;
 };
 
-export const Card = memo(function Component({ id, text, moveCard, findCard }: CardProps) {
+export function Card({ id, text, moveCard, findCard }: CardProps) {
   const originalIndex = findCard(id).index;
   const [{ isDragging }, drag] = useDrag(
     () => ({
@@ -68,4 +67,4 @@ export const Card = memo(function Component({ id, text, moveCard, findCard }: Ca
       {originalIndex} - {text}
     </div>
   );
-});
+}

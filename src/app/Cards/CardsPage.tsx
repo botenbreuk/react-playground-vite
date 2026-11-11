@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useNavigate } from 'react-router';
 import {
   Badge,
@@ -46,7 +46,7 @@ export function CardsPage() {
 
   const navigate = useNavigate();
 
-  const cards = useMemo(() => generateList(50), []);
+  const cards = generateList(50);
   const names = clsx('card-columns', { horizontal: listMode });
 
   return (

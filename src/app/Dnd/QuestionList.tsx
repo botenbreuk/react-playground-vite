@@ -1,4 +1,4 @@
-import { CSSProperties, useCallback } from 'react';
+import { CSSProperties } from 'react';
 import { useDrop } from 'react-dnd';
 import { QuestionBox } from './QuestionBox';
 import { questionTypes } from './QuestionTypes';
@@ -43,16 +43,13 @@ export function QuestionList(props: Props) {
     })
   });
 
-  const moveCard = useCallback(
-    (dragIndex: number, hoverIndex: number) => {
-      const dragCard = value[dragIndex];
-      const test = [...value];
-      test.splice(dragIndex, 1);
-      test.splice(hoverIndex, 0, dragCard);
-      onChange(test);
-    },
-    [value, onChange]
-  );
+  function moveCard(dragIndex: number, hoverIndex: number) {
+    const dragCard = value[dragIndex];
+    const test = [...value];
+    test.splice(dragIndex, 1);
+    test.splice(hoverIndex, 0, dragCard);
+    onChange(test);
+  }
 
   function remove(index: number) {
     const test = [...value];

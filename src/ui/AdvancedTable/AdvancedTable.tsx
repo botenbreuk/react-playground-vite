@@ -1,6 +1,6 @@
 import { useQueryParams } from '@42.nl/react-url';
 import { QueryObserverSuccessResult, useQuery } from '@tanstack/react-query';
-import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { Table } from 'reactstrap';
 import { Spinner } from '../';
@@ -59,10 +59,11 @@ export function AdvancedTable<T, QP extends Record<string, any>>(props: Props<T,
     queryFn: () => loadData(queryParams)
   });
 
-  const values = useMemo<ContextProps>(
-    () => ({ queryParams, onParamChange: value => onParamChange(value as QP), sort }),
-    [onParamChange, queryParams, sort]
-  );
+  const values: ContextProps = {
+    queryParams,
+    onParamChange: value => onParamChange(value as QP),
+    sort
+  };
 
   useEffect(() => {
     setSort(getSort(queryParams));
